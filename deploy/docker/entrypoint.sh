@@ -28,4 +28,4 @@ sed -i \
   -e 's|ARGOUIBASE_URL|'"${ARGOUIBASE_URL}"'|' \
   /var/www/frontend/assets/config/config.json
 
-nginx -g 'daemon off;'
+nginx-debug -g 'daemon off;'
