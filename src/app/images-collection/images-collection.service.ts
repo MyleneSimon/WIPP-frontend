@@ -113,7 +113,6 @@ export class ImagesCollectionService implements DataService<ImagesCollection, Pa
     }
     return this.http.get<any>(`${this.imagesCollectionsUrl}/${imagesCollection.id}/images`, httpOptions).pipe(
       map((result: any) => {
-        console.log(result); // <--it's an object
         result.data = result._embedded.images;
         return result;
       }));
@@ -133,7 +132,6 @@ export class ImagesCollectionService implements DataService<ImagesCollection, Pa
     }
     return this.http.get<any>(`${this.imagesCollectionsUrl}/${imagesCollection.id}/metadataFiles`, httpOptions).pipe(
       map((result: any) => {
-        console.log(result); // <--it's an object
         result.data = result._embedded.metadataFiles;
         return result;
       }));
