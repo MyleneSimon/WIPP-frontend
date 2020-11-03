@@ -27,6 +27,7 @@ export class KeycloakInterceptorService implements HttpInterceptor {
               }
             });
           }
+          console.log(request);
           return next.handle(request);
         }));
     }
