@@ -18,7 +18,11 @@ export class TensorflowModelService implements DataService<TensorflowModel, Pagi
   constructor(private http: HttpClient) { }
 
   getById(id: string): Observable<TensorflowModel> {
-    return this.http.get<TensorflowModel>(`${this.tensorflowModelUrl}/${id}`);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.get<TensorflowModel>(`${this.tensorflowModelUrl}/${id}`, httpOptions);
   }
 
   get(params): Observable<PaginatedTensorflowModels> {
@@ -61,7 +65,11 @@ export class TensorflowModelService implements DataService<TensorflowModel, Pagi
   }
 
   getJob(jobUrl: string): Observable<Job> {
-    return this.http.get<Job>(jobUrl);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.get<Job>(jobUrl, httpOptions);
   }
 
   getTensorboardLogsByJob(jobId: string): Observable<TensorboardLogs> {
@@ -86,6 +94,10 @@ export class TensorflowModelService implements DataService<TensorflowModel, Pagi
   }
 
   startDownload(url: string): Observable<string> {
-    return this.http.get<string>(url);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.get<string>(url, httpOptions);
   }
 }

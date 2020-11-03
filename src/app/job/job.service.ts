@@ -50,7 +50,7 @@ export class JobService {
   }
 
   deleteJob(job: Job) {
-     return this.http.delete<Job>(job._links.self.href);
+     return this.http.delete<Job>(job._links.self.href, httpOptions);
   }
 
 }

@@ -18,7 +18,11 @@ export class CsvCollectionService implements DataService<CsvCollection, Paginate
   constructor(private http: HttpClient) { }
 
   getById(id: string): Observable<CsvCollection> {
-    return this.http.get<CsvCollection>(`${this.csvCollectionUrl}/${id}`);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.get<CsvCollection>(`${this.csvCollectionUrl}/${id}`, httpOptions);
   }
 
   get(params): Observable<PaginatedCsvCollections> {
@@ -61,11 +65,19 @@ export class CsvCollectionService implements DataService<CsvCollection, Paginate
   }
 
   createCsvCollection(csvCollection: CsvCollection): Observable<CsvCollection> {
-    return this.http.post<CsvCollection>(this.csvCollectionUrl, csvCollection);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.post<CsvCollection>(this.csvCollectionUrl, csvCollection, httpOptions);
   }
 
   getJob(jobUrl: string): Observable<Job> {
-    return this.http.get<Job>(jobUrl);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.get<Job>(jobUrl, httpOptions);
   }
 
   getCsvFiles(csvCollection: CsvCollection, params): Observable<PaginatedCsv> {
@@ -87,7 +99,7 @@ export class CsvCollectionService implements DataService<CsvCollection, Paginate
       }));
   }
 
-    getCsvUrl(csvCollection: CsvCollection): string {
+  getCsvUrl(csvCollection: CsvCollection): string {
       return `${this.csvCollectionUrl}/${csvCollection.id}/csv`;
   }
 
@@ -100,14 +112,26 @@ export class CsvCollectionService implements DataService<CsvCollection, Paginate
   }
 
   deleteCsvCollection(csvCollection: CsvCollection) {
-    return this.http.delete<CsvCollection>(csvCollection._links.self.href);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.delete<CsvCollection>(csvCollection._links.self.href, httpOptions);
   }
 
   deleteCsvFile(csv: Csv) {
-    return this.http.delete<Csv>(csv._links.self.href);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.delete<Csv>(csv._links.self.href, httpOptions);
   }
 
   deleteAllCsvFiles(csvCollection: CsvCollection) {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
     if (csvCollection.numberOfCsvFiles > 0) {
       return this.http.delete(`${this.csvCollectionUrl}/${csvCollection.id}/csv`);
     }
@@ -122,6 +146,10 @@ export class CsvCollectionService implements DataService<CsvCollection, Paginate
   }
 
   startDownload(url: string): Observable<string> {
-    return this.http.get<string>(url);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.get<string>(url, httpOptions);
   }
 }

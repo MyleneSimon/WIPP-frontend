@@ -21,7 +21,11 @@ export class ImagesCollectionService implements DataService<ImagesCollection, Pa
   }
 
   getById(id: string): Observable<ImagesCollection> {
-    return this.http.get<ImagesCollection>(`${this.imagesCollectionsUrl}/${id}`);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.get<ImagesCollection>(`${this.imagesCollectionsUrl}/${id}`, httpOptions);
   }
 
   get(params): Observable<PaginatedImagesCollections> {
@@ -138,30 +142,54 @@ export class ImagesCollectionService implements DataService<ImagesCollection, Pa
   }
 
   createImagesCollection(imagesCollection: ImagesCollection): Observable<ImagesCollection> {
-    return this.http.post<ImagesCollection>(this.imagesCollectionsUrl, imagesCollection);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.post<ImagesCollection>(this.imagesCollectionsUrl, imagesCollection, httpOptions);
   }
 
   deleteImagesCollection(imagesCollection: ImagesCollection) {
-    return this.http.delete<ImagesCollection>(imagesCollection._links.self.href);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.delete<ImagesCollection>(imagesCollection._links.self.href, httpOptions);
   }
 
   deleteImage(image: Image) {
-    return this.http.delete<Image>(image._links.self.href);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.delete<Image>(image._links.self.href, httpOptions);
   }
 
   deleteAllImages(imagesCollection: ImagesCollection) {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
     if (imagesCollection.numberOfImages > 0) {
-      return this.http.delete(`${this.imagesCollectionsUrl}/${imagesCollection.id}/images`);
+      return this.http.delete(`${this.imagesCollectionsUrl}/${imagesCollection.id}/images`, httpOptions);
     }
   }
 
   deleteMetadataFile(metadata: MetadataFile) {
-    return this.http.delete<Image>(metadata._links.self.href);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.delete<Image>(metadata._links.self.href, httpOptions);
   }
 
   deleteAllMetadataFiles(imagesCollection: ImagesCollection) {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
     if (imagesCollection.numberOfMetadataFiles > 0) {
-      return this.http.delete(`${this.imagesCollectionsUrl}/${imagesCollection.id}/metadataFiles`);
+      return this.http.delete(`${this.imagesCollectionsUrl}/${imagesCollection.id}/metadataFiles`, httpOptions);
     }
   }
 
@@ -190,14 +218,22 @@ export class ImagesCollectionService implements DataService<ImagesCollection, Pa
   }
 
   getSourceJob(imagesCollection: ImagesCollection): Observable<Job> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
     if (imagesCollection._links['sourceJob']) {
-      return this.http.get<Job>(imagesCollection._links['sourceJob']['href']);
+      return this.http.get<Job>(imagesCollection._links['sourceJob']['href'], httpOptions);
     }
     return observableOf(null);
   }
 
   startDownload(url: string): Observable<string> {
-    return this.http.get<string>(url);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.get<string>(url, httpOptions);
   }
 
 }

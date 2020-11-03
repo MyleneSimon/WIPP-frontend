@@ -17,7 +17,11 @@ export class PyramidVisualizationService {
   ) { }
 
   getVisualization(id: string): Observable<Visualization> {
-    return this.http.get<Visualization>(`${this.visualizationsUrl}/${id}`);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.get<Visualization>(`${this.visualizationsUrl}/${id}`, httpOptions);
   }
 
   getVisualizations(params): Observable<PaginatedVisualization> {
@@ -61,7 +65,11 @@ export class PyramidVisualizationService {
   }
 
   createVisualization(visualization: Visualization): Observable<Visualization> {
-    return this.http.post<Visualization>(this.visualizationsUrl, visualization);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.post<Visualization>(this.visualizationsUrl, visualization, httpOptions);
   }
 
   setVisualizationManifest(visualization: Visualization, manifest: any) {
@@ -81,7 +89,11 @@ export class PyramidVisualizationService {
   }
 
   startDownload(url: string): Observable<string> {
-    return this.http.get<string>(url);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.get<string>(url, httpOptions);
   }
 
 }

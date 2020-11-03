@@ -19,7 +19,11 @@ export class PyramidService implements DataService<Pyramid, PaginatedPyramid> {
   }
 
   getById(id: string): Observable<Pyramid> {
-    return this.http.get<Pyramid>(`${this.pyramidsUrl}/${id}`);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.get<Pyramid>(`${this.pyramidsUrl}/${id}`, httpOptions);
   }
 
   get(params): Observable<PaginatedPyramid> {
@@ -63,7 +67,11 @@ export class PyramidService implements DataService<Pyramid, PaginatedPyramid> {
   }
 
   getJob(jobUrl: string): Observable<Job> {
-    return this.http.get<Job>(jobUrl);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.get<Job>(jobUrl, httpOptions);
   }
 
   getPyramidManifest(pyramid: Pyramid): any {

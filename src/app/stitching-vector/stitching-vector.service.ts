@@ -28,7 +28,11 @@ export class StitchingVectorService implements DataService<StitchingVector, Pagi
   }
 
   getById(id: string): Observable<StitchingVector> {
-    return this.http.get<StitchingVector>(`${this.stitchingVectorsUrl}/${id}`);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.get<StitchingVector>(`${this.stitchingVectorsUrl}/${id}`, httpOptions);
   }
 
   get(params): Observable<PaginatedStitchingVector> {
@@ -89,7 +93,11 @@ export class StitchingVectorService implements DataService<StitchingVector, Pagi
   }
 
   getJob(jobUrl: string): Observable<Job> {
-    return this.http.get<Job>(jobUrl);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.get<Job>(jobUrl, httpOptions);
   }
 
   makePublicStitchingVector(stitchingVector: StitchingVector): Observable<StitchingVector> {
@@ -101,7 +109,11 @@ export class StitchingVectorService implements DataService<StitchingVector, Pagi
   }
 
   startDownload(url: string): Observable<string> {
-    return this.http.get<string>(url);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.get<string>(url, httpOptions);
   }
 
 }

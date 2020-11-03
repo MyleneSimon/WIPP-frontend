@@ -19,11 +19,19 @@ export class NotebookService implements DataService<Notebook, PaginatedNotebooks
   }
 
   getById(id: string): Observable<Notebook> {
-    return this.http.get<Notebook>(`${this.notebooksUrl}/${id}`);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.get<Notebook>(`${this.notebooksUrl}/${id}`, httpOptions);
   }
 
   getNotebookFile(id: string): Observable<string> {
-    return this.http.get<string>(`${this.notebooksUrl}/${id}/getFile`);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.get<string>(`${this.notebooksUrl}/${id}/getFile`, httpOptions);
   }
 
   get(params): Observable<PaginatedNotebooks> {

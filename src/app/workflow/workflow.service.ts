@@ -55,6 +55,10 @@ export class WorkflowService {
   }
 
   getWorkflow(id: string): Observable<Workflow> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
     return this.http.get<Workflow>(`${this.workflowsUrl}/${id}`);
   }
 
@@ -80,11 +84,19 @@ export class WorkflowService {
   // }
 
   createWorkflow(workflow: Workflow): Observable<Workflow> {
-    return this.http.post<Workflow>(this.workflowsUrl, workflow);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.post<Workflow>(this.workflowsUrl, workflow, httpOptions);
   }
 
   createJob(job): Observable<Job> {
-      return this.http.post<Job>(this.jobsUrl, job);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+      return this.http.post<Job>(this.jobsUrl, job, httpOptions);
   }
 
   updateJob(job): Observable<Job> {
@@ -96,6 +108,10 @@ export class WorkflowService {
     }
 
   submitWorkflow(workflow): Observable<Workflow> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
     return this.http.post<Workflow>(
       `${this.workflowsUrl}/${workflow.id}/submit`,
       null,
@@ -104,7 +120,11 @@ export class WorkflowService {
   }
 
   copyWorkflow(workflow: Workflow, name: String): Observable<Workflow> {
-    return this.http.post<Workflow>(`${this.workflowsUrl}/${workflow.id}/copy`, name);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.post<Workflow>(`${this.workflowsUrl}/${workflow.id}/copy`, name, httpOptions);
   }
 
   getJobs(workflow: Workflow, params): Observable<PaginatedJobs> {

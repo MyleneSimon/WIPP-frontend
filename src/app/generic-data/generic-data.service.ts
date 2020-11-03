@@ -17,7 +17,11 @@ export class GenericDataService implements DataService<GenericData, PaginatedGen
   constructor(private http: HttpClient) { }
 
   getById(id: string): Observable<GenericData> {
-    return this.http.get<GenericData>(`${this.genericDataUrl}/${id}`);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.get<GenericData>(`${this.genericDataUrl}/${id}`, httpOptions);
   }
 
   get(params): Observable<PaginatedGenericDatas> {
@@ -60,7 +64,11 @@ export class GenericDataService implements DataService<GenericData, PaginatedGen
   }
 
   getJob(jobUrl: string): Observable<Job> {
-    return this.http.get<Job>(jobUrl);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.get<Job>(jobUrl, httpOptions);
   }
 
   makeDataPublic(genericData: GenericData): Observable<GenericData> {
@@ -72,6 +80,10 @@ export class GenericDataService implements DataService<GenericData, PaginatedGen
   }
 
   startDownload(url: string): Observable<string> {
-    return this.http.get<string>(url);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.get<string>(url, httpOptions);
   }
 }

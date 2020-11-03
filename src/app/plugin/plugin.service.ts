@@ -70,7 +70,7 @@ export class PluginService {
   }
 
   getPlugin(id): Observable<Plugin> {
-    return this.http.get<Plugin>(`${this.pluginsUrl}/${id}`);
+    return this.http.get<Plugin>(`${this.pluginsUrl}/${id}`, httpOptions);
   }
 
   getPluginInputType(plugin: Plugin, inputName: string): string {
@@ -102,7 +102,7 @@ export class PluginService {
   }
 
   deletePlugin(plugin: Plugin) {
-    return this.http.delete<Plugin>(plugin._links.self.href);
+    return this.http.delete<Plugin>(plugin._links.self.href, httpOptions);
   }
 
 }

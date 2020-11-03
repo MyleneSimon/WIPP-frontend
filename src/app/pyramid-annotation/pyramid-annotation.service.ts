@@ -36,7 +36,11 @@ export class PyramidAnnotationService implements DataService<PyramidAnnotation, 
   }
 
   getById(id): Observable<PyramidAnnotation> {
-    return this.http.get<PyramidAnnotation>(`${this.pyramidAnnotationsUrl}/${id}`);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.get<PyramidAnnotation>(`${this.pyramidAnnotationsUrl}/${id}`, httpOptions);
   }
 
   getByNameContainingIgnoreCase(params, name): Observable<PaginatedPyramidAnnotation> {
@@ -86,7 +90,11 @@ export class PyramidAnnotationService implements DataService<PyramidAnnotation, 
   }
 
   downloadAnnotation(url: string): Observable<any> {
-    return this.http.get(url);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: {}
+    };
+    return this.http.get(url, httpOptions);
   }
 
 }
