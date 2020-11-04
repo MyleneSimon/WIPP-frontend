@@ -16,8 +16,9 @@ export class KeycloakInterceptorService implements HttpInterceptor {
   ) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // If the user is logged in, we add the Bearer token to the request
-    if (request.url.startsWith(environment.apiRootUrl) && this.keycloakService.isLoggedIn()) {
+    // If the user is logged in and request is for WIPP API, we add the Bearer token to the request
+    if ((request.url.startsWith(environment.apiRootUrl) || request.url.startsWith(this.router.url))
+      && this.keycloakService.isLoggedIn()) {
       return this.getUserToken().pipe(
         mergeMap((token) => {
           if (token) {
