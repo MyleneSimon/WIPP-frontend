@@ -29,6 +29,7 @@ import {PyramidVisualizationModule} from './pyramid-visualization/pyramid-visual
 import { ForbiddenAccessComponent } from './forbidden-access/forbidden-access.component';
 import {PyramidAnnotationModule} from './pyramid-annotation/pyramid-annotation.module';
 import { GenericDataModule } from './generic-data/generic-data.module';
+import {StatModelingModule} from './stat-modeling/stat-modeling.module';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { GenericDataModule } from './generic-data/generic-data.module';
     PyramidVisualizationModule,
     TensorflowModelModule,
     CsvCollectionModule,
+    StatModelingModule,
     NotebookModule,
     GenericDataModule,
     PluginModule,

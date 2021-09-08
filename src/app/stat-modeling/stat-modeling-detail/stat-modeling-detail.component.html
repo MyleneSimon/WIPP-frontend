@@ -1,16 +1,16 @@
-<h3 class="wipp-title">Pyramid Visualization</h3>
+<h3 class="wipp-title">Statistical Modeling</h3>
 
 <div class="row">
   <div class="col-md-3">
-    <strong>Name:</strong> {{ visualization.name }}
+    <strong>Name:</strong> {{ statModeling.name }}
   </div>
 
   <div class="col-md-3">
-    <strong>Creation date:</strong> {{ visualization.creationDate | date }}
+    <strong>Creation date:</strong> {{ statModeling.creationDate | date }}
   </div>
 
   <div class="col-md-3">
-    <strong>Owner:</strong> {{ visualization.owner }}
+    <strong>Owner:</strong> {{ statModeling.owner }}
   </div>
 
   <div class="col-md-3 text-right">
@@ -29,12 +29,12 @@
             (click)="showSettings = !showSettings">
       <span aria-hidden="true"><i class="fa fa-cog"></i></span>
     </button>
-    <button *ngIf="!visualization.publiclyShared && canEdit()" type="button"
-            ngbTooltip="Make visualization public"
+    <button *ngIf="!statModeling.publiclyShared && canEdit()" type="button"
+            ngbTooltip="Make Statitical Modeling public"
             placement="left"
-            class="btn btn-light" (click)="makePublicVisualization();">
+            class="btn btn-light" (click)="makeStatModelingPublic();">
     <span class="fa fa-users"
-        aria-hidden="true"></span>
+          aria-hidden="true"></span>
     </button>
 
   </div>
@@ -102,6 +102,7 @@
           <tr>
             <th class="table-column-40p vert-align">Layer label</th>
             <th class="table-column-40p vert-align">Pyramid</th>
+            <th class="table-column-40p vert-align">CSV Collection</th>
             <!--TODO: add ppm info (metadata not handled in pyramid building yet) -->
             <!--<th class="vert-align">Pixels / meter</th>-->
             <th class="wip-icon-button-column vert-align"></th>
@@ -115,8 +116,11 @@
                 {{layer.pyramid?.name}}
               </a>
             </td>
-            <!--TODO: add ppm info (metadata not handled in pyramid building yet) -->
-            <!--<td class="vert-align">{{layer.ppm}}</td>-->
+            <td class="vert-align">
+              <a routerLink="/csvCollections/{{layer.csvCollection?.id}}">
+                {{layer.csvCollection?.name}}
+              </a>
+            </td>
             <td class="vert-align">
               <button type="button" class="btn wip-icon-btn-default btn-sm"
                       ngbTooltip="Delete layer"
@@ -133,7 +137,7 @@
             <td class="vert-align">
               <input type="text" class="form-control"
                      autocomplete="off"
-                     [ngbTypeahead]="search"
+                     [ngbTypeahead]="searchPyramid"
                      #instance="ngbTypeahead"
                      [inputFormatter]="formatter"
                      [resultFormatter]="formatter"
@@ -142,11 +146,18 @@
                      [(ngModel)]="layersGroup.newLayer.pyramid"
                      required>
             </td>
-            <!--TODO: add ppm info (metadata not handled in pyramid building yet) -->
-            <!--<td class="vert-align">-->
-              <!--<input type="number" min="0" class="form-control"-->
-                     <!--[(ngModel)]="layersGroup.newLayer.ppm">-->
-            <!--</td>-->
+            <td class="vert-align">
+              <input type="text" class="form-control"
+                     autocomplete="off"
+                     [ngbTypeahead]="searchCsvCollection"
+                     #instance="ngbTypeahead"
+                     [inputFormatter]="formatter"
+                     [resultFormatter]="formatter"
+                     (selectItem)="csvCollectionSelected(layersGroup)"
+                     placeholder="Start typing a CSV collection name..."
+                     [(ngModel)]="layersGroup.newLayer.csvCollection"
+                     required>
+            </td>
             <td class="vert-align">
               <button type="button" class="btn wip-icon-btn-default btn-sm"
                       ngbTooltip="Add layer"
@@ -184,4 +195,5 @@
   </tbody>
 </table>
 
-<wippWdzt [manifest]="manifest"></wippWdzt>
+<wippWsmt [manifest]="manifest"></wippWsmt>
+

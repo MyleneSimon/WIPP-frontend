@@ -2,9 +2,9 @@ import {AfterViewInit, Directive, ElementRef, Input, OnChanges, SimpleChanges} f
 import {KeycloakService} from '../services/keycloak/keycloak.service';
 
 @Directive({
-  selector: 'wippWdzt'
+  selector: 'wippWsmt'
 })
-export class WdztDirective implements AfterViewInit, OnChanges {
+export class WsmtDirective implements AfterViewInit, OnChanges {
 
   @Input() public manifest: any;
   private w: any;
@@ -14,16 +14,16 @@ export class WdztDirective implements AfterViewInit, OnChanges {
   }
 
   ngAfterViewInit() {
-    const id = this.elem.nativeElement.id = this.elem.nativeElement.id || WDZT.guid();
+    const id = this.elem.nativeElement.id = this.elem.nativeElement.id || WSMT.guid();
     let ajaxHeaders = {};
     if (this.keycloakService.isLoggedIn()) {
       ajaxHeaders = {
         Authorization: `Bearer ${this.keycloakService.getKeycloakAuth().token}`
       };
     }
-    this.w = WDZT({
+    this.w = WSMT({
       id: id,
-      imagesPrefix: 'assets/wdzt/images/',
+      imagesPrefix: 'assets/wsmt/images/',
       OpenSeadragon: {
         crossOriginPolicy: 'Anonymous',
         loadTilesWithAjax: true,
@@ -43,7 +43,7 @@ export class WdztDirective implements AfterViewInit, OnChanges {
           ? JSON.parse(this.manifest) : this.manifest;
         this.w.open(this.manifest);
       } catch (er) {
-        // The manifest is probably just a URL, let WDZT deal with it.
+        // The manifest is probably just a URL, let WSMT deal with it.
       }
     }
   }

@@ -87,8 +87,14 @@ export class CsvCollectionService implements DataService<CsvCollection, Paginate
       }));
   }
 
-    getCsvUrl(csvCollection: CsvCollection): string {
+  getCsvUrl(csvCollection: CsvCollection): string {
       return `${this.csvCollectionUrl}/${csvCollection.id}/csv`;
+  }
+
+  getCsvCollectionFromCsvBaseUrl(baseUrl) {
+    const splits = baseUrl.split('/');
+    const csvCollectionId = splits[splits.length - 2] ;
+    return this.getById(csvCollectionId);
   }
 
   lockCsvCollection(csvCollection: CsvCollection): Observable<CsvCollection> {
