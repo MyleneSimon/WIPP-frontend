@@ -33,6 +33,21 @@
           Name must consist of alpha-numeric characters or '-', and must start with an alpha-numeric character
         </div>
       </div>
+      <br/>
+      <div *ngIf="!isCopy">
+        <mat-checkbox
+                      [(ngModel)]="isCwlImport" name="false">Import configuration from CWL descriptor
+        </mat-checkbox>
+        <small class="form-text text-muted">(experimental - limited support)</small>
+      </div>
+
+      <div *ngIf="isCwlImport">
+        <label for="name">CWL Workflow Definition File (5 MB max):</label>
+        <span style="color: #e32"> * </span>
+        <input #file type="file" (change)="onFileSelected($event)" name="file" class="col-md-12" id="file" accept=".cwl, .yaml, .yml" autofocus
+               required>
+        <span class="asterisk_input"></span>
+      </div>
     </div>
   </form>
 </div>

@@ -141,4 +141,20 @@ export class WorkflowService {
     };
     return this.http.patch<Workflow>(`${this.workflowsUrl}/${workflow.id}`, {publiclyShared: true}, httpOptions);
   }
+
+  exportToCwl(workflow: Workflow): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      responseType: 'text',
+    };
+    return this.http.get<any>(`${this.workflowsUrl}/${workflow.id}/cwl`, httpOptions);
+  }
+
+  importFromCwl(workflow: Workflow, file: File): Observable<Workflow> {
+    const formData = new FormData();
+    formData.append('file', file, file.name);
+    formData.append('name', workflow.name);
+
+    return this.http.post<Workflow>(this.workflowsUrl + '/cwl-import', formData);
+  }
 }

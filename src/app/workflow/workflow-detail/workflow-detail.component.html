@@ -68,6 +68,13 @@
           <span class="fa fa-users"
                 aria-hidden="true"></span>
     </button>
+    <button *ngIf="workflow.status === 'SUCCEEDED'" type="button"
+            ngbTooltip="Export to CWL format"
+            placement="left"
+            class="btn btn-light" (click)="exportToCwl();">
+          <span class="fa fa-file-export"
+                aria-hidden="true"></span>
+    </button>
 
   </div>
 </div>

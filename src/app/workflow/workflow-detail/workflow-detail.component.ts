@@ -17,6 +17,7 @@ import {JobService} from '../../job/job.service';
 import {dataMap} from '../../data-service';
 import {WorkflowNewComponent} from '../workflow-new/workflow-new.component';
 import {KeycloakService} from '../../services/keycloak/keycloak.service';
+import {saveAs} from 'file-saver';
 
 
 @Component({
@@ -559,6 +560,19 @@ export class WorkflowDetailComponent implements OnInit, OnDestroy {
         const modalRefErr = this.modalService.open(ModalErrorComponent);
         modalRefErr.componentInstance.title = 'Unable to set workflow to public';
         modalRefErr.componentInstance.message = error.error;
+      });
+  }
+
+  exportToCwl(): void {
+    this.workflowService.exportToCwl(
+      this.workflow).subscribe(exportedWorkflow => {
+        const blob = new Blob([exportedWorkflow], {type: 'text/x-yaml'});
+        saveAs(blob, this.workflow.name + "-cwl.yaml");
+      },
+      error => {
+        const modalRefErr = this.modalService.open(ModalErrorComponent);
+        modalRefErr.componentInstance.title = 'Unable to export workflow';
+        modalRefErr.componentInstance.message = error.message;
       });
   }
 

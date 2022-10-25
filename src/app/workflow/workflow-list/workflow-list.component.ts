@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort} from '@angular/material';
 import {WorkflowService} from '../workflow.service';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
@@ -14,7 +14,7 @@ import {KeycloakService} from '../../services/keycloak/keycloak.service';
   templateUrl: './workflow-list.component.html',
   styleUrls: ['./workflow-list.component.css']
 })
-export class WorkflowListComponent implements OnInit {
+export class WorkflowListComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['name', 'status', 'creationDate', 'endTime', 'owner', 'publiclyShared'];
   // displayedColumns: string[] = ['name', 'status', 'creationDate', 'startTime', 'endTime'];
   workflows: Observable<Workflow[]>;
@@ -117,4 +117,9 @@ export class WorkflowListComponent implements OnInit {
   canCreate(): boolean {
     return(this.keycloakService.isLoggedIn());
   }
+
+  ngOnDestroy() {
+    this.modalService.dismissAll();
+  }
+
 }
