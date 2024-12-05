@@ -18,6 +18,7 @@
     <ng-template pTemplate="caption">
       <div class="flex align-items-center justify-content-between">
         <p-splitButton
+          *ngIf="canCreate()"
           label="New"
           icon="pi pi-plus"
           (onClick)="createNew()"
