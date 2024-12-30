@@ -39,7 +39,7 @@
             [outlined]="true"
             (click)="makePublicCollection();">
     </p-button>
-    <p-button icon="pi pi-pen-to-square" *ngIf="!imagesCollection.publiclyShared && canEdit()" type="button"
+    <p-button icon="pi pi-pen-to-square" type="button"
               pTooltip="Create image annotations"
               label="Annotate"
               tooltipPosition="left"
@@ -117,6 +117,11 @@
           </div>
           <div *ngIf="!imagesCollection.importMethod || imagesCollection.importMethod == 'UPLOADED'">
             Uploaded
+          </div>
+          <div *ngIf="imagesCollection.importMethod == 'ANNOT'">
+            <a routerLink="/image-annotations/{{imagesCollection.sourceAnnotationCollection}}" class="wipp-link">
+            Annotation Collection
+            </a>
           </div>
           <div *ngIf="imagesCollection.importMethod == 'BACKEND_IMPORT'" pTooltip="Backend import folder">
             {{imagesCollection.sourceBackendImport}}

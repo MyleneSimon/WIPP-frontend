@@ -27,25 +27,20 @@
   </div>
   <div  class="flex flex-column gap-2 mb-3" *ngIf="imagesCollection">
     <label for="selectImages" class="font-semibold">Select images<span style="color: #e32"> * </span></label>
-    <p-table [value]="availableImages" [lazy]="true" id="selectImages"
+    <p-table [value]="availableImages" id="selectImages"
              [(selection)]="selectedImages"
-             (onLazyLoad)="loadImages($event)"
              dataKey="fileName"
              [tableStyle]="{ 'min-width': '75rem' }"
              [paginator]="true"
              [showCurrentPageReport]="true"
              [rows]="5"
-             [totalRecords]="resultsLengthImages">>
+             sortField="fileName" [sortOrder]="1"
+             [totalRecords]="availableImages.length">>
       <ng-template pTemplate="header">
         <tr>
-          <th style="width: 4rem">
-            <p-checkbox id="allImagesSelected" name="allImagesSelected"
-                        [binary]="true"
-                        [(ngModel)]="allImagesSelected"
-                        pTooltip="Use all images"/>
-          </th>
-          <th pSortableColumn="fileName">
-            Name <p-sortIcon field="fileName" />
+          <th style="width: 4rem"><p-tableHeaderCheckbox /></th>
+          <th>
+            Image Name
           </th>
         </tr>
       </ng-template>
@@ -85,6 +80,7 @@
         [suggestions]="availableMasksCollections"
         (completeMethod)="filterImgColl($event)"
         [placeholder]=""
+        name="masks"
         field="name" />
     </div>
   </p-fieldset>

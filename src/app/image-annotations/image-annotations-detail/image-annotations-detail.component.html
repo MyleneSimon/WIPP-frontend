@@ -1,5 +1,26 @@
 <h1 class="wipp-title">
   {{imageAnnotationsCollection.name}}
+  <div style="display: inline-block;">
+    <p-button icon="pi pi-download"
+              (click)="openDownload(imageAnnotationsCollection._links.self.href + '/download/request')"
+              pTooltip="Download annotation files as zip"
+              tooltipPosition="left"
+              [outlined]="true">
+    </p-button>
+    <p-button icon="pi pi-trash" *ngIf="canEdit()" type="button"
+              pTooltip="Delete collection"
+              [disabled]="imageAnnotationsCollection.publiclyShared && !canDeletePublicData()"
+              tooltipPosition="left"
+              [outlined]="true"
+              (click)="deleteCollection();">
+    </p-button>
+    <p-button icon="pi pi-globe" *ngIf="!imageAnnotationsCollection.publiclyShared && canEdit()" type="button"
+              pTooltip="Make collection public"
+              tooltipPosition="left"
+              [outlined]="true"
+              (click)="makePublicCollection();">
+    </p-button>
+  </div>
 </h1>
 
 <p-fieldset legend="Details" [toggleable]="true">
@@ -28,11 +49,18 @@
           Source:
         </div>
         <div class="col-9 py-1">
-          <a *ngIf="job; else jobNonAvailable" (click)="displayJobModal(job.id)"
+          <a *ngIf="job" (click)="displayJobModal(job.id)"
              class="wipp-link"
              pTooltip="Show Job"
              placement="left">
             {{job.name}}
+          </a>
+          <a *ngIf="imageAnnotationsCollection.taskId; else jobNonAvailable"
+             class="no-underline"
+             pTooltip="See Annotation Task in CVAT"
+             placement="left"
+             href="{{cvatUrl}}/{{imageAnnotationsCollection.taskId}}">
+            CVAT Task <i class="pi pi-external-link"></i>
           </a>
         </div>
         <div class="col-3 py-1 font-semibold">
@@ -60,22 +88,63 @@
            [totalRecords]="resultsLength">
     <ng-template pTemplate="header">
       <tr>
+        <th>Image</th>
+        <th>Mask</th>
         <th pSortableColumn="imageFileName">
           Image <p-sortIcon field="imageFileName" />
         </th>
         <th pSortableColumn="pending">
           Pending <p-sortIcon field="pending" />
         </th>
+        <th>Actions</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-annot>
       <tr>
+        <td>
+          <a (click)="openDeepZoomImage(annot, false)" *ngIf="imageAnnotationsCollection.imagesCollectionId">
+            <img src="{{iipRootUrl}}?CNT=ST&IIIF={{ imageAnnotationsCollection.imagesCollectionId }}/images/{{ annot.imageFileName }}/full/128,/0/default.jpg"
+                 [alt]="annot.imageFileName"
+                 style="height: 128px; cursor: pointer"
+                 pTooltip="Click to open deep zoom view of image and annotations">
+          </a>
+          <p-skeleton size="128px" [animation]="'none'" *ngIf="!imageAnnotationsCollection.imagesCollectionId"
+                      pTooltip="No image to display"/>
+        </td>
+        <td>
+          <a (click)="openDeepZoomImage(annot, true)" *ngIf="annot.imageMask">
+            <img src="{{iipRootUrl}}?CNT=ST&IIIF={{ annot.imageMask.imagesCollectionId }}/images/{{ annot.imageMask.imageFileName }}/full/128,/0/default.jpg"
+                 [alt]="annot.imageMask.imageFileName"
+                 style="height: 128px; cursor: pointer"
+                 pTooltip="Click to open deep zoom view of masks">
+          </a>
+          <p-skeleton size="128px" [animation]="'none'" *ngIf="!annot.imageMask"
+                      pTooltip="No mask to display"/>
+        </td>
         <td>{{ annot.imageFileName }}</td>
         <td>{{ annot.pending }}</td>
+        <td>
+          <p-button icon="pi pi-download" [outlined]="true" label="Download Datumaro file" size="small"
+                    pTooltip="Download Datumaro annotation file"
+                    class="flex-auto md:flex-initial white-space-nowrap"
+                    [disabled]="annot.pending"
+                    (click)="downloadAnnotFile(annot.datumaroFileName)"/>
+          <p-button icon="pi pi-image" label="Go to mask collection" size="small" [outlined]="true"
+                    pTooltip="Go to mask images collection"
+                    class="flex-auto md:flex-initial white-space-nowrap"
+                    [disabled]="annot.pending || !annot.imageMask"
+                    routerLink="/images-collection/{{annot.imageMask?.imagesCollectionId}}"/>
+        </td>
       </tr>
     </ng-template>
   </p-table>
 </div>
+
+<p-dialog header="Deep Zoom View" [modal]="true" [(visible)]="dzvVisible"
+          (onShow)="displayDeepZoomImage()" (onHide)="closeDeepZoomImage()"
+          [style]="{ width: '50rem' }" >
+  <div id="openseadragon-img" style="height: 450px"></div>
+</p-dialog>
 
 <ng-template #jobNonAvailable>Uploaded</ng-template>
 <ng-template #nonApplicable>N/A</ng-template>

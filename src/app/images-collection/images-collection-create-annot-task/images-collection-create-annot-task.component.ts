@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {MessageService} from 'primeng/api';
 import {DialogService, DynamicDialogComponent, DynamicDialogRef} from 'primeng/dynamicdialog';
-import {AppConfigService} from '../../app-config.service';
 import {ImagesCollectionService} from '../images-collection.service';
 import {Router} from '@angular/router';
 import {Image} from '../image';
@@ -10,7 +9,7 @@ import {Label} from '../../image-annotations/image-annotation';
 import {ImageAnnotationsService} from '../../image-annotations/image-annotations.service';
 import {ImageAnnotationsCollection} from '../../image-annotations/image-annotations-collection';
 import {AutoCompleteCompleteEvent} from 'primeng/autocomplete';
-import {dataMap} from '../../data-service';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-images-collection-create-annot-task',
@@ -43,7 +42,9 @@ export class ImagesCollectionCreateAnnotTaskComponent {
 
   labelAddDisplay: boolean = true;
   labelName: string = '';
-  labelColor: string = '#B3B3B3';
+  labelColor: string = '#b3b3b3';
+
+  private annotationPlatformUrl = environment.cvatRootUrl;
 
   constructor(public modalReference: DynamicDialogRef,
               private messageService: MessageService,
@@ -59,21 +60,15 @@ export class ImagesCollectionCreateAnnotTaskComponent {
       this.imagesCollectionId = this.instance.data['imagesCollectionId'];
       this.imagesCollectionService.getById(this.imagesCollectionId).subscribe(result => {
         this.imagesCollection = result;
+        this.imageAnnotationsCollection.name = this.imagesCollection.name + "-annot";
+        this.loadImages();
       });
     }
   }
 
-  loadImages(event) {
-    const sortOrderStr = event.sortOrder == -1 ? 'desc' : 'asc';
-    const sortField = event.sortField ? event.sortField + ',' + sortOrderStr : 'fileName,asc';
-    const params = {
-      pageIndex: event.first / event.rows,
-      size: event.rows,
-      sort: sortField
-    };
-    this.imagesCollectionService.getImages(this.imagesCollection, params).subscribe(val => {
-        this.resultsLengthImages = val.page.totalElements;
-        this.availableImages = val.data;
+  loadImages() {
+    this.imagesCollectionService.getAllImagesList(this.imagesCollection).subscribe(val => {
+      this.availableImages = val;
     });
   }
 
@@ -82,24 +77,45 @@ export class ImagesCollectionCreateAnnotTaskComponent {
   }
 
   postConfiguration() {
+    this.messageService.add({ severity: 'info', summary: 'Creating task', detail: "Setting up annotation task, please wait..." });
     this.imageAnnotationsService.setupAnnotationTask(this.imageAnnotationsCollection.name, this.labels, this.segmentSize)
       .subscribe(result => {
-        let taskId = result.taskId;
+        let taskId = result.task_id;
         this.imageAnnotationsCollection.taskId = taskId;
+        this.imageAnnotationsCollection.imagesCollectionId = this.imagesCollectionId;
+        if (this.masksCollection) {
+          this.imageAnnotationsCollection.startMaskCollectionId = this.masksCollection.id;
+        }
         this.imageAnnotationsService.createAnnotationsCollection(this.imageAnnotationsCollection).subscribe(annotCollection => {
           let annotationList = [];
           for (let selectedImg of this.selectedImages) {
+            let imageMask = null;
+            if (annotCollection.startMaskCollectionId) {
+              imageMask = {
+                imageCollectionId: annotCollection.startMaskCollectionId,
+                imageFileName: selectedImg.fileName
+              }
+            }
             annotationList.push({
               imageFileName: selectedImg.fileName,
               imagesCollectionId: this.imagesCollectionId,
               imageAnnotationsCollection: annotCollection.id,
-              pending: true
+              pending: true,
+              imageMask: imageMask
             });
           }
-          console.log(annotationList);
           this.imageAnnotationsService.addAnnotations(annotCollection, annotationList).subscribe();
-          this.imageAnnotationsService.uploadToAnnotationTask(annotationList, taskId, this.userAssignees).subscribe();
+          this.imageAnnotationsService.uploadToAnnotationTask(annotationList, taskId, this.userAssignees).subscribe(result => {
+              this.messageService.add({ severity: 'success', summary: 'Success', detail: "Annotation task created. Opening CVAT in new tab..." })
+              window.open(this.annotationPlatformUrl + '/tasks/' + taskId, "_blank");
+              this.modalReference.close();
+          }, error => {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: "Error while creating annotation jobs" });
+            }
+          );
         });
+      }, error => {
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: "Error while creating annotation collection" });
       });
   }
 

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams, HttpRequest, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {forkJoin, Observable, of as observableOf} from 'rxjs';
 import {ImagesCollection, PaginatedImagesCollections} from './images-collection';
 import {map} from 'rxjs/operators';
@@ -8,7 +8,6 @@ import {MetadataFile, PaginatedMetadataFiles} from './metadata-file';
 import {environment} from '../../environments/environment';
 import {Job} from '../job/job';
 import {DataService} from '../data-service';
-import {Pyramid} from '../pyramid/pyramid';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +15,6 @@ import {Pyramid} from '../pyramid/pyramid';
 export class ImagesCollectionService implements DataService<ImagesCollection, PaginatedImagesCollections> {
 
   private imagesCollectionsUrl = environment.apiRootUrl + '/imagesCollections';
-  private annotationsUrl = environment.apiRootUrl + '/cVATDatasetAnnotationses';
   private timePattern = '(.*)(\\{[t]+\\})(.*)';
   constructor(
     private http: HttpClient
@@ -174,6 +172,15 @@ export class ImagesCollectionService implements DataService<ImagesCollection, Pa
         }
         return result;
       }));
+  }
+
+  getAllImagesList(imagesCollection: ImagesCollection): Observable<Image[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      params: {}
+    };
+    return this.http.get<any>(`${this.imagesCollectionsUrl}/${imagesCollection.id}/images/getAllImagesList`,
+      httpOptions);
   }
 
   getMetadataFiles(imagesCollection: ImagesCollection, params): Observable<PaginatedMetadataFiles> {
@@ -407,28 +414,5 @@ export class ImagesCollectionService implements DataService<ImagesCollection, Pa
     }
     return statusStyle;
   }
-
-  // WIP annotations
-  // annotateCollection(imagesCollection: ImagesCollection, labels: string): Observable<any> {
-  //   const httpOptions = {
-  //     headers: new HttpHeaders({'Content-Type': 'application/json'}),
-  //     params: {}
-  //   };
-  //   return this.http.post<ImagesCollection>(`${this.imagesCollectionsUrl}/${imagesCollection.id}/annotate`, labels, httpOptions);
-  // }
-  //
-  // getCollectionAnnotations(imagesCollection: ImagesCollection): Observable<any> {
-  //   const httpParams = new HttpParams().set('imagesCollection', imagesCollection.id);
-  //   const httpOptions = {
-  //     headers: new HttpHeaders({'Content-Type': 'application/json'}),
-  //     params: httpParams
-  //   };
-  //   return this.http.get<any>(`${this.annotationsUrl}/search/findByImagesCollection`, httpOptions);
-  // }
-  //
-  // downloadAnnotation(url: string): Observable<any> {
-  //   console.log(url);
-  //   return this.http.get<any>(url);
-  // }
 
 }

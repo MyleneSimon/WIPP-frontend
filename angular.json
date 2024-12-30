@@ -36,8 +36,8 @@
             "scripts": [
               "libs/wdzt/wdzt-deps.js",
               "node_modules/notebookjs/notebook.js",
-              "node_modules/keycloak-js/dist/keycloak.js"
-
+              "node_modules/keycloak-js/dist/keycloak.js",
+              "node_modules/@recogito/annotorious-shape-labels/dist/annotorious-shape-labels.min.js"
             ],
             "aot": false,
             "vendorChunk": true,

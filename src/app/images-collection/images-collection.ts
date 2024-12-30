@@ -5,6 +5,7 @@ export class ImagesCollection {
   sourceJob: string;
   sourceCatalog: string;
   sourceBackendImport: string;
+  sourceAnnotationCollection: string;
   importMethod: ImagesCollectionImportMethod;
   format: ImagesCollectionFormat;
   locked: boolean;
@@ -31,7 +32,8 @@ export enum ImagesCollectionImportMethod {
   UPLOADED,
   JOB,
   CATALOG,
-  BACKEND_IMPORT
+  BACKEND_IMPORT,
+  ANNOT
 }
 
 export enum ImagesCollectionFormat {

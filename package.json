@@ -25,6 +25,7 @@
     "@fortawesome/fontawesome-free": "^5.3.1",
     "@ng-bootstrap/ng-bootstrap": "^15.1.2",
     "@recogito/annotorious-openseadragon": "^2.7.17",
+    "@recogito/annotorious-shape-labels": "^0.2.3",
     "@swimlane/ngx-graph": "^8.0.1",
     "@types/flowjs": "0.0.31",
     "@types/marked": "^0.6.5",

@@ -7,7 +7,6 @@ import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Job} from '../job/job';
 import {ImageAnnotation, Label, PaginatedImageAnnotations} from './image-annotation';
-import {ImagesCollection} from '../images-collection/images-collection';
 
 
 @Injectable({
@@ -96,29 +95,39 @@ export class ImageAnnotationsService implements DataService<ImageAnnotationsColl
   }
 
   setupAnnotationTask(name: string, labels: Label[], segmentSize: number): Observable<any> {
-    // Example of implementation
-    // return this.http.post<any>(`${this.imageAnnotationsApiUrl}/create`, {
-    //   organization: {
-    //     slug: "WIPP"
-    //   },
-    //   task: {
-    //     name: name,
-    //     labels: labels,
-    //     segmentSize: segmentSize
-    //   },
-    // });
-
-    return of({ taskId: 1141 });
+    return this.http.post<any>(`${this.imageAnnotationsApiUrl}/create/task`, {
+      org: "WIPP",
+      name: name,
+      labels: labels,
+      segmentSize: segmentSize
+    });
   }
 
-  uploadToAnnotationTask(annotationList: ImageAnnotation[], taskId: string, userAssigneesname: string[]): Observable<any> {
-    // Example of implementation
-    // return this.http.post<any>(`${this.imageAnnotationsApiUrl}/upload`, {
-    //   taskId: taskId,
-    //   userAssignees: userAssignees,
-    //   data: annotationList
-    // });
+  uploadToAnnotationTask(annotationList: ImageAnnotation[], taskId: string, userAssignees: string[]): Observable<any> {
+    return this.http.post<any>(`${this.imageAnnotationsApiUrl}/upload`, {
+      task_id: taskId,
+      assignees: userAssignees,
+      files: annotationList
+    });
+  }
 
-    return of({ taskId: 1141 });
+  downloadAnnotationFile(annotationsCollection: ImageAnnotationsCollection, fileName: string): Observable<any> {
+    return this.http.get<any>(`${this.imageAnnotationsCollectionsUrl}/${annotationsCollection.id}/annotations/${fileName}`);
+  }
+
+  deleteAnnotationsCollection(annotationsCollection: ImageAnnotationsCollection) {
+    return this.http.delete<ImageAnnotationsCollection>(annotationsCollection._links.self.href);
+  }
+
+  startDownload(url: string): Observable<string> {
+    return this.http.get<string>(url);
+  }
+
+  makePublicCollection(annotationsCollection: ImageAnnotationsCollection): Observable<ImageAnnotationsCollection> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      params: {}
+    };
+    return this.http.patch<ImageAnnotationsCollection>(`${this.imageAnnotationsCollectionsUrl}/${annotationsCollection.id}`, {publiclyShared: true}, httpOptions);
   }
 }

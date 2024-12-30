@@ -23,6 +23,14 @@ sed -i \
     -e "s|@IIP_URL_VALUE@|${IIP_URL}|g" \
     /var/www/frontend/main.*.js
 
+sed -i \
+    -e "s|@ANNOTATION_API_URL_VALUE@|${ANNOTATION_API_URL}|g" \
+    /var/www/frontend/main.*.js
+
+sed -i \
+    -e "s|@CVAT_URL_VALUE@|${CVAT_URL}|g" \
+    /var/www/frontend/main.*.js
+
 # Update external tools URLs and options in frontend conf
 sed -i \
   -e 's|TENSORBOARD_URL|'"${TENSORBOARD_URL}"'|' \

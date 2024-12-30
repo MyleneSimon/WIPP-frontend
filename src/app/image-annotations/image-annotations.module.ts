@@ -9,6 +9,9 @@ import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
 import {FieldsetModule} from 'primeng/fieldset';
 import {TooltipModule} from 'primeng/tooltip';
+import {DialogModule} from 'primeng/dialog';
+import {SkeletonModule} from 'primeng/skeleton';
+import {MessageModule} from 'primeng/message';
 
 
 
@@ -25,7 +28,10 @@ import {TooltipModule} from 'primeng/tooltip';
     ButtonModule,
     InputTextModule,
     FieldsetModule,
-    TooltipModule
+    TooltipModule,
+    DialogModule,
+    MessageModule,
+    SkeletonModule
   ]
 })
 export class ImageAnnotationsModule { }

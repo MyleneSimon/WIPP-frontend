@@ -10,5 +10,6 @@ export const environment = {
     clientId: 'wipp-public-client'
   },
   iipRootUrl: '@IIP_URL_VALUE@',
-  annotationApiRootUrl: '@ANNOTATION_API_URL_VALUE@'
+  annotationApiRootUrl: '@ANNOTATION_API_URL_VALUE@',
+  cvatRootUrl: '@CVAT_URL_VALUE@'
 };

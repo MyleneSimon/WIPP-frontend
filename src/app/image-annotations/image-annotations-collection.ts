@@ -4,6 +4,7 @@ export class ImageAnnotationsCollection {
   creationDate: Date;
   sourceJob: string;
   imagesCollectionId: string;
+  startMaskCollectionId: string;
   owner: string;
   publiclyShared: boolean;
   taskId: string;

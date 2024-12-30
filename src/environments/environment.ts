@@ -13,7 +13,8 @@ export const environment = {
     clientId: 'wipp-public-client'
   },
   iipRootUrl: 'http://localhost:8082/fcgi-bin/iipsrv.fcgi',
-  annotationApiRootUrl: 'http://localhost:8083' // TODO: fix port
+  annotationApiRootUrl: 'http://localhost:8000',
+  cvatRootUrl: 'http://localhost:8040'
 };
 
 /*

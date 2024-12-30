@@ -382,7 +382,7 @@ export class ImagesCollectionDetailComponent implements OnInit, AfterViewInit {
     const metadataFilesUploadUrl = this.imagesCollectionService.getMetadataFilesUrl(this.imagesCollection);
 
     this.flowHolder.opts.target = function (file) {
-      const imagesExtensions = ['tif', 'tiff', 'jpg', 'jpeg', 'png', 'mrc', 'dm4', 'svs'];
+      const imagesExtensions = ['tif', 'tiff', 'jpg', 'jpeg', 'png', 'mrc', 'dm4', 'svs', 'czi'];
       const isImage = imagesExtensions.indexOf(
         file.getExtension()) >= 0;
       return isImage ? imagesUploadUrl : metadataFilesUploadUrl;

@@ -3,7 +3,7 @@ export class ImageAnnotation {
   imageFileName: string;
   pending: boolean;
   taskId: string;
-  datamuroFileName: string;
+  datumaroFileName: string;
   annotoriousFileName: string;
   imageMask: ImageAnnotationMask;
   _links: any;
