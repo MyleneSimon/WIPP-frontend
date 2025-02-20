@@ -54,7 +54,7 @@ export class ImagesCollectionDetailComponent implements OnInit, AfterViewInit {
   colorMapField: string;
 
   contrastOptions: SelectItem[];
-  contrastField: string;
+  contrastField: string = "ST";
 
   invertOptions: SelectItem[];
   invertField: string;

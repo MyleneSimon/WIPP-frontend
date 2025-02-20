@@ -87,3 +87,7 @@
   border-bottom: 1px solid #d9dad9;
   margin: 1em;
 }
+
+.work-break-all {
+  word-break: break-all;
+}

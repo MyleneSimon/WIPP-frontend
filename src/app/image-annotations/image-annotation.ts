@@ -24,3 +24,10 @@ export interface Label {
   name: string;
   color: string;
 }
+
+export enum MaskType {
+  RGB,
+  GRAYSCALE_BINARY,
+  GRAYSCALE_CLASS_ID,
+  GRAYSCALE_INSTANCE_ID
+}

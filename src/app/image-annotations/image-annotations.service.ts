@@ -7,6 +7,8 @@ import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Job} from '../job/job';
 import {ImageAnnotation, Label, PaginatedImageAnnotations} from './image-annotation';
+import {ImagesCollection} from '../images-collection/images-collection';
+import {Image} from '../images-collection/image';
 
 
 @Injectable({
@@ -82,6 +84,15 @@ export class ImageAnnotationsService implements DataService<ImageAnnotationsColl
       }));
   }
 
+  getAllAnnotationsList(imageAnnotationsCollection: ImageAnnotationsCollection): Observable<ImageAnnotation[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      params: {}
+    };
+    return this.http.get<any>(`${this.imageAnnotationsCollectionsUrl}/${imageAnnotationsCollection.id}/annotations/getAllAnnotationsList`,
+      httpOptions);
+  }
+
   getJob(jobUrl: string): Observable<Job> {
     return this.http.get<Job>(jobUrl);
   }
@@ -99,7 +110,9 @@ export class ImageAnnotationsService implements DataService<ImageAnnotationsColl
       org: "WIPP",
       name: name,
       labels: labels,
-      segmentSize: segmentSize
+      segmentSize: segmentSize,
+      guide: "# WIPP annotations guide\n- Create/correct annotations (make sure to check all frames)\n- Click on \"Menu\" -> \"Finish the job\" to save annotation and mark the job as completed\n- Click on \"Menu\" -> \"Open the task\" to go back to the task view\n- Change the job *Stage* to \"acceptance\" and *State* to \"completed\"\n- Marking all jobs as completed et accepted will automatically trigger the import of the annotations into WIPP"
+
     });
   }
 
@@ -107,7 +120,8 @@ export class ImageAnnotationsService implements DataService<ImageAnnotationsColl
     return this.http.post<any>(`${this.imageAnnotationsApiUrl}/upload`, {
       task_id: taskId,
       assignees: userAssignees,
-      files: annotationList
+      files: annotationList,
+      mask_type: 1
     });
   }
 
@@ -129,5 +143,13 @@ export class ImageAnnotationsService implements DataService<ImageAnnotationsColl
       params: {}
     };
     return this.http.patch<ImageAnnotationsCollection>(`${this.imageAnnotationsCollectionsUrl}/${annotationsCollection.id}`, {publiclyShared: true}, httpOptions);
+  }
+
+  updateCollectionTaskId(annotationsCollection: ImageAnnotationsCollection, taskId: string): Observable<ImageAnnotationsCollection> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      params: {}
+    };
+    return this.http.patch<ImageAnnotationsCollection>(`${this.imageAnnotationsCollectionsUrl}/${annotationsCollection.id}`, {taskId: taskId}, httpOptions);
   }
 }

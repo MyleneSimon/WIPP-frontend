@@ -1,0 +1,62 @@
+<h1>Iterative Training Pipelines</h1>
+<div class="card">
+  <p-table #dt
+           [value]="trainingPipelines"
+           [lazy]="true"
+           (onLazyLoad)="loadData($event)"
+           dataKey="id"
+           [tableStyle]="{ 'min-width': '75rem' }"
+           [paginator]="true"
+           [rows]="10"
+           [rowsPerPageOptions]="[10, 25, 50]"
+           [totalRecords]="resultsLength"
+           selectionMode="single"
+           [showCurrentPageReport]="true"
+           currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+           [globalFilterFields]="['name']"
+  >
+    <ng-template pTemplate="caption">
+      <div class="flex align-items-center justify-content-between">
+        <p-button
+          label="New"
+          icon="pi pi-plus"
+          *ngIf="canCreate()"
+          (click)="createNew()" />
+        <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input
+                  pInputText
+                  type="text"
+                  (input)="dt.filterGlobal($event.target.value, 'contains')"
+                  placeholder="Search..." />
+            </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="name">
+          Name <p-sortIcon field="name" />
+        </th>
+        <th pSortableColumn="creationDate">
+          Creation date <p-sortIcon field="creationDate" />
+        </th>
+        <th pSortableColumn="publiclyShared">
+          Visibility <p-sortIcon field="publiclyShared" />
+        </th>
+        <th pSortableColumn="owner">
+          Owner <p-sortIcon field="owner" />
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-pipeline>
+      <tr routerLink="/iterative-training-pipelines/{{pipeline.id}}" class="p-selectable-row">
+        <td>{{ pipeline.name }}</td>
+        <td>{{ pipeline.creationDate | date }}</td>
+        <td><i [class]="pipeline.publiclyShared ? 'pi pi-globe' : 'pi pi-user'"></i></td>
+        <td>{{ pipeline.owner }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<p-toast position="top-center" [life]="5000"/>
+

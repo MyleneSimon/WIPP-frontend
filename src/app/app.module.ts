@@ -32,6 +32,7 @@ import {RouteReuseStrategy, RouterModule} from '@angular/router';
 import {AppRouteReuseStrategy} from './app-route-reuse-strategy';
 import {MenuModule} from 'primeng/menu';
 import {ImageAnnotationsModule} from './image-annotations/image-annotations.module';
+import {IterativeTrainingPipelineModule} from './iterative-training-pipeline/iterative-training-pipeline.module';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import {ImageAnnotationsModule} from './image-annotations/image-annotations.modu
     WorkflowModule,
     ConfirmDialogModule,
     ImageAnnotationsModule,
+    IterativeTrainingPipelineModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,

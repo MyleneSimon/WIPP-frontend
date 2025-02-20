@@ -516,7 +516,7 @@ export class WorkflowDetailComponent implements OnInit, OnDestroy {
     for (const job of data) {
       const node = {id: job.id, label: job.name};
       this.nodes.push(node);
-      if (job.dependencies.length > 0) {
+      if (job.dependencies?.length > 0) {
         for (let i = 0; i < job.dependencies.length; i ++) {
           const link = {id: 'link', source: job.dependencies[i], target: job.id};
           this.links.push(link);

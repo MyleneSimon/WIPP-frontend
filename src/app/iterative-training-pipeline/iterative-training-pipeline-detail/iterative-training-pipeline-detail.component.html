@@ -1,0 +1,131 @@
+<h1 class="wipp-title">
+  {{iterativeTrainingPipeline.name}}
+  <div style="display: inline-block;">
+    <p-button icon="pi pi-globe" *ngIf="!iterativeTrainingPipeline.publiclyShared && canEdit()" type="button"
+              pTooltip="Make pipeline public"
+              tooltipPosition="left"
+              [outlined]="true"
+              (click)="makePublic();">
+    </p-button>
+  </div>
+</h1>
+
+<p-fieldset legend="Details" [toggleable]="true">
+  <div class="grid nested-grid">
+    <div class="col-12 md:col-6">
+      <div class="grid">
+        <div class="col-3 py-1 font-semibold">
+          Name:
+        </div>
+        <div class="col-9 py-1">
+          {{iterativeTrainingPipeline.name}}
+        </div>
+        <div class="col-3 py-1 font-semibold">
+          Creation date:
+        </div>
+        <div class="col-9 py-1">
+          {{iterativeTrainingPipeline.creationDate | date}}
+        </div>
+        <div class="col-3 py-1 font-semibold">
+          Owner:
+        </div>
+        <div class="col-9 py-1">
+          {{iterativeTrainingPipeline.owner}}
+        </div>
+        <div class="col-3 py-1 font-semibold">
+          Task category:
+        </div>
+        <div class="col-9 py-1">
+          {{iterativeTrainingPipeline.taskCategory}}
+        </div>
+        <div class="col-3 py-1 font-semibold">
+          Visibility:
+        </div>
+        <div class="col-9 py-1">
+          <div *ngIf="iterativeTrainingPipeline.publiclyShared; else privateData">Public</div>
+          <ng-template #privateData>Private</ng-template>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 md:col-6">
+      <div class="grid">
+        <div class="col-3 py-1 font-semibold">
+          Workflow template:
+        </div>
+        <div class="col-9 py-1">
+          {{iterativeTrainingPipeline.workflowTemplate}}
+        </div>
+        <div class="col-3 py-1 font-semibold">
+          Training data collection:
+        </div>
+        <div class="col-9 py-1">
+          {{trainingCollection?.name}}
+        </div>
+        <div class="col-3 py-1 font-semibold">
+          Ground truth collection:
+        </div>
+        <div class="col-9 py-1">
+          {{groundTruthCollection?.name}}
+        </div>
+        <div class="col-3 py-1 font-semibold">
+          Images per iteration:
+        </div>
+        <div class="col-9 py-1">
+          {{iterativeTrainingPipeline.imagesPerIteration}}
+        </div>
+        <div class="col-3 py-1 font-semibold">
+          Labels:
+        </div>
+        <div class="col-9 py-1">
+          <div class="card flex align-items-center gap-2 flex-wrap">
+            <p-chip *ngFor="let label of iterativeTrainingPipeline.labels;" [label]="label.name"
+                    [style]="{'background-color': label.color}"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</p-fieldset>
+
+<h2 style="margin-top: 2%">Training iterations</h2>
+<div class="card">
+  <p-table [value]="iterativeTrainingPipeline.iterations" *ngIf="iterativeTrainingPipeline.id"
+           dataKey="iterationNumber"
+           [tableStyle]="{ 'min-width': '75rem' }"
+           [paginator]="true"
+           [rows]="10"
+           [rowsPerPageOptions]="[10, 25, 50]"
+           sortField="iterationNumber" [sortOrder]="-1"
+           [totalRecords]="iterativeTrainingPipeline.iterations?.length">
+    <ng-template pTemplate="caption">
+      <div class="flex justify-content-between">
+        <p-button icon="pi pi-plus" label="New iteration" (onClick)="newIteration()" />
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Iteration Number</th>
+        <th>Status</th>
+        <th>Annotations</th>
+        <th>Workflow</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-it>
+      <tr>
+        <td>{{ it.iterationNumber }}</td>
+        <td>{{ it.status }}</td>
+        <td>
+          <a routerLink="/image-annotations/{{it.imageAnnotationsCollection}}" class="wipp-link">View</a>
+        </td>
+        <td>
+          <a routerLink="/workflows/detail/{{it.trainingWorkflow}}" class="wipp-link">View/Edit</a>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-toast position="top-center" [life]="5000"/>
+<ng-template #not_applicable>N/A</ng-template>

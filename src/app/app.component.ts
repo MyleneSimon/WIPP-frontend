@@ -103,6 +103,11 @@ export class AppComponent implements OnInit {
         label: 'Workflows',
         icon: 'pi pi-share-alt',
         routerLink: '/workflows'
+      },
+      {
+        label: 'AI Pipelines',
+        icon: 'pi pi-sparkles',
+        routerLink: '/iterative-training-pipelines'
       }
     ];
   }

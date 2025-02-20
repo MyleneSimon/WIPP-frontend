@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {MessageService} from 'primeng/api';
 import {DialogService, DynamicDialogComponent, DynamicDialogRef} from 'primeng/dynamicdialog';
 import {ImagesCollectionService} from '../images-collection.service';
 import {Router} from '@angular/router';
 import {Image} from '../image';
 import {ImagesCollection} from '../images-collection';
-import {Label} from '../../image-annotations/image-annotation';
+import {Label, MaskType} from '../../image-annotations/image-annotation';
 import {ImageAnnotationsService} from '../../image-annotations/image-annotations.service';
 import {ImageAnnotationsCollection} from '../../image-annotations/image-annotations-collection';
 import {AutoCompleteCompleteEvent} from 'primeng/autocomplete';
@@ -35,6 +35,8 @@ export class ImagesCollectionCreateAnnotTaskComponent {
 
   userAssignees: string[] = [];
   segmentSize: number;
+
+  maskType: MaskType = MaskType.RGB;
 
   resultsLengthImages = 0;
 
@@ -127,7 +129,7 @@ export class ImagesCollectionCreateAnnotTaskComponent {
   resetLabelForm() {
     this.labelAddDisplay = true;
     this.labelName = '';
-    this.labelColor = '#B3B3B3';
+    this.labelColor = '#b3b3b3';
   }
 
   removeLabel(label: Label) {
