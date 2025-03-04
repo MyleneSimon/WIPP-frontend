@@ -36,7 +36,7 @@ export class WorkflowDetailComponent implements OnInit, OnDestroy {
     stitchingVector: [],
     pyramidAnnotation: [],
     pyramid: [],
-    tensorflowModel: [],
+    aiModel: [],
     tensorboardLogs: [],
     csvCollection: [],
     notebook: [],
@@ -151,7 +151,8 @@ export class WorkflowDetailComponent implements OnInit, OnDestroy {
           type === 'stitchingVector' ||
           type === 'pyramid' ||
           type === 'pyramidAnnotation' ||
-          type === 'tensorflowModel' ||
+          type === 'aiModel' ||
+          type === 'tensorflowModel' || // legacy
           type === 'csvCollection' ||
           type === 'notebook' ||
           type == 'genericData') {
@@ -206,12 +207,12 @@ export class WorkflowDetailComponent implements OnInit, OnDestroy {
           this.messageService.add({ severity: 'error', summary: 'Workflow submission failed', detail: error.error });
         }
       ).add(() => {
-      this.workflowService.getWorkflow(this.workflowId).subscribe(workflow => {
-        this.workflow = workflow;
-        this.updateArgoUrl();
-        this.spinner.hide(); // if submission was successful, spinner is still spinning
+        this.workflowService.getWorkflow(this.workflowId).subscribe(workflow => {
+          this.workflow = workflow;
+          this.updateArgoUrl();
+          this.spinner.hide(); // if submission was successful, spinner is still spinning
+        });
       });
-    });
   }
 
   copyWorkflow() {
@@ -275,9 +276,8 @@ export class WorkflowDetailComponent implements OnInit, OnDestroy {
           switch (input.type) {
             case 'collection':
             case 'stitchingVector':
-            case  'pyramidAnnotation':
+            case 'pyramidAnnotation':
             case 'pyramid':
-            case 'tensorflowModel':
             case 'csvCollection':
             case 'notebook':
             case 'genericData':
@@ -285,6 +285,13 @@ export class WorkflowDetailComponent implements OnInit, OnDestroy {
               inputSchema['widget'] = 'search';
               inputSchema['format'] = input.type;
               inputSchema['getOutputs'] = () => this.jobOutputs[input.type];
+              break;
+            case 'aiModel':
+            case 'tensorflowModel': // legacy
+              inputSchema['type'] = 'string';
+              inputSchema['widget'] = 'search';
+              inputSchema['format'] = 'aiModel';
+              inputSchema['getOutputs'] = () => this.jobOutputs['aiModel'];
               break;
             case 'enum':
               inputSchema['type'] = 'string';
@@ -388,18 +395,25 @@ export class WorkflowDetailComponent implements OnInit, OnDestroy {
     });
   }
 
-  displayJobModal(jobId: string) {
+  displayJobModal(jobId: string, color: string) {
     this.dialogService.open(JobDetailComponent, {
       header: 'Job detail',
       position: 'top',
-      width: '50vw',
+      modal: false,
+      draggable: true,
+      style: {
+        borderStyle: 'solid',
+        borderWidth: 'medium',
+        borderColor: color,
+      },
       data: {
-        jobId: jobId
+        jobId: jobId,
       },
       breakpoints: {
         '960px': '75vw',
         '640px': '90vw'
-      }
+      },
+      duplicate: true
     });
   }
 
@@ -419,9 +433,9 @@ export class WorkflowDetailComponent implements OnInit, OnDestroy {
   }
 
   deleteJob(jobId: string) {
-    const job: Job  = this.jobs.find(jobA => jobA.id === jobId);
+    const job: Job = this.jobs.find(jobA => jobA.id === jobId);
     const jobDependencies = this.getDependencies(jobId);
-    let text = 'Are you sure you want to delete the job ' + job.name + '? \n' ;
+    let text = 'Are you sure you want to delete the job ' + job.name + '? \n';
     if (jobDependencies) {
       text += 'This job has dependencies which will be deleted too \n ';
     }
@@ -514,7 +528,7 @@ export class WorkflowDetailComponent implements OnInit, OnDestroy {
     this.nodes = [];
     this.links = [];
     for (const job of data) {
-      const node = {id: job.id, label: job.name};
+      const node = { id: job.id, label: job.name };
       this.nodes.push(node);
       if (job.dependencies?.length > 0) {
         for (let i = 0; i < job.dependencies.length; i ++) {
@@ -536,7 +550,7 @@ export class WorkflowDetailComponent implements OnInit, OnDestroy {
       stitchingVector: [],
       pyramidAnnotation: [],
       pyramid: [],
-      tensorflowModel: [],
+      aiModel: [],
       tensorboardLogs: [],
       csvCollection: [],
       notebook: [],
@@ -565,7 +579,7 @@ export class WorkflowDetailComponent implements OnInit, OnDestroy {
   }
 
   canCreate(): boolean {
-    return(this.keycloakService.isLoggedIn());
+    return (this.keycloakService.isLoggedIn());
   }
 
   ngOnDestroy() {
