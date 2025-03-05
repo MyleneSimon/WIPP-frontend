@@ -1,6 +1,6 @@
 <h1 class="wipp-title">
-  AI Model: {{aiModel.name}}
-  <div style="float: right;">
+  {{aiModel.name}}
+  <div style="display: inline-block;">
     <p-button icon="pi pi-download" (click)="openDownload(aiModel._links.download.href)" pTooltip="Download as zip"
       tooltipPosition="left" [outlined]="true">
     </p-button>
@@ -76,16 +76,7 @@
 
 <!-- Tensorboard Logs Charts -->
 
-<p-fieldset legend="Tensorboard Logs Charts" [toggleable]="true" [collapsed]="true">
-  <div class="grid nested-grid" *ngIf="!tensorboardPlotable">
-    <div class="col-12 md:col-6">
-      <p>This AI model did not produce a tensorboard.</p>
-      <p>There are therefore no tensorboard results to display.</p>
-      <p>If you wish to obtain tensorboard results, please modify the plugin manifest used and restart your training.
-      </p>
-    </div>
-  </div>
-
+<p-fieldset legend="Tensorboard Logs Charts" [toggleable]="true" [collapsed]="true" *ngIf="tensorboardPlotable">
   <div class="grid nested-grid" *ngIf="tensorboardPlotable">
     <div class="col-12 md:col-6">
       <div class="grid">
@@ -125,7 +116,7 @@
 <p-fieldset legend="AI Model Card" [toggleable]="true">
   <div *ngIf="!aiModelCardPlotable; else displayAIModelCard" class="grid nested-grid">
     <div class="col-12 md:col-6">
-      <p>This AI model did not have a AI model card yet.</p>
+      <p>This AI model does not have a AI model card yet.</p>
       <div style="display: flex;">
         <p-button label="Create" (click)="displayNewAiModelCardModel()" icon="pi pi-plus-circle"></p-button>
       </div>
@@ -138,7 +129,7 @@
       <p-button icon="pi pi-times" [outlined]="true" *ngIf="this.cancel" (click)="toggleCancel()"></p-button>
       <p-button icon="pi pi-file-edit" [outlined]="true" *ngIf="this.editing" (click)="toggleEdit()"></p-button>
       <p-button icon="pi pi-save" [outlined]="true" *ngIf="this.save" (click)="toggleSave()"></p-button>
- 
+
       <p class="font-semibold">Export card:</p>
       <p-dropdown [options]="aiFramework" [(ngModel)]="selectedFramework" placeholder="Select a framework" />
       <p-button icon="pi pi-eye" (click)="displayAiModelCardModal(aiModelCard.id);"
@@ -166,31 +157,31 @@
             </div>
 
             <div class="col-4 py-1 font-semibold">Date:</div>
-            <div class="col-8 py-1">{{aiModelCard.date}}</div>
+            <div class="col-8 py-1">{{aiModelCard.date | date}}</div>
 
             <div class="col-4 py-1 font-semibold">Framework:</div>
             <div class="col-8 py-1">{{aiModelCard.framework || "N/A"}}</div>
 
             <div class="col-4 py-1 font-semibold">Training Data:</div>
-            <div class="col-8 py-1">
-              <details>
-                <summary>Details</summary>
-                <div class="grid" *ngFor="let item of aiModelCard.trainingData | keyvalue">
-                  <div class="col-4 py-1 font-semibold">{{item.key}}:</div>
-                  <div class="col-8 py-1"><a href="/images-collection/{{item.value}}">link</a></div>
-                </div>
-              </details>
+            <div class="col-8 py-1">{{(aiModelCard.trainingData | json) || "N/A" }}
+<!--              <details>-->
+<!--                <summary>Details</summary>-->
+<!--                <div class="grid" *ngFor="let item of aiModelCard.trainingData | keyvalue">-->
+<!--                  <div class="col-4 py-1 font-semibold">{{item.key}}:</div>-->
+<!--                  <div class="col-8 py-1"><a href="/images-collection/{{item.value}}">link</a></div>-->
+<!--                </div>-->
+<!--              </details>-->
             </div>
 
             <div class="col-4 py-1 font-semibold">Training Parameters:</div>
-            <div class="col-8 py-1">
-              <details>
-                <summary>Details</summary>
-                <div class="grid" *ngFor="let item of aiModelCard.trainingParameters | keyvalue">
-                  <div class="col-4 py-1 font-semibold">{{item.key}}:</div>
-                  <div class="col-8 py-1">{{item.value}}</div>
-                </div>
-              </details>
+            <div class="col-8 py-1">{{(aiModelCard.trainingParameters | json) || "N/A" }}
+<!--              <details>-->
+<!--                <summary>Details</summary>-->
+<!--                <div class="grid" *ngFor="let item of aiModelCard.trainingParameters | keyvalue">-->
+<!--                  <div class="col-4 py-1 font-semibold">{{item.key}}:</div>-->
+<!--                  <div class="col-8 py-1">{{item.value}}</div>-->
+<!--                </div>-->
+<!--              </details>-->
             </div>
 
             <div class="col-4 py-1 font-semibold">Author:</div>
@@ -218,15 +209,7 @@
             </div>
 
             <div class="col-4 py-1 font-semibold">Operation Type:</div>
-            <div class="col-8 py-1">
-              <details>
-                <summary>Details</summary>
-                <div class="grid" *ngFor="let item of aiModelCard.operationType | keyvalue">
-                  <div class="col-4 py-1 font-semibold">{{item.key}}:</div>
-                  <div class="col-8 py-1">{{item.value}}</div>
-                </div>
-              </details>
-            </div>
+            <div class="col-8 py-1">{{aiModelCard.operationType || "N/A"}}</div>
 
             <div class="col-4 py-1 font-semibold">Architecture:</div>
             <div class="col-8 py-1">{{aiModelCard.architecture || "N/A"}}</div>
@@ -258,7 +241,7 @@
         </div>
       </div>
 
-      
+
     </form>
 
   </ng-template>

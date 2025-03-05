@@ -7,7 +7,7 @@ import { FileUpload } from 'primeng/fileupload';
 // model
 import { AiModel } from '../ai-model';
 import { AiModelService } from '../ai-model.service';
-import { frameworks, operation_types, architectures } from 'src/app/ai-model-data';
+import { FRAMEWORKS, OPERATION_TYPES, ARCHITECTURES } from 'src/app/ai-model-data';
 // card
 import { AiModelCard } from 'src/app/ai-model-card/ai-model-card';
 import { AiModelCardService } from 'src/app/ai-model-card/ai-model-card.service';
@@ -23,11 +23,11 @@ export class AiModelNewComponent implements OnInit {
   formValid: boolean = false;
 
   newModel: AiModel = new AiModel();
-  model_framework = frameworks;
+  model_framework = FRAMEWORKS;
 
   newCard: AiModelCard = new AiModelCard();
-  list_operation_type = operation_types;
-  list_architecture = architectures;
+  list_operation_type = OPERATION_TYPES;
+  list_architecture = ARCHITECTURES;
 
   inputs: [key: string, val: string] = [null, null];
   outputs: [key: string, val: string] = [null, null];
@@ -66,17 +66,13 @@ export class AiModelNewComponent implements OnInit {
 
     // check presence of a file
     if (this.modelUpload.content != null) {
-      this.messageService.add({
-        severity: 'success', summary: 'Success',
-        detail: 'Form valid'
-      });
 
       // create new model
       this.modelService.postAiModel(this.newModel)
         .subscribe(model => {
           this.messageService.add({
             severity: 'success', summary: 'Success',
-            detail: 'New model uploaded!'
+            detail: 'New model created'
           });
 
           // save model files
@@ -108,7 +104,7 @@ export class AiModelNewComponent implements OnInit {
             .subscribe(card => {
               this.messageService.add({
                 severity: 'success', summary: 'Success',
-                detail: 'New model card created!'
+                detail: 'New model card created'
               });
               this.messageService.add({
                 severity: 'info', summary: 'Infos',
