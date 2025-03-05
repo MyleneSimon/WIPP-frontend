@@ -3,46 +3,46 @@
 
     <div class="flex flex-row gap-3">
       <div class="flex flex-column w-6">
-        <label for="name" class="font-semibold">Name*</label>
+        <label for="name" class="font-semibold">Name<span style="color: #e32"> * </span></label>
         <input pInputText required [(ngModel)]="newModel.name" name="model-name" placeholder="Model name" />
       </div>
       <div class="flex flex-column w-6">
-        <label for="framework" class="font-semibold">Framework*</label>
+        <label for="framework" class="font-semibold">Framework<span style="color: #e32"> * </span></label>
         <p-dropdown required [options]="model_framework" [(ngModel)]="newModel.framework" name="model-framework"
           placeholder="Select a framework" />
       </div>
     </div>
 
-    <div class="flex flex-row">
+    <div class="flex flex-row gap-3">
       <div class="flex flex-column w-6">
-        <label for="architecture" class="font-semibold">Architecture*</label>
+        <label for="architecture" class="font-semibold">Architecture<span style="color: #e32"> * </span></label>
         <p-dropdown required [options]="list_architecture" [(ngModel)]="newCard.architecture" name="card-architecture"
           placeholder="Select an architecture" />
       </div>
       <div class="flex flex-column w-6">
-        <label for="operationtype" class="font-semibold">Operation type(s)*</label>
+        <label for="operationtype" class="font-semibold">Operation type(s)<span style="color: #e32"> * </span></label>
         <p-multiSelect [options]="list_operation_type" [(ngModel)]="newCard.operationType" name="model-operation-type"
           placeholder="Select operation type(s)" />
       </div>
     </div>
 
-    <div class="flex flex-row">
+    <div class="flex flex-row gap-3">
 
       <div class="flex flex-column w-6">
-        <label for="model" class="font-semibold">Model*</label>
+        <label for="model" class="font-semibold">Model<span style="color: #e32"> * </span></label>
         <p-fileUpload required #modelUpload mode="basic" chooseLabel="Choose" chooseIcon="pi pi-upload" accept=".zip"
           customUpload="true" (uploadHandler)="modelUploadCustom($event.files)" />
       </div>
 
       <div class="flex flex-column w-6">
         <label for="visibility" class="font-semibold">Visibility</label>
-        <p-checkbox [binary]="true" inputId="binary" [(ngModel)]="newModel.publiclyShared" name="publiclyShared"
-          label="Check if you want to publicly shared" />
+        <p-checkbox [binary]="false" inputId="binary" [(ngModel)]="newModel.publiclyShared" name="publiclyShared"
+          label="Check to create a public model" />
       </div>
     </div>
 
     <div class="flex flex-column">
-      <label for="description" class="font-semibold">Description*</label>
+      <label for="description" class="font-semibold">Description<span style="color: #e32"> * </span></label>
       <textarea pInputTextarea [(ngModel)]="newCard.description" name="card-name"></textarea>
     </div>
 
