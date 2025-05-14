@@ -10,6 +10,7 @@ import {ImageAnnotationsService} from '../../image-annotations/image-annotations
 import {ImageAnnotationsCollection} from '../../image-annotations/image-annotations-collection';
 import {AutoCompleteCompleteEvent} from 'primeng/autocomplete';
 import {environment} from '../../../environments/environment';
+import {KeycloakService} from '../../services/keycloak/keycloak.service';
 
 @Component({
   selector: 'app-images-collection-create-annot-task',
@@ -33,10 +34,14 @@ export class ImagesCollectionCreateAnnotTaskComponent {
   masksCollection: ImagesCollection;
   availableMasksCollections: Array<ImagesCollection>;
 
+  useTiling: boolean = false;
+  tileSize: number;
+  tileOverlap: number;
+
   userAssignees: string[] = [];
   segmentSize: number;
 
-  maskType: MaskType = MaskType.RGB;
+  maskType: MaskType = MaskType.GRAYSCALE_BINARY;
 
   resultsLengthImages = 0;
 
@@ -53,8 +58,10 @@ export class ImagesCollectionCreateAnnotTaskComponent {
               private dialogService: DialogService,
               private imageAnnotationsService: ImageAnnotationsService,
               private imagesCollectionService: ImagesCollectionService,
-              private router: Router) {
+              private router: Router,
+              private keycloakService: KeycloakService) {
     this.instance = this.dialogService.getInstance(this.modalReference);
+    this.userAssignees = [ this.keycloakService.getUsername() ];
   }
 
   ngOnInit() {
@@ -84,6 +91,7 @@ export class ImagesCollectionCreateAnnotTaskComponent {
       .subscribe(result => {
         let taskId = result.task_id;
         this.imageAnnotationsCollection.taskId = taskId;
+        this.imageAnnotationsCollection.labels = this.labels;
         this.imageAnnotationsCollection.imagesCollectionId = this.imagesCollectionId;
         if (this.masksCollection) {
           this.imageAnnotationsCollection.startMaskCollectionId = this.masksCollection.id;
@@ -106,18 +114,25 @@ export class ImagesCollectionCreateAnnotTaskComponent {
               imageMask: imageMask
             });
           }
+          let tiling = {};
+          if (this.useTiling) {
+            tiling = [1, [this.tileSize, this.tileSize], this.tileOverlap, 1];
+          }
+          if (this.labels?.length > 1) {
+            this.maskType = MaskType.GRAYSCALE_CLASS_ID;
+          }
           this.imageAnnotationsService.addAnnotations(annotCollection, annotationList).subscribe();
-          this.imageAnnotationsService.uploadToAnnotationTask(annotationList, taskId, this.userAssignees).subscribe(result => {
+          this.imageAnnotationsService.uploadToAnnotationTask(annotationList, taskId, this.userAssignees, this.maskType, tiling).subscribe(result => {
               this.messageService.add({ severity: 'success', summary: 'Success', detail: "Annotation task created. Opening CVAT in new tab..." })
               window.open(this.annotationPlatformUrl + '/tasks/' + taskId, "_blank");
               this.modalReference.close();
           }, error => {
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: "Error while creating annotation jobs" });
+            this.messageService.add({ severity: 'error', summary: 'Error while creating annotation jobs', detail: error.error, life: 10000 });
             }
           );
         });
       }, error => {
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: "Error while creating annotation collection" });
+        this.messageService.add({ severity: 'error', summary: 'Error while creating annotation collection', detail: error.error, life: 10000 });
       });
   }
 

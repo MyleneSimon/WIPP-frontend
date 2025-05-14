@@ -70,6 +70,15 @@
           <div *ngIf="imageAnnotationsCollection.publiclyShared; else privateData">Public</div>
           <ng-template #privateData>Private</ng-template>
         </div>
+        <div class="col-3 py-1 font-semibold">
+          Labels:
+        </div>
+        <div class="col-9 py-1">
+          <div class="card flex align-items-center gap-2 flex-wrap">
+            <p-chip *ngFor="let label of imageAnnotationsCollection.labels;" [label]="label.name"
+                    [style]="{'background-color': label.color}"/>
+          </div>
+        </div>
       </div>
     </div>
 

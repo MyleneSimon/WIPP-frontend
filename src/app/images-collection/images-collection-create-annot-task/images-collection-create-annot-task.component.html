@@ -5,7 +5,9 @@
     <span class="p-text-secondary block mb-3">Enter the task name (this will be the name of the task in CVAT).</span>
   </div>
   <div  class="flex flex-column gap-2 mb-3">
-    <label for="labels" class="font-semibold">Labels<span style="color: #e32"> * </span></label>
+    <label for="labels" class="font-semibold">Labels<span style="color: #e32"> * </span>
+      <span class="pi pi-question-circle" pTooltip="For multi-class labels, enter labels in order of classes (classes are expected to be 1 to N)"></span>
+    </label>
     <p-button label="Add label" icon="pi pi-plus" severity="secondary" outlined="true" *ngIf="labelAddDisplay"
               (onClick)="labelAddDisplay = false"/>
     <div class="formgroup-inline gap-2" *ngIf="!labelAddDisplay">
@@ -59,10 +61,35 @@
   <p-fieldset legend="Advanced" [toggleable]="true" collapsed="true">
     <div class="flex gap-2">
       <div class="flex flex-column gap-2 mb-3">
+        <label for="useTiling" class="font-semibold">Tiling
+          <span class="pi pi-question-circle" pTooltip="Enable tiling (optional - use when images are too large for CVAT)"></span>
+        </label>
+        <p-checkbox
+          [(ngModel)]="useTiling"
+          [binary]="true"
+          name="useTiling"
+          label="Tile images"
+          inputId="useTiling" />
+      </div>
+      <div class="flex flex-column gap-2 mb-3">
+        <label for="tileSize" class="font-semibold">Tiling size
+          <span class="pi pi-question-circle" pTooltip="Tiling size - tile size"></span>
+        </label>
+        <p-inputNumber [(ngModel)]="tileSize" id="tileSize" name="tileSize" [disabled]="!useTiling"/>
+      </div>
+      <div  class="flex flex-column gap-2 mb-3">
+        <label for="tileOverlap" class="font-semibold">Overlap
+          <span class="pi pi-question-circle" pTooltip="Overlap between tiles"></span>
+        </label>
+        <p-inputNumber [(ngModel)]="tileOverlap" id="tileOverlap" name="tileOverlap" [disabled]="!useTiling"/>
+      </div>
+    </div>
+    <div class="flex gap-2">
+      <div class="flex flex-column gap-2 mb-3">
         <label for="segmentSize" class="font-semibold">Segment size
           <span class="pi pi-question-circle" pTooltip="Segment size - number of images per job (optional)"></span>
         </label>
-        <p-inputNumber [(ngModel)]="segmentSize" id="segmentSize" name="segmentSize"/>
+        <p-inputNumber [(ngModel)]="segmentSize" id="segmentSize" name="segmentSize" [disabled]="useTiling"/>
       </div>
       <div  class="flex flex-column gap-2 mb-3">
         <label for="assignees" class="font-semibold">Assignees

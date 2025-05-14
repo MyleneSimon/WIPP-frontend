@@ -23,6 +23,7 @@ export class IterativeTrainingPipelineNewComponent {
   labelName: string = '';
   labelColor: string = '#b3b3b3';
   availableCollections: Array<ImagesCollection>;
+  availableTemplates: [];
 
   constructor(public modalReference: DynamicDialogRef,
               private messageService: MessageService,

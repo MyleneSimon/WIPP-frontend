@@ -116,12 +116,15 @@ export class ImageAnnotationsService implements DataService<ImageAnnotationsColl
     });
   }
 
-  uploadToAnnotationTask(annotationList: ImageAnnotation[], taskId: string, userAssignees: string[]): Observable<any> {
+  uploadToAnnotationTask(annotationList: ImageAnnotation[], taskId: string, userAssignees: string[], maskType: number, tiling: any): Observable<any> {
     return this.http.post<any>(`${this.imageAnnotationsApiUrl}/upload`, {
       task_id: taskId,
       assignees: userAssignees,
+      org: "WIPP",
+      organization_id: "WIPP",
       files: annotationList,
-      mask_type: 1
+      mask_type: 1,
+      tiling: tiling
     });
   }
 

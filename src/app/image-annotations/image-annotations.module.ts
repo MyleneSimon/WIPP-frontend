@@ -12,6 +12,8 @@ import {TooltipModule} from 'primeng/tooltip';
 import {DialogModule} from 'primeng/dialog';
 import {SkeletonModule} from 'primeng/skeleton';
 import {MessageModule} from 'primeng/message';
+import {ChipModule} from 'primeng/chip';
+import {ChipsModule} from 'primeng/chips';
 
 
 
@@ -31,7 +33,9 @@ import {MessageModule} from 'primeng/message';
     TooltipModule,
     DialogModule,
     MessageModule,
-    SkeletonModule
+    SkeletonModule,
+    ChipModule,
+    ChipsModule,
   ]
 })
 export class ImageAnnotationsModule { }

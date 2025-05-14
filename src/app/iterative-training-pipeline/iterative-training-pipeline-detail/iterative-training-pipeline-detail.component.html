@@ -39,6 +39,12 @@
           {{iterativeTrainingPipeline.taskCategory}}
         </div>
         <div class="col-3 py-1 font-semibold">
+          Workflow template:
+        </div>
+        <div class="col-9 py-1">
+          {{iterativeTrainingPipeline.workflowTemplate}}
+        </div>
+        <div class="col-3 py-1 font-semibold">
           Visibility:
         </div>
         <div class="col-9 py-1">
@@ -51,22 +57,25 @@
     <div class="col-12 md:col-6">
       <div class="grid">
         <div class="col-3 py-1 font-semibold">
-          Workflow template:
-        </div>
-        <div class="col-9 py-1">
-          {{iterativeTrainingPipeline.workflowTemplate}}
-        </div>
-        <div class="col-3 py-1 font-semibold">
           Training data collection:
         </div>
         <div class="col-9 py-1">
-          {{trainingCollection?.name}}
+          <a routerLink="/images-collection/{{iterativeTrainingPipeline.trainingCollection}}" class="wipp-link">
+            {{trainingCollection?.name}}</a>
+        </div>
+        <div class="col-3 py-1 font-semibold">
+          Initial mask collection:
+        </div>
+        <div class="col-9 py-1">
+          <a routerLink="/images-collection/{{iterativeTrainingPipeline.startGroundTruthCollection}}" class="wipp-link">
+          {{startGroundTruthCollection?.name}}</a>
         </div>
         <div class="col-3 py-1 font-semibold">
           Ground truth collection:
         </div>
         <div class="col-9 py-1">
-          {{groundTruthCollection?.name}}
+          <a routerLink="/images-collection/{{iterativeTrainingPipeline.groundTruthCollection}}" class="wipp-link">
+            {{groundTruthCollection?.name}}</a>
         </div>
         <div class="col-3 py-1 font-semibold">
           Images per iteration:

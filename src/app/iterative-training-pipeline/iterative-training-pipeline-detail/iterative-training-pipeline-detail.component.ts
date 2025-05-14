@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {DialogService} from 'primeng/dynamicdialog';
 import {MessageService} from 'primeng/api';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -9,6 +9,7 @@ import {ImagesCollectionService} from '../../images-collection/images-collection
 import {ImagesCollection} from '../../images-collection/images-collection';
 import {ImageAnnotationsService} from '../../image-annotations/image-annotations.service';
 import {environment} from '../../../environments/environment';
+import {MaskType} from '../../image-annotations/image-annotation';
 
 @Component({
   selector: 'app-iterative-training-pipeline-detail',
@@ -23,6 +24,7 @@ export class IterativeTrainingPipelineDetailComponent {
   iterativeTrainingPipelineId = this.route.snapshot.paramMap.get('id');
   groundTruthCollection: ImagesCollection = null;
   trainingCollection: ImagesCollection = null;
+  startGroundTruthCollection: ImagesCollection = null;
 
   private annotationPlatformUrl = environment.cvatRootUrl;
 
@@ -68,6 +70,10 @@ export class IterativeTrainingPipelineDetailComponent {
       this.imagesCollectionService.getById(this.iterativeTrainingPipeline.groundTruthCollection).subscribe(
         collection => this.groundTruthCollection = collection);
     }
+    if(this.iterativeTrainingPipeline.startGroundTruthCollection) {
+      this.imagesCollectionService.getById(this.iterativeTrainingPipeline.startGroundTruthCollection).subscribe(
+        collection => this.startGroundTruthCollection = collection);
+    }
   }
 
   newIteration() {
@@ -103,8 +109,13 @@ export class IterativeTrainingPipelineDetailComponent {
           this.imageAnnotationsService.setupAnnotationTask(annotCollection.name, this.iterativeTrainingPipeline.labels, null)
             .subscribe(result => {
               let taskId = result.task_id;
+              let tiling = {};
+              let maskType: MaskType = MaskType.GRAYSCALE_BINARY;
+              if (this.iterativeTrainingPipeline.labels?.length> 1) {
+                maskType = MaskType.GRAYSCALE_CLASS_ID;
+              }
               this.imageAnnotationsService.updateCollectionTaskId(annotCollection, taskId).subscribe();
-              this.imageAnnotationsService.uploadToAnnotationTask(annotationList, taskId, []).subscribe(result => {
+              this.imageAnnotationsService.uploadToAnnotationTask(annotationList, taskId, [], maskType, tiling).subscribe(result => {
                 this.messageService.add({severity: 'success', summary: 'Success', detail: "Annotation task created. Opening CVAT in new tab..."
                 })
                 window.open(this.annotationPlatformUrl + '/tasks/' + taskId, "_blank");

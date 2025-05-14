@@ -1,3 +1,5 @@
+import {Label} from './image-annotation';
+
 export class ImageAnnotationsCollection {
   id: string;
   name: string;
@@ -8,6 +10,7 @@ export class ImageAnnotationsCollection {
   owner: string;
   publiclyShared: boolean;
   taskId: string;
+  labels: Label[];
   _links: any;
 }
 
