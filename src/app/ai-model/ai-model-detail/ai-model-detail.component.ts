@@ -17,17 +17,13 @@ import { AiModelCardService } from 'src/app/ai-model-card/ai-model-card.service'
 import { HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
-import { DropdownModule } from 'primeng/dropdown';
 import { MessageService } from 'primeng/api';
-import { FileUploadModule } from 'primeng/fileupload';
-import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-ai-model-detail',
   templateUrl: './ai-model-detail.component.html',
   styleUrls: ['./ai-model-detail.component.css'],
   providers: [DialogService, ConfirmationService, MessageService],
-  imports: [FormsModule, DropdownModule, FileUploadModule, ToastModule]
 })
 export class AiModelDetailComponent implements OnInit, OnDestroy {
   aiFramework: string[] = ["TensorFlow", "HuggingFace", "BioImageIO",
@@ -38,7 +34,7 @@ export class AiModelDetailComponent implements OnInit, OnDestroy {
   aiModelId = this.route.snapshot.paramMap.get('id');
   aiModelCard: AiModelCard = new AiModelCard();
   aiModelCardPlotable: boolean = false;
-  
+
   // dynamic edit model card
   form: FormGroup;
   editing: boolean;
@@ -254,7 +250,7 @@ export class AiModelDetailComponent implements OnInit, OnDestroy {
       breakpoints: {
         '960px': '75vw',
         '640px': '90vw'
-      }, 
+      },
       data: {modelId: this.aiModelId},
     });
   }
@@ -301,7 +297,7 @@ export class AiModelDetailComponent implements OnInit, OnDestroy {
     this.aiModelCard.author = this.form.get('author').value;
     this.aiModelCard.description = this.form.get('description').value;
     this.aiModelCard.citation = this.form.get('citation').value;
-   
+
     this.aiModelCardService.updateAiModelCard(this.aiModelCard)
       .subscribe(mc => this.aiModelCard = mc);
   }

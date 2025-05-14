@@ -40,7 +40,8 @@ export class WorkflowDetailComponent implements OnInit, OnDestroy {
     tensorboardLogs: [],
     csvCollection: [],
     notebook: [],
-    genericData: []
+    genericData: [],
+    tensorflowModel: []
   };
   jobs: Job[] = [];
   workflowId = this.route.snapshot.paramMap.get('id');
@@ -291,7 +292,7 @@ export class WorkflowDetailComponent implements OnInit, OnDestroy {
               inputSchema['type'] = 'string';
               inputSchema['widget'] = 'search';
               inputSchema['format'] = 'aiModel';
-              inputSchema['getOutputs'] = () => this.jobOutputs['aiModel'];
+              inputSchema['getOutputs'] = () => this.jobOutputs['tensorflowModel'];
               break;
             case 'enum':
               inputSchema['type'] = 'string';
@@ -554,7 +555,8 @@ export class WorkflowDetailComponent implements OnInit, OnDestroy {
       tensorboardLogs: [],
       csvCollection: [],
       notebook: [],
-      genericData: []
+      genericData: [],
+      tensorflowModel: []
     };
   }
 

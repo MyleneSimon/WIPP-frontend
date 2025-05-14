@@ -16,6 +16,7 @@ export class Plugin {
   outputs: JSON[];
   ui: JSON[];
   resourceRequirements?: PluginResourceRequirements;
+  operationType: any;
   _links: any;
 }
 
