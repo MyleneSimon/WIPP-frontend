@@ -31,6 +31,8 @@ export class WorkflowNewComponent implements OnInit {
     if (this.instance?.data && this.instance?.data['isCopy']) {
       this.isCopy = this.instance.data['isCopy'];
       this.sourceWorkflow = this.instance.data['sourceWorkflow'];
+      this.workflow.name = this.sourceWorkflow.name + "-copy";
+      this.workflow.description = this.sourceWorkflow.description;
     }
   }
 
@@ -41,7 +43,7 @@ export class WorkflowNewComponent implements OnInit {
   save() {
     let serviceCall = this.workflowService.createWorkflow(this.workflow);
     if(this.isCopy) {
-      serviceCall = this.workflowService.copyWorkflow(this.sourceWorkflow, this.workflow.name);
+      serviceCall = this.workflowService.copyWorkflow(this.sourceWorkflow, this.workflow.name, this.workflow.description);
     }
     serviceCall.subscribe(workflow => {
       this.messageService.add({ severity: 'success', summary: 'Success', detail: "Workflow created. Redirecting..." });

@@ -25,6 +25,7 @@ import {DialogModule} from 'primeng/dialog';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import {ToolbarModule} from 'primeng/toolbar';
 import {DividerModule} from 'primeng/divider';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 
 @NgModule({
     imports: [
@@ -48,7 +49,8 @@ import {DividerModule} from 'primeng/divider';
       DialogModule,
       AutoCompleteModule,
       ToolbarModule,
-      DividerModule
+      DividerModule,
+      InputTextareaModule
     ],
     declarations: [
         WorkflowListComponent,

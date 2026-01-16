@@ -23,6 +23,10 @@
         </div>
       </ng-template>
     </p-messages>
+    <label for="name" class="font-semibold w-6rem">Description</label>
+    <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="workflow.description" id="description" name="description">
+    </textarea>
+    <span class="p-text-secondary block mb-5">Enter a short description of the workflow.</span>
   </div>
   <div class="flex justify-content-end gap-2">
     <p-button label="Cancel" severity="secondary" (onClick)="cancel()" />

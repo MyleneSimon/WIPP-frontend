@@ -1,6 +1,7 @@
 export class Workflow {
   id: string;
   name: string;
+  description: string;
   creationDate: Date;
   startTime: Date;
   endTime: Date;

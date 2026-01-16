@@ -56,6 +56,12 @@
           <div *ngIf="workflow.publiclyShared; else privateData">Public</div>
           <ng-template #privateData>Private</ng-template>
         </div>
+        <div class="col-3 py-1 font-semibold">
+          Description:
+        </div>
+        <div class="col-9 py-1">
+          {{workflow.description}}
+        </div>
       </div>
     </div>
     <div class="col-12 md:col-6">
@@ -72,7 +78,6 @@
           Monitor execution
         </a>
       </div>
-
     </div>
   </div>
 </p-fieldset>
