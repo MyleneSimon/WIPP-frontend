@@ -15,6 +15,8 @@ import {TooltipModule} from 'primeng/tooltip';
 import {FieldsetModule} from 'primeng/fieldset';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {CustomPipesModule} from '../custom-pipes/custom-pipes.module';
+import {ObjViewerModule} from '../obj-viewer/obj-viewer.module';
+import {DialogModule} from 'primeng/dialog';
 
 @NgModule({
   imports: [
@@ -30,7 +32,9 @@ import {CustomPipesModule} from '../custom-pipes/custom-pipes.module';
     InputTextModule,
     ProgressBarModule,
     InputTextModule,
-    CustomPipesModule
+    DialogModule,
+    CustomPipesModule,
+    ObjViewerModule
   ],
   declarations: [
     GenericDataListComponent,

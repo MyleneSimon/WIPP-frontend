@@ -1,0 +1,7 @@
+<div class="obj-viewer-container">
+  <canvas></canvas>
+  <div class="controls">
+    <p-button (click)="toggleWireframe()">Toggle Wireframe</p-button>
+    <p-colorPicker [(ngModel)]="color" (onChange)="updateColor()"></p-colorPicker>
+  </div>
+</div>

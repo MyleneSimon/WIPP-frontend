@@ -11,6 +11,7 @@ import {Subject} from 'rxjs';
 import * as Flow from '@flowjs/flow.js';
 import {auditTime, map, switchMap} from 'rxjs/operators';
 import {DialogService} from 'primeng/dynamicdialog';
+import {ObjViewerComponent} from '../../obj-viewer/obj-viewer/obj-viewer.component';
 
 @Component({
   selector: 'app-generic-data-detail',
@@ -218,6 +219,24 @@ export class GenericDataDetailComponent implements OnInit, AfterViewInit {
   deleteAllGenericFiles(): void {
     this.genericDataService.deleteAllGenericFiles(this.genericData).subscribe(result => {
       this.$throttleRefresh.next();
+    });
+  }
+
+  openObjViewer(filename, url) {
+    this.genericDataService.startDownload(url).subscribe(downloadUrl => {
+      this.dialogService.open(ObjViewerComponent, {
+        header: 'OBJ viewer - ' + filename,
+        position: 'top',
+        width: '50vw',
+        height: '50vw',
+        data: {
+          objUrl: downloadUrl['url']
+        },
+        breakpoints: {
+          '960px': '75vw',
+          '640px': '90vw'
+        }
+      });
     });
   }
 

@@ -179,6 +179,13 @@
         </td>
         <td>{{ genFile.fileSize | bytes }}</td>
         <td>
+          <p-button icon="pi pi-eye" [outlined]="true" label="View" size="small"
+                    class="flex-auto md:flex-initial white-space-nowrap"
+                    *ngIf="genericData.type == 'OBJ'"
+                    (click)="openObjViewer(genFile.fileName, genFile._links.download.href);"/>
+          <p-button icon="pi pi-download" [outlined]="true" label="Download" size="small"
+                    class="flex-auto md:flex-initial white-space-nowrap"
+                    (click)="openDownload(genFile._links.download.href)"/>
           <p-button icon="pi pi-trash" [outlined]="true" label="Delete" size="small"
                     class="flex-auto md:flex-initial white-space-nowrap"
                     severity="danger"
@@ -191,3 +198,4 @@
 </div>
 
 <ng-template #not_applicable>N/A</ng-template>
+
