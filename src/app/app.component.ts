@@ -4,11 +4,14 @@ import {AppConfigService} from './app-config.service';
 import {KeycloakService} from './services/keycloak/keycloak.service';
 import {NavigationEnd, Router} from '@angular/router';
 import {MenuItem} from 'primeng/api';
+import {AiChatboxComponent} from './ai-assistant/ai-chatbox/ai-chatbox.component';
+import {DialogService} from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [DialogService]
 })
 export class AppComponent implements OnInit {
   title = 'WIPP';
@@ -23,7 +26,8 @@ export class AppComponent implements OnInit {
 
   currentRouterUrl = '';
 
-  constructor(private appConfigService: AppConfigService, private keycloak: KeycloakService, private router: Router) {
+  constructor(private appConfigService: AppConfigService, private keycloak: KeycloakService, private router: Router,
+              private dialogService: DialogService) {
     this.jupyterNotebooksLink = this.appConfigService.getConfig().jupyterNotebooksUrl;
     this.currentRouterUrl = this.router.url;
     this.router.events.subscribe(
@@ -110,6 +114,20 @@ export class AppComponent implements OnInit {
         routerLink: '/iterative-training-pipelines'
       }
     ];
+  }
+
+  openAiAssitant() {
+    let modalRef = this.dialogService.open(AiChatboxComponent, {
+      header: 'WIPP AI Assistant',
+      modal: false,
+      draggable: true,
+      position: 'top',
+      width: '50vw',
+      breakpoints: {
+        '1199px': '75vw',
+        '575px': '90vw'
+      }
+    });
   }
 
   isLoggedIn() {

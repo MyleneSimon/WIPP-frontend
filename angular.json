@@ -30,7 +30,7 @@
               },
 //              "node_modules/@wipp/wdzt/build/deps/wdzt-deps.css",
               "libs/wdzt/wdzt-deps.css",
-              "node_modules/prismjs/themes/prism.css",
+              "node_modules/prismjs/themes/prism-coy.css",
               "src/styles.css"
             ],
             "scripts": [

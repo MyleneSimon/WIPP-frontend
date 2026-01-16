@@ -34,6 +34,7 @@ import {AppRouteReuseStrategy} from './app-route-reuse-strategy';
 import {MenuModule} from 'primeng/menu';
 import {ImageAnnotationsModule} from './image-annotations/image-annotations.module';
 import {IterativeTrainingPipelineModule} from './iterative-training-pipeline/iterative-training-pipeline.module';
+import {provideMarkdown} from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import {IterativeTrainingPipelineModule} from './iterative-training-pipeline/ite
     },
     KeycloakService,
     ConfirmDialogService,
-    {provide: RouteReuseStrategy, useClass: AppRouteReuseStrategy}
+    {provide: RouteReuseStrategy, useClass: AppRouteReuseStrategy},
+    provideMarkdown()
   ],
   bootstrap: [AppComponent]
 })

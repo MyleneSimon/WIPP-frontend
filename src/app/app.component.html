@@ -12,6 +12,12 @@
             <span class="ml-2">Help</span>
           </a>
         </div>
+       <div class="p-menuitem-content">
+         <a pRipple class="flex align-items-center p-menuitem-link" (click)="openAiAssitant()">
+           <span class="pi pi-sparkles"></span>
+           <span class="ml-2">AI Assistant</span>
+         </a>
+       </div>
         <div class="p-menuitem-content" *ngIf="displayApiDocsLink">
           <a pRipple class="flex align-items-center p-menuitem-link" href="{{apiDocsLink}}">
             <span class="pi pi-code"></span>
