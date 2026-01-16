@@ -14,6 +14,8 @@
     [showCurrentPageReport]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [globalFilterFields]="['name']"
+    stateStorage="session"
+    stateKey="wipp-img-coll-list"
   >
     <ng-template pTemplate="caption">
       <div class="flex align-items-center justify-content-between">
