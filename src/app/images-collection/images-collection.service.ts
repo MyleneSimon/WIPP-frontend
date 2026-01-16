@@ -64,6 +64,26 @@ export class ImagesCollectionService implements DataService<ImagesCollection, Pa
       }));
   }
 
+  getByDataPid(params, dataPid): Observable<PaginatedImagesCollections> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      params: {}
+    };
+    let httpParams = new HttpParams().set('dataPid', dataPid);
+    if (params) {
+      const page = params.pageIndex ? params.pageIndex : null;
+      const size = params.size ? params.size : null;
+      const sort = params.sort ? params.sort : null;
+      httpParams = httpParams.set('page', page).set('size', size).set('sort', sort);
+    }
+    httpOptions.params = httpParams;
+    return this.http.get<any>(this.imagesCollectionsUrl + '/search/findByDataPid', httpOptions).pipe(
+      map((result: any) => {
+        result.data = result._embedded.imagesCollections;
+        return result;
+      }));
+  }
+
   getImagesCollectionsByNameContainingIgnoreCaseAndNumberOfImages(params, name, nbOfImgs): Observable<PaginatedImagesCollections> {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'}),

@@ -6,6 +6,7 @@ export class ImagesCollection {
   sourceCatalog: string;
   sourceBackendImport: string;
   sourceAnnotationCollection: string;
+  dataPid: string;
   importMethod: ImagesCollectionImportMethod;
   format: ImagesCollectionFormat;
   locked: boolean;

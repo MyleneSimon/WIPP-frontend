@@ -116,13 +116,16 @@
             </a>
           </div>
           <div *ngIf="!imagesCollection.importMethod || imagesCollection.importMethod == 'UPLOADED'">
-            Uploaded
+            <a href="http://127.0.0.1:8000/data?id=11" class="wipp-link">
+              NexusLIMS
+            </a>
           </div>
           <div *ngIf="imagesCollection.importMethod == 'ANNOT'">
             <a routerLink="/image-annotations/{{imagesCollection.sourceAnnotationCollection}}" class="wipp-link">
             Annotation Collection
             </a>
           </div>
+
           <div *ngIf="imagesCollection.importMethod == 'BACKEND_IMPORT'" pTooltip="Backend import folder">
             {{imagesCollection.sourceBackendImport}}
           </div>
