@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import {WorkflowService} from '../workflow.service';
 import {Workflow} from '../workflow';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {Router} from '@angular/router';
 import {WorkflowNewComponent} from '../workflow-new/workflow-new.component';
 import {KeycloakService} from '../../services/keycloak/keycloak.service';
 import {DialogService} from 'primeng/dynamicdialog';
@@ -20,8 +18,6 @@ export class WorkflowListComponent {
   pageSize = 10;
 
   constructor(
-    private modalService: NgbModal,
-    private router: Router,
     private workflowService: WorkflowService,
     private keycloakService: KeycloakService,
     private dialogService: DialogService,

@@ -5,8 +5,6 @@ import * as Flow from '@flowjs/flow.js';
 import {ImagesCollectionService} from '../images-collection.service';
 import {ImagesCollection} from '../images-collection';
 import {Image} from '../image';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
 import {BehaviorSubject, from, Observable, of as observableOf, Subject} from 'rxjs';
 import {MetadataFile} from '../metadata-file';
 import {JobDetailComponent} from '../../job/job-detail/job-detail.component';
@@ -33,10 +31,8 @@ export class ImagesCollectionDetailComponent implements OnInit, AfterViewInit {
 
   flowHolder: Flow.IFlow;
   imagesCollection: ImagesCollection = new ImagesCollection();
-  images: Observable<Image[]>;
-  imagesTest: Image[];
-  metadataFiles: Observable<MetadataFile[]>;
-  metadataFiles2: MetadataFile[];
+  images: Image[];
+  metadataFiles: MetadataFile[];
   sourceJob: Job = null;
   showNotes = true;
   editNotes = false;
@@ -61,7 +57,6 @@ export class ImagesCollectionDetailComponent implements OnInit, AfterViewInit {
 
   pageSizeOptions: number[] = [10, 25, 50, 100];
   imagesParamsChange: BehaviorSubject<{ index: number, size: number, sort: string }>;
-  metadataParamsChange: BehaviorSubject<{ index: number, size: number, sort: string }>;
 
   uploadOption = 'regular';
   resultsLengthImages = 0;
@@ -83,10 +78,6 @@ export class ImagesCollectionDetailComponent implements OnInit, AfterViewInit {
   @ViewChild('browseBtn') browseBtn: ElementRef;
   @ViewChild('browseDirBtn') browseDirBtn: ElementRef;
   @ViewChild('dropArea') dropArea: ElementRef;
-  @ViewChild('imagesPaginator') imagesPaginator: MatPaginator;
-  @ViewChild('imagesSort') sort: MatSort;
-  @ViewChild('metadataFilesPaginator') metadataFilesPaginator: MatPaginator;
-  @ViewChild('metadataFilesSort') metadataFilesSort: MatSort;
 
   $throttleRefresh: Subject<void> = new Subject<void>();
 
@@ -103,16 +94,6 @@ export class ImagesCollectionDetailComponent implements OnInit, AfterViewInit {
     private confirmDialogService: ConfirmDialogService,
     private ngZone: NgZone
     ) {
-    this.imagesParamsChange = new BehaviorSubject({
-      index: 0,
-      size: this.pageSizeImages,
-      sort: ''
-    });
-    this.metadataParamsChange = new BehaviorSubject({
-      index: 0,
-      size: this.pageSizeMetadataFiles,
-      sort: ''
-    });
   }
 
   canEdit(): boolean {
@@ -191,21 +172,8 @@ export class ImagesCollectionDetailComponent implements OnInit, AfterViewInit {
           this.sourceCatalogLink = urljoin(this.appConfigService.getConfig().catalogUiUrl, this.imagesCollection.sourceCatalog);
         }
         this.imageCollectionNotes = this.imagesCollection.notes;
-        this.getImages();
-        this.getMetadataFiles();
-        const params = {
-          pageIndex: 0,
-          size: 10,
-          sort: "fileName,asc"
-        };
-        this.imagesCollectionService.getImages(this.imagesCollection, params).subscribe(val => {
-          this.resultsLengthImages = val.page.totalElements;
-          this.imagesTest = val.data;
-        });
-        this.imagesCollectionService.getMetadataFiles(this.imagesCollection, params).subscribe(val => {
-          this.resultsLengthMetadataFiles = val.page.totalElements;
-          this.metadataFiles2 = val.data;
-        });
+        this.loadImages(null);
+        this.loadMetaFiles(null);
         if (this.imagesCollection.numberImportingImages !== 0) {
           this.$throttleRefresh.next();
         }
@@ -218,51 +186,6 @@ export class ImagesCollectionDetailComponent implements OnInit, AfterViewInit {
     return this.imagesCollectionService.getById(this.imageCollectionId);
   }
 
-  getImages(): void {
-    const paramsObservable = this.imagesParamsChange.asObservable();
-    this.images = paramsObservable.pipe(
-      switchMap((page) => {
-        const params = {
-          pageIndex: page.index,
-          size: page.size,
-          sort: page.sort
-        };
-        return this.imagesCollectionService.getImages(this.imagesCollection, params).pipe(
-          map((paginatedResult) => {
-            this.resultsLengthImages = paginatedResult.page.totalElements;
-            return paginatedResult.data;
-          }),
-          catchError(() => {
-            return observableOf([]);
-          })
-        );
-      })
-    );
-  }
-
-  getMetadataFiles(): void {
-    const metadataParamsObservable = this.metadataParamsChange.asObservable();
-    this.metadataFiles = metadataParamsObservable.pipe(
-      switchMap((page) => {
-        const metadataParams = {
-          pageIndex: page.index,
-          size: page.size,
-          sort: page.sort
-        };
-        return this.imagesCollectionService.getMetadataFiles(this.imagesCollection, metadataParams).pipe(
-          map((paginatedResult) => {
-            this.resultsLengthMetadataFiles = paginatedResult.page.totalElements;
-            this.metadataFiles2 = paginatedResult.data;
-            return paginatedResult.data;
-          }),
-          catchError(() => {
-            return observableOf([]);
-          })
-        );
-      })
-    );
-  }
-
   getNbFiles(): number {
     const imagesCollection = this.imagesCollection;
     if (!imagesCollection) {
@@ -270,6 +193,33 @@ export class ImagesCollectionDetailComponent implements OnInit, AfterViewInit {
     }
     return imagesCollection.numberOfImages +
       imagesCollection.numberOfMetadataFiles;
+  }
+
+  loadImages(event) {
+    const sortField = event?.sortField ? event.sortField : 'fileName,asc';
+    const params = {
+      pageIndex: event ? event.first / event.rows : 0,
+      size: event ? event.rows : 10,
+      sort: sortField
+    };
+    this.imagesCollectionService.getImages(this.imagesCollection, params).subscribe(val => {
+      this.resultsLengthImages = val.page.totalElements;
+      this.images = val.data
+  });
+  }
+
+  loadMetaFiles(event) {
+    const sortOrderStr = event?.sortOrder == -1 ? 'desc' : 'asc';
+    const sortField = event?.sortField ? event.sortField + ',' + sortOrderStr : 'fileName,asc';
+    const params = {
+      pageIndex: event ? event.first / event.rows : 0,
+      size: event ? event.rows : 10,
+      sort: sortField
+    };
+    this.imagesCollectionService.getMetadataFiles(this.imagesCollection, params).subscribe(val => {
+      this.resultsLengthMetadataFiles = val.page.totalElements;
+      this.metadataFiles = val.data
+   });
   }
 
   updateCollectionName(name: string): void {
@@ -522,30 +472,6 @@ export class ImagesCollectionDetailComponent implements OnInit, AfterViewInit {
   closeDeepZoomImage() {
     if(this.osdViewer)
       this.osdViewer.destroy();
-  }
-
-  loadData(event) {
-    const sortField = event.sortField ? event.sortField : 'fileName,asc';
-    const params = {
-      pageIndex: event.first / event.rows,
-      size: event.rows,
-      sort: sortField
-    };
-    this.imagesCollectionService.getImages(this.imagesCollection, params).subscribe(val =>
-      this.imagesTest = val.data
-    );
-  }
-
-  loadMetaFiles(event) {
-    const sortField = event.sortField ? event.sortField : 'fileName,asc';
-    const params = {
-      pageIndex: event.first / event.rows,
-      size: event.rows,
-      sort: sortField
-    };
-    this.imagesCollectionService.getMetadataFiles(this.imagesCollection, params).subscribe(val =>
-      this.metadataFiles2 = val.data
-    );
   }
 
   annotate() {

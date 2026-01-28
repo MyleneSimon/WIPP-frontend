@@ -10,7 +10,6 @@ import {KeycloakService} from '../../services/keycloak/keycloak.service';
 import {Subject} from 'rxjs';
 import * as Flow from '@flowjs/flow.js';
 import {auditTime, map, switchMap} from 'rxjs/operators';
-import { MatPaginator } from '@angular/material/paginator';
 import {Csv} from '../csv';
 import {DialogService} from 'primeng/dynamicdialog';
 import {MessageService} from 'primeng/api';
@@ -36,7 +35,6 @@ export class CsvCollectionDetailComponent implements OnInit, AfterViewInit, OnDe
   flowHolder: Flow.IFlow;
 
   @ViewChild('browseBtn') browseBtn: ElementRef;
-  @ViewChild('csvPaginator') csvPaginator: MatPaginator;
 
   constructor(
     private route: ActivatedRoute,

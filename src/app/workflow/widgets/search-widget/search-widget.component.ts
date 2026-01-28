@@ -1,6 +1,5 @@
 import {Component, Injector, ViewChild} from '@angular/core';
 import {StringWidget} from 'ngx-schema-form';
-import {NgbTypeahead} from '@ng-bootstrap/ng-bootstrap';
 import {WorkflowService} from '../../workflow.service';
 import {Observable} from 'rxjs';
 import {debounceTime, distinctUntilChanged, map, switchMap} from 'rxjs/operators';
@@ -13,7 +12,6 @@ import {AutoCompleteCompleteEvent} from 'primeng/autocomplete';
   styleUrls: ['./search-widget.component.css']
 })
 export class SearchWidgetComponent extends StringWidget {
-  @ViewChild('instance') instance: NgbTypeahead;
 
   public data: Array<any>;
   public service: any;

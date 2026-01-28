@@ -85,7 +85,7 @@
     <table class="p-datatable-table">
       <tbody class="p-datatable-tbody">
         <!--  input id or name line -->
-        <tr *ngFor="let input of plugin.inputs; let i = index;">
+        <tr *ngFor="let input of plugin?.inputs; let i = index;">
           <td *ngIf="job.parameters[input['name']]" class="font-semibold">
             {{input['name']}}
           </td>
@@ -123,7 +123,7 @@
     <table class="p-datatable-table">
       <tbody class="p-datatable-tbody">
         <!--  output name line  -->
-        <tr *ngFor="let output of plugin.outputs">
+        <tr *ngFor="let output of plugin?.outputs">
           <td class="font-semibold">
             {{output['type']}}
           </td>

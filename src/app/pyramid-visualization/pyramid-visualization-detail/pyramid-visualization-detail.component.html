@@ -9,7 +9,7 @@
     </p-button>
     <!--TODO: add download link (metadata not handled in pyramid building yet) -->
     <!--<a [href]="visualization?._links?.download?.href"-->
-    <!--ngbTooltip="Download as zip"-->
+    <!--pTooltip="Download as zip"-->
     <!--placement="left"-->
     <!--class="btn btn-light">-->
     <!--<span-->
@@ -70,15 +70,15 @@
         <th class="wip-icon-button-column text-center vert-align" *ngIf="canEdit()">
                     <span *ngIf="savedStatus === 'saved'"
                           aria-hidden="true"
-                          ngbTooltip="Configuration saved on the server"
+                          pTooltip="Configuration saved on the server"
                           placement="left"><i class="fa fa-check-circle"></i></span>
           <span *ngIf="savedStatus === 'error'"
                 aria-hidden="true"
-                ngbTooltip="Error saving the configuration on the server"
+                pTooltip="Error saving the configuration on the server"
                 placement="left"><i class="fa fa-exclamation-circle"></i></span>
           <img *ngIf="savedStatus === 'saving'"
                src="assets/img/loading.svg" alt="Saving configuration"
-               ngbTooltip="Saving configuration"
+               pTooltip="Saving configuration"
                placement="left" class="wip-icon">
         </th>
       </tr>
@@ -107,7 +107,7 @@
             </button>
           </td>
         </tr>
-        <tr [hidden]="layersGroup.collapsed" [ngbCollapse]="layersGroup.collapsed">
+        <tr [hidden]="layersGroup.collapsed">
           <td class="vert-align"></td>
           <td colspan="2" class="vert-align">
             <!-- Layer level -->

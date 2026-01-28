@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from '@angular/forms';
 import {PluginRoutingModule} from './plugin-routing.module';
 import {PluginListComponent} from './plugin-list/plugin-list.component';
@@ -19,7 +18,6 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 @NgModule({
   imports: [
     CommonModule,
-    NgbModule,
     PluginRoutingModule,
     FormsModule,
     NgxJsonViewerModule,

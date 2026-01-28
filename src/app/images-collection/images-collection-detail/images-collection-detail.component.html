@@ -299,9 +299,9 @@
       </p-button>
     </div>
   </div>
-  <p-dataView #dv [value]="imagesTest" [layout]="layout" paginatorPosition="bottom"
+  <p-dataView #dv [value]="images" [layout]="layout" paginatorPosition="bottom"
               [paginator]="true" [rows]="12" [sortField]="sortField" [lazyLoadOnInit]="true"
-              [lazy]="true" (onLazyLoad)="loadData($event)" [totalRecords]="resultsLengthImages">
+              [lazy]="true" (onLazyLoad)="loadImages($event)" [totalRecords]="resultsLengthImages">
     <ng-template pTemplate="header">
       <div class="flex flex-column md:flex-row md:justify-content-between">
         <p-dropdown [options]="sortOptions" placeholder="Sort By" [(ngModel)]="sortField" styleClass="mb-2 md:mb-0" />
@@ -429,7 +429,7 @@
       </p-button>
     </div>
   </div>
-  <p-table [value]="metadataFiles2" [lazy]="true"
+  <p-table [value]="metadataFiles" [lazy]="true"
            (onLazyLoad)="loadMetaFiles($event)"
            dataKey="id"
            [tableStyle]="{ 'min-width': '75rem' }"
@@ -440,7 +440,7 @@
     <ng-template pTemplate="header">
       <tr>
         <th pSortableColumn="fileName">
-          Name <p-sortIcon field="name" />
+          Name <p-sortIcon field="fileName" />
         </th>
         <th pSortableColumn="fileSize">
           Size <p-sortIcon field="fileSize" />
