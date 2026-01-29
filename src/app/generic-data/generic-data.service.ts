@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {DataService} from '../data-service';
 import {GenericData, PaginatedGenericDatas} from './generic-data';
 import {environment} from '../../environments/environment';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Job} from '../job/job';

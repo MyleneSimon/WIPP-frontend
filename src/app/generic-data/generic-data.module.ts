@@ -4,7 +4,7 @@ import { GenericDataListComponent } from './generic-data-list/generic-data-list.
 import { GenericDataDetailComponent } from './generic-data-detail/generic-data-detail.component';
 import { GenericDataTemplateComponent } from './generic-data-template/generic-data-template.component';
 import {GenericDataRoutingModule} from './generic-data-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { GenericDataNewComponent } from './generic-data-new/generic-data-new.component';
 import { FormsModule } from '@angular/forms';
 import {TableModule} from 'primeng/table';
@@ -16,27 +16,21 @@ import {FieldsetModule} from 'primeng/fieldset';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {CustomPipesModule} from '../custom-pipes/custom-pipes.module';
 
-@NgModule({
-  imports: [
-    CommonModule,
-    GenericDataRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    TableModule,
-    ToastModule,
-    TooltipModule,
-    ButtonModule,
-    FieldsetModule,
-    InputTextModule,
-    ProgressBarModule,
-    InputTextModule,
-    CustomPipesModule
-  ],
-  declarations: [
-    GenericDataListComponent,
-    GenericDataDetailComponent,
-    GenericDataTemplateComponent,
-    GenericDataNewComponent
-  ]
-})
+@NgModule({ declarations: [
+        GenericDataListComponent,
+        GenericDataDetailComponent,
+        GenericDataTemplateComponent,
+        GenericDataNewComponent
+    ], imports: [CommonModule,
+        GenericDataRoutingModule,
+        FormsModule,
+        TableModule,
+        ToastModule,
+        TooltipModule,
+        ButtonModule,
+        FieldsetModule,
+        InputTextModule,
+        ProgressBarModule,
+        InputTextModule,
+        CustomPipesModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class GenericDataModule { }

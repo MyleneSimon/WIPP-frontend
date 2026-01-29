@@ -16,7 +16,7 @@ import 'prismjs/components/prism-scala';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-bash';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import {MessageService} from 'primeng/api';
 
 @Component({

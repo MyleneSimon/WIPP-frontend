@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ImagesCollectionBatchImportComponent } from './images-collection-batch-import.component';
 
@@ -6,7 +6,7 @@ describe('ImagesCollectionBatchImportComponent', () => {
   let component: ImagesCollectionBatchImportComponent;
   let fixture: ComponentFixture<ImagesCollectionBatchImportComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ImagesCollectionBatchImportComponent ]
     })

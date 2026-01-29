@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StitchingVectorNewComponent } from './stitching-vector-new.component';
 
@@ -6,7 +6,7 @@ describe('StitchingVectorNewComponent', () => {
   let component: StitchingVectorNewComponent;
   let fixture: ComponentFixture<StitchingVectorNewComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ StitchingVectorNewComponent ]
     })

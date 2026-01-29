@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PyramidDetailComponent } from './pyramid-detail.component';
 
@@ -6,7 +6,7 @@ describe('PyramidDetailComponent', () => {
   let component: PyramidDetailComponent;
   let fixture: ComponentFixture<PyramidDetailComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ PyramidDetailComponent ]
     })

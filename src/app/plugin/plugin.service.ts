@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpBackend, HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import { HttpBackend, HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import {PaginatedPlugins, Plugin} from './plugin';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';

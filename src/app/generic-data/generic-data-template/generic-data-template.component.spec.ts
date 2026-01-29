@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GenericDataTemplateComponent } from './generic-data-template.component';
 
@@ -6,7 +6,7 @@ describe('GenericDataTemplateComponent', () => {
   let component: GenericDataTemplateComponent;
   let fixture: ComponentFixture<GenericDataTemplateComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ GenericDataTemplateComponent ]
     })

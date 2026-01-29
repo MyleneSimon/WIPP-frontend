@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DynamicContentComponent } from './dynamic-content.component';
 
@@ -6,7 +6,7 @@ describe('DynamicContentComponent', () => {
   let component: DynamicContentComponent;
   let fixture: ComponentFixture<DynamicContentComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DynamicContentComponent ]
     })

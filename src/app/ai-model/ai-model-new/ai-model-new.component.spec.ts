@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AiModelNewComponent } from './ai-model-new.component';
 
@@ -6,7 +6,7 @@ describe('AiModelNewComponent', () => {
   let component: AiModelNewComponent;
   let fixture: ComponentFixture<AiModelNewComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AiModelNewComponent ]
     })

@@ -5,7 +5,7 @@ import { PageNotFoundComponent } from './not-found/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ImagesCollectionModule } from './images-collection/images-collection.module';
 import { PluginModule } from './plugin/plugin.module';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { WorkflowModule } from './workflow/workflow.module';
@@ -35,56 +35,50 @@ import {MenuModule} from 'primeng/menu';
 import {ImageAnnotationsModule} from './image-annotations/image-annotations.module';
 import {IterativeTrainingPipelineModule} from './iterative-training-pipeline/iterative-training-pipeline.module';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    PageNotFoundComponent,
-    ForbiddenAccessComponent
-  ],
-  imports: [
-    RouterModule,
-    BrowserModule,
-    HttpClientModule,
-    HomeModule,
-    ImagesCollectionModule,
-    StitchingVectorModule,
-    PyramidModule,
-    PyramidVisualizationModule,
-    AiModelModule,
-    AiModelCardModule,
-    CsvCollectionModule,
-    NotebookModule,
-    GenericDataModule,
-    PluginModule,
-    WorkflowModule,
-    ConfirmDialogModule,
-    ImageAnnotationsModule,
-    IterativeTrainingPipelineModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    MenuModule,
-    MenubarModule,
-    DynamicDialogModule,
-    AutoFocusModule
-  ],
-  providers: [
-    AppConfigService,
-    {
-      provide: APP_INITIALIZER,
-      useFactory: appInitializerFactory,
-      multi: true,
-      deps: [AppConfigService]
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: KeycloakInterceptorService,
-      multi: true
-    },
-    KeycloakService,
-    ConfirmDialogService,
-    {provide: RouteReuseStrategy, useClass: AppRouteReuseStrategy}
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        PageNotFoundComponent,
+        ForbiddenAccessComponent
+    ],
+    bootstrap: [AppComponent], imports: [RouterModule,
+        BrowserModule,
+        HomeModule,
+        ImagesCollectionModule,
+        StitchingVectorModule,
+        PyramidModule,
+        PyramidVisualizationModule,
+        AiModelModule,
+        AiModelCardModule,
+        CsvCollectionModule,
+        NotebookModule,
+        GenericDataModule,
+        PluginModule,
+        WorkflowModule,
+        ConfirmDialogModule,
+        ImageAnnotationsModule,
+        IterativeTrainingPipelineModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        MenuModule,
+        MenubarModule,
+        DynamicDialogModule,
+        AutoFocusModule], providers: [
+        AppConfigService,
+        {
+            provide: APP_INITIALIZER,
+            useFactory: appInitializerFactory,
+            multi: true,
+            deps: [AppConfigService]
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: KeycloakInterceptorService,
+            multi: true
+        },
+        KeycloakService,
+        ConfirmDialogService,
+        { provide: RouteReuseStrategy, useClass: AppRouteReuseStrategy },
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { }

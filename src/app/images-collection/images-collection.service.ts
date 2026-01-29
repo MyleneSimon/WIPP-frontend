@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import {forkJoin, Observable, of as observableOf} from 'rxjs';
 import {ImagesCollection, PaginatedImagesCollections} from './images-collection';
 import {map} from 'rxjs/operators';
