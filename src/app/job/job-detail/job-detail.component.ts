@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import {Job} from '../job';
 import {JobService} from '../job.service';
 import {Plugin} from '../../plugin/plugin';
-import 'rxjs-compat/add/operator/map';
 import {Workflow} from '../../workflow/workflow';
 import {DialogService, DynamicDialogComponent, DynamicDialogRef} from 'primeng/dynamicdialog';
 
