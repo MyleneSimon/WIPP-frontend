@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-
 import { environment } from '../../../environments/environment';
 import * as Keycloak from 'keycloak-js';
 

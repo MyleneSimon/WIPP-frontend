@@ -47,3 +47,6 @@ src/assets/config/config.json
 
 # Build
 deploy/docker/WIPP-frontend.tar.gz
+
+.nx/cache
+.nx/workspace-data

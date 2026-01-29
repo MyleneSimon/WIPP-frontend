@@ -1,13 +1,12 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {forkJoin, Observable, throwError} from 'rxjs';
+import {forkJoin, Observable, of, throwError} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Job} from '../job/job';
 import {PaginatedPyramid, Pyramid} from './pyramid';
 import {DataService} from '../data-service';
 import {ImagesCollection} from '../images-collection/images-collection';
-import 'rxjs/add/observable/of';
 
 
 @Injectable({
@@ -179,7 +178,7 @@ export class PyramidService implements DataService<Pyramid, PaginatedPyramid> {
         }]
       }]
     };
-    return Observable.of(manifest);
+    return of(manifest);
   }
 
   getPyramidTimeSlices(pyramid: Pyramid, params): Observable<any> {
