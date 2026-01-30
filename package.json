@@ -24,7 +24,7 @@
     "@fortawesome/fontawesome-free": "^5.3.1",
     "@recogito/annotorious-openseadragon": "^2.7.17",
     "@recogito/annotorious-shape-labels": "^0.2.3",
-    "@swimlane/ngx-graph": "^8.4.0",
+    "@swimlane/ngx-graph": "^9.0.1",
     "@types/flowjs": "0.0.31",
     "@types/marked": "^0.6.5",
     "@types/prismjs": "^1.16.0",
@@ -42,7 +42,7 @@
     "marked": "^0.7.0",
     "ng2-charts": "^6.0.1",
     "ngx-json-viewer": "^3.2.1",
-    "ngx-schema-form": "^2.11.0",
+    "ngx-schema-form": "^2.12.2",
     "ngx-spinner": "^17.0.0",
     "notebookjs": "^0.4.2",
     "openseadragon": "^3.1.0",
@@ -53,7 +53,7 @@
     "react": "^16.8.6",
     "rxjs": "^7.8.2",
     "url-join": "^4.0.1",
-    "z-schema": "^4.2.4",
+    "z-schema": "^6.0.2",
     "zone.js": "~0.14.10"
   },
   "devDependencies": {
