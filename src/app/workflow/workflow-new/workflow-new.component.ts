@@ -1,15 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import {Workflow} from '../workflow';
 import {DialogService, DynamicDialogComponent, DynamicDialogRef} from 'primeng/dynamicdialog';
-import {MessageService} from 'primeng/api';
+import { MessageService, PrimeTemplate } from 'primeng/api';
 import {WorkflowService} from '../workflow.service';
 import {Router} from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { NgIf } from '@angular/common';
+import { MessagesModule } from 'primeng/messages';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { Button } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
-  selector: 'app-workflow-new',
-  templateUrl: './workflow-new.component.html',
-  styleUrls: ['./workflow-new.component.css'],
-  providers: [MessageService]
+    selector: 'app-workflow-new',
+    templateUrl: './workflow-new.component.html',
+    styleUrls: ['./workflow-new.component.css'],
+    providers: [MessageService],
+    standalone: true,
+    imports: [FormsModule, InputTextModule, NgIf, MessagesModule, PrimeTemplate, InputTextareaModule, Button, ToastModule]
 })
 export class WorkflowNewComponent implements OnInit {
 

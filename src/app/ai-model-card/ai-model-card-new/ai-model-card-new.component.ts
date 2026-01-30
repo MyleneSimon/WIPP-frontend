@@ -6,11 +6,21 @@ import { FRAMEWORKS, OPERATION_TYPES, ARCHITECTURES, LICENSES } from 'src/app/ai
 
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
+import { FormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputGroupModule } from 'primeng/inputgroup';
+import { Button } from 'primeng/button';
+import { NgFor, KeyValuePipe } from '@angular/common';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { CheckboxModule } from 'primeng/checkbox';
 
 @Component({
-  selector: 'app-ai-model-card-new',
-  templateUrl: './ai-model-card-new.component.html',
-  styleUrls: ['./ai-model-card-new.component.css']
+    selector: 'app-ai-model-card-new',
+    templateUrl: './ai-model-card-new.component.html',
+    styleUrls: ['./ai-model-card-new.component.css'],
+    standalone: true,
+    imports: [FormsModule, InputTextModule, DropdownModule, InputGroupModule, Button, NgFor, MultiSelectModule, CheckboxModule, KeyValuePipe]
 })
 export class AiModelCardNewComponent implements OnInit {
   form: AiModelCard = new AiModelCard();

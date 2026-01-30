@@ -1,16 +1,24 @@
 import { Component } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {KeycloakService} from '../../services/keycloak/keycloak.service';
 import {DialogService} from 'primeng/dynamicdialog';
-import {MessageService} from 'primeng/api';
+import { MessageService, PrimeTemplate } from 'primeng/api';
 import {ImageAnnotationsCollection} from '../image-annotations-collection';
 import {ImageAnnotationsService} from '../image-annotations.service';
+import { TableModule } from 'primeng/table';
+import { Button } from 'primeng/button';
+import { TooltipModule } from 'primeng/tooltip';
+import { InputTextModule } from 'primeng/inputtext';
+import { ToastModule } from 'primeng/toast';
+import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-image-annotations-list',
-  templateUrl: './image-annotations-list.component.html',
-  styleUrl: './image-annotations-list.component.css',
-  providers: [DialogService, MessageService]
+    selector: 'app-image-annotations-list',
+    templateUrl: './image-annotations-list.component.html',
+    styleUrl: './image-annotations-list.component.css',
+    providers: [DialogService, MessageService],
+    standalone: true,
+    imports: [TableModule, PrimeTemplate, Button, TooltipModule, InputTextModule, RouterLink, ToastModule, DatePipe]
 })
 export class ImageAnnotationsListComponent {
 

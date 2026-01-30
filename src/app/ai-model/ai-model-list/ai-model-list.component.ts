@@ -3,12 +3,20 @@ import { AiModel } from '../ai-model';
 import { AiModelService } from '../ai-model.service';
 import { DialogService } from 'primeng/dynamicdialog';
 import { AiModelNewComponent } from '../ai-model-new/ai-model-new.component';
+import { TableModule } from 'primeng/table';
+import { PrimeTemplate } from 'primeng/api';
+import { Button } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { RouterLink } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-ai-model-list',
-  templateUrl: './ai-model-list.component.html',
-  styleUrls: ['./ai-model-list.component.css'],
-  providers: [DialogService]
+    selector: 'app-ai-model-list',
+    templateUrl: './ai-model-list.component.html',
+    styleUrls: ['./ai-model-list.component.css'],
+    providers: [DialogService],
+    standalone: true,
+    imports: [TableModule, PrimeTemplate, Button, InputTextModule, RouterLink, DatePipe]
 })
 export class AiModelListComponent implements OnInit {
   aiModels: AiModel[];

@@ -8,8 +8,8 @@ describe('ImagesCollectionNewComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ImagesCollectionNewComponent ]
-    })
+    imports: [ImagesCollectionNewComponent]
+})
     .compileComponents();
   }));
 

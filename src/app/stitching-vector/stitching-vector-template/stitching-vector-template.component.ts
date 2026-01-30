@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {DynamicComponent} from '../../dynamic-content/dynamic.component';
 import {StitchingVectorService} from '../stitching-vector.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-stitching-vector-template',
-  template:
-    '<a routerLink="/stitching-vectors/{{idData}}">{{text}}</a>'
+    selector: 'app-stitching-vector-template',
+    template: '<a routerLink="/stitching-vectors/{{idData}}">{{text}}</a>',
+    standalone: true,
+    imports: [RouterLink]
 })
 export class StitchingVectorTemplateComponent extends DynamicComponent implements OnInit {
 

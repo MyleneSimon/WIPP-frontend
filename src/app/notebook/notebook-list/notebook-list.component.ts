@@ -1,11 +1,20 @@
 import { Component } from '@angular/core';
 import {Notebook} from '../notebook';
 import {NotebookService} from '../notebook.service';
+import { TableModule } from 'primeng/table';
+import { PrimeTemplate } from 'primeng/api';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { InputTextModule } from 'primeng/inputtext';
+import { RouterLink } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-notebook-list',
-  templateUrl: './notebook-list.component.html',
-  styleUrls: ['./notebook-list.component.css']
+    selector: 'app-notebook-list',
+    templateUrl: './notebook-list.component.html',
+    styleUrls: ['./notebook-list.component.css'],
+    standalone: true,
+    imports: [TableModule, PrimeTemplate, IconFieldModule, InputIconModule, InputTextModule, RouterLink, DatePipe]
 })
 export class NotebookListComponent {
   notebooks: Notebook[];

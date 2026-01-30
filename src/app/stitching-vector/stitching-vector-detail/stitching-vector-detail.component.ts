@@ -7,13 +7,20 @@ import {Job} from '../../job/job';
 import {TimeSlice} from '../timeSlice';
 import {KeycloakService} from '../../services/keycloak/keycloak.service';
 import {DialogService} from 'primeng/dynamicdialog';
-import {MessageService} from 'primeng/api';
+import { MessageService, PrimeTemplate } from 'primeng/api';
+import { NgIf, DatePipe } from '@angular/common';
+import { Button } from 'primeng/button';
+import { TooltipModule } from 'primeng/tooltip';
+import { FieldsetModule } from 'primeng/fieldset';
+import { TableModule } from 'primeng/table';
 
 @Component({
-  selector: 'app-stitching-vector-detail',
-  templateUrl: './stitching-vector-detail.component.html',
-  styleUrls: ['./stitching-vector-detail.component.css'],
-  providers: [DialogService, MessageService]
+    selector: 'app-stitching-vector-detail',
+    templateUrl: './stitching-vector-detail.component.html',
+    styleUrls: ['./stitching-vector-detail.component.css'],
+    providers: [DialogService, MessageService],
+    standalone: true,
+    imports: [NgIf, Button, TooltipModule, FieldsetModule, TableModule, PrimeTemplate, DatePipe]
 })
 export class StitchingVectorDetailComponent implements OnInit {
 

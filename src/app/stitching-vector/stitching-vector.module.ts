@@ -19,22 +19,20 @@ import {TooltipModule} from 'primeng/tooltip';
 
 @NgModule({
     imports: [
-      CommonModule,
-      StitchingVectorRoutingModule,
-      FormsModule,
-      TableModule,
-      ToastModule,
-      ButtonModule,
-      InputTextModule,
-      FieldsetModule,
-      TooltipModule,
-    ],
-    declarations: [
+        CommonModule,
+        StitchingVectorRoutingModule,
+        FormsModule,
+        TableModule,
+        ToastModule,
+        ButtonModule,
+        InputTextModule,
+        FieldsetModule,
+        TooltipModule,
         StitchingVectorDetailComponent,
         StitchingVectorListComponent,
         StitchingVectorNewComponent,
         ModalErrorComponent,
-        StitchingVectorTemplateComponent
+        StitchingVectorTemplateComponent,
     ]
 })
 export class StitchingVectorModule { }

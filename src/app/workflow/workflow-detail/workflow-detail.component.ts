@@ -8,7 +8,7 @@ import {catchError, map} from 'rxjs/operators';
 import {JobDetailComponent} from '../../job/job-detail/job-detail.component';
 import {Job} from '../../job/job';
 import {FormProperty, PropertyGroup} from 'ngx-schema-form/lib/model/formproperty';
-import {NgxSpinnerService} from 'ngx-spinner';
+import { NgxSpinnerService, NgxSpinnerComponent } from 'ngx-spinner';
 import {AppConfigService} from '../../app-config.service';
 import urlJoin from 'url-join';
 import {JobService} from '../../job/job.service';
@@ -16,13 +16,28 @@ import {dataMap} from '../../data-service';
 import {WorkflowNewComponent} from '../workflow-new/workflow-new.component';
 import {KeycloakService} from '../../services/keycloak/keycloak.service';
 import {DialogService} from 'primeng/dynamicdialog';
-import {MessageService} from 'primeng/api';
+import { MessageService, PrimeTemplate } from 'primeng/api';
+import { Button, ButtonDirective } from 'primeng/button';
+import { TooltipModule } from 'primeng/tooltip';
+import { NgIf, NgStyle, DatePipe } from '@angular/common';
+import { FieldsetModule } from 'primeng/fieldset';
+import { ToolbarModule } from 'primeng/toolbar';
+import { DropdownModule } from 'primeng/dropdown';
+import { FormsModule } from '@angular/forms';
+import { GraphModule } from '@swimlane/ngx-graph';
+import { DialogModule } from 'primeng/dialog';
+import { DividerModule } from 'primeng/divider';
+import { SchemaFormModule } from 'ngx-schema-form';
+import { MessagesModule } from 'primeng/messages';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
-  selector: 'app-workflow-detail',
-  templateUrl: './workflow-detail.component.html',
-  styleUrls: ['./workflow-detail.component.css'],
-  providers: [DialogService, MessageService]
+    selector: 'app-workflow-detail',
+    templateUrl: './workflow-detail.component.html',
+    styleUrls: ['./workflow-detail.component.css'],
+    providers: [DialogService, MessageService],
+    standalone: true,
+    imports: [Button, TooltipModule, NgIf, FieldsetModule, ButtonDirective, NgxSpinnerComponent, ToolbarModule, DropdownModule, FormsModule, GraphModule, NgStyle, DialogModule, PrimeTemplate, DividerModule, SchemaFormModule, MessagesModule, ToastModule, DatePipe]
 })
 
 export class WorkflowDetailComponent implements OnInit, OnDestroy {

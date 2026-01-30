@@ -9,17 +9,15 @@ import {SplitterModule} from 'primeng/splitter';
 import {ButtonModule} from 'primeng/button';
 
 @NgModule({
-  declarations: [
-    HomeComponent
-  ],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
-    ImagesCollectionModule,
-    TableModule,
-    CardModule,
-    SplitterModule,
-    ButtonModule
-  ]
+    imports: [
+        CommonModule,
+        HomeRoutingModule,
+        ImagesCollectionModule,
+        TableModule,
+        CardModule,
+        SplitterModule,
+        ButtonModule,
+        HomeComponent
+    ]
 })
 export class HomeModule { }

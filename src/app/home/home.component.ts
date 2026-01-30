@@ -5,11 +5,18 @@ import {Visualization} from '../pyramid-visualization/visualization';
 import {Workflow} from '../workflow/workflow';
 import {WorkflowService} from '../workflow/workflow.service';
 import {PyramidVisualizationService} from '../pyramid-visualization/pyramid-visualization.service';
+import { CardModule } from 'primeng/card';
+import { TableModule } from 'primeng/table';
+import { PrimeTemplate } from 'primeng/api';
+import { RouterLink } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css'],
+    standalone: true,
+    imports: [CardModule, TableModule, PrimeTemplate, RouterLink, DatePipe]
 })
 
 export class HomeComponent implements OnInit {

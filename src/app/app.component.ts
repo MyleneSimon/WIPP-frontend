@@ -2,13 +2,18 @@ import {Component, OnInit} from '@angular/core';
 import { environment} from '../environments/environment';
 import {AppConfigService} from './app-config.service';
 import {KeycloakService} from './services/keycloak/keycloak.service';
-import {NavigationEnd, Router} from '@angular/router';
-import {MenuItem} from 'primeng/api';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { MenuItem, PrimeTemplate } from 'primeng/api';
+import { NgIf } from '@angular/common';
+import { MenubarModule } from 'primeng/menubar';
+import { TooltipModule } from 'primeng/tooltip';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
+    standalone: true,
+    imports: [NgIf, MenubarModule, PrimeTemplate, RouterOutlet, TooltipModule]
 })
 export class AppComponent implements OnInit {
   title = 'WIPP';

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import {auditTime, catchError, map, switchMap} from 'rxjs/operators';
 import * as Flow from '@flowjs/flow.js';
 import {ImagesCollectionService} from '../images-collection.service';
@@ -14,18 +14,34 @@ import {AppConfigService} from '../../app-config.service';
 import {KeycloakService} from '../../services/keycloak/keycloak.service';
 import {ConfirmDialogService} from '../../confirm-dialog/confirm-dialog.service';
 import OpenSeadragon from 'openseadragon';
-import {MessageService, SelectItem} from 'primeng/api';
+import { MessageService, SelectItem, PrimeTemplate } from 'primeng/api';
 import {environment} from '../../../environments/environment';
 import {DialogService} from 'primeng/dynamicdialog';
 import {ImageAnnotationsService} from '../../image-annotations/image-annotations.service';
 import {ImagesCollectionCreateAnnotTaskComponent} from '../images-collection-create-annot-task/images-collection-create-annot-task.component';
 import {ImageAnnotationsCollection} from '../../image-annotations/image-annotations-collection';
+import { NgIf, NgFor, NgClass, SlicePipe, DatePipe } from '@angular/common';
+import { Button, ButtonDirective } from 'primeng/button';
+import { TooltipModule } from 'primeng/tooltip';
+import { FieldsetModule } from 'primeng/fieldset';
+import { FormsModule } from '@angular/forms';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { DataViewModule } from 'primeng/dataview';
+import { DropdownModule } from 'primeng/dropdown';
+import { SkeletonModule } from 'primeng/skeleton';
+import { ButtonGroupModule } from 'primeng/buttongroup';
+import { TableModule } from 'primeng/table';
+import { DialogModule } from 'primeng/dialog';
+import { ToastModule } from 'primeng/toast';
+import { BytesPipe } from '../../custom-pipes/bytes.pipe';
 
 @Component({
-  selector: 'app-images-collection-detail',
-  templateUrl: './images-collection-detail.component.html',
-  styleUrls: ['./images-collection-detail.component.css'],
-  providers: [DialogService, MessageService]
+    selector: 'app-images-collection-detail',
+    templateUrl: './images-collection-detail.component.html',
+    styleUrls: ['./images-collection-detail.component.css'],
+    providers: [DialogService, MessageService],
+    standalone: true,
+    imports: [NgIf, Button, TooltipModule, FieldsetModule, RouterLink, FormsModule, ButtonDirective, NgFor, ProgressBarModule, DataViewModule, PrimeTemplate, DropdownModule, NgClass, SkeletonModule, ButtonGroupModule, TableModule, DialogModule, ToastModule, SlicePipe, DatePipe, BytesPipe]
 })
 export class ImagesCollectionDetailComponent implements OnInit, AfterViewInit {
 

@@ -4,15 +4,20 @@ import {JobService} from '../job.service';
 import {Plugin} from '../../plugin/plugin';
 import {Workflow} from '../../workflow/workflow';
 import {DialogService, DynamicDialogComponent, DynamicDialogRef} from 'primeng/dynamicdialog';
+import { NgIf, NgFor, DatePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { DynamicContentComponent } from '../../dynamic-content/dynamic-content.component';
 
 export interface IdHash {
   [nameId: string]: string;
 }
 
 @Component({
-  selector: 'app-job-detail',
-  templateUrl: './job-detail.component.html',
-  styleUrls: ['./job-detail.component.css']
+    selector: 'app-job-detail',
+    templateUrl: './job-detail.component.html',
+    styleUrls: ['./job-detail.component.css'],
+    standalone: true,
+    imports: [NgIf, RouterLink, NgFor, DynamicContentComponent, DatePipe]
 })
 
 export class JobDetailComponent implements OnInit {

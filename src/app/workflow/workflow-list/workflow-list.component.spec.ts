@@ -8,8 +8,8 @@ describe('WorkflowListComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ WorkflowListComponent ]
-    })
+    imports: [WorkflowListComponent]
+})
     .compileComponents();
   }));
 

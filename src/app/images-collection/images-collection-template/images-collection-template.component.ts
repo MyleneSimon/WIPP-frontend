@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {DynamicComponent} from '../../dynamic-content/dynamic.component';
 import {ImagesCollectionService} from '../images-collection.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-images-collection-template',
-  template:
-    '<a routerLink="/images-collection/{{idData}}">{{text}}</a>'
+    selector: 'app-images-collection-template',
+    template: '<a routerLink="/images-collection/{{idData}}">{{text}}</a>',
+    standalone: true,
+    imports: [RouterLink]
 })
 
 export class ImagesCollectionTemplateComponent extends DynamicComponent implements OnInit {

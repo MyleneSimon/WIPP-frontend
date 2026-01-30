@@ -6,12 +6,19 @@ import {Pyramid} from '../pyramid';
 import {PyramidService} from '../pyramid.service';
 import {KeycloakService} from '../../services/keycloak/keycloak.service';
 import {DialogService} from 'primeng/dynamicdialog';
+import { NgIf, DatePipe } from '@angular/common';
+import { Button } from 'primeng/button';
+import { TooltipModule } from 'primeng/tooltip';
+import { FieldsetModule } from 'primeng/fieldset';
+import { WdztDirective } from '../../wdzt/wdzt.directive';
 
 @Component({
-  selector: 'app-pyramid-detail',
-  templateUrl: './pyramid-detail.component.html',
-  styleUrls: ['./pyramid-detail.component.css'],
-  providers: [DialogService]
+    selector: 'app-pyramid-detail',
+    templateUrl: './pyramid-detail.component.html',
+    styleUrls: ['./pyramid-detail.component.css'],
+    providers: [DialogService],
+    standalone: true,
+    imports: [NgIf, Button, TooltipModule, FieldsetModule, WdztDirective, DatePipe]
 })
 export class PyramidDetailComponent implements OnInit {
   pyramid: Pyramid = new Pyramid();

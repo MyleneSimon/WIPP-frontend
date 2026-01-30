@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {DynamicComponent} from '../../dynamic-content/dynamic.component';
 import {PyramidService} from '../pyramid.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-pyramid-template',
-  template:
-  ' <a routerLink="/pyramids/{{idData}}">{{text}}</a>'
+    selector: 'app-pyramid-template',
+    template: ' <a routerLink="/pyramids/{{idData}}">{{text}}</a>',
+    standalone: true,
+    imports: [RouterLink]
 })
 export class PyramidTemplateComponent extends DynamicComponent implements OnInit {
 

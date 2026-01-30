@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {DialogService, DynamicDialogComponent, DynamicDialogRef} from 'primeng/dynamicdialog';
-import {Message} from 'primeng/api';
+import { Message, PrimeTemplate } from 'primeng/api';
+import { NgFor } from '@angular/common';
+import { MessagesModule } from 'primeng/messages';
+import { Button } from 'primeng/button';
 
 @Component({
-  selector: 'app-confirm-dialog',
-  templateUrl: './confirm-dialog.component.html',
-  styleUrls: ['./confirm-dialog.component.css']
+    selector: 'app-confirm-dialog',
+    templateUrl: './confirm-dialog.component.html',
+    styleUrls: ['./confirm-dialog.component.css'],
+    standalone: true,
+    imports: [NgFor, MessagesModule, PrimeTemplate, Button]
 })
 export class ConfirmDialogComponent implements OnInit {
 

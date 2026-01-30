@@ -1,11 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {Pyramid} from '../pyramid';
 import {PyramidService} from '../pyramid.service';
+import { TableModule } from 'primeng/table';
+import { PrimeTemplate } from 'primeng/api';
+import { InputTextModule } from 'primeng/inputtext';
+import { RouterLink } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-pyramid-list',
-  templateUrl: './pyramid-list.component.html',
-  styleUrls: ['./pyramid-list.component.css']
+    selector: 'app-pyramid-list',
+    templateUrl: './pyramid-list.component.html',
+    styleUrls: ['./pyramid-list.component.css'],
+    standalone: true,
+    imports: [TableModule, PrimeTemplate, InputTextModule, RouterLink, DatePipe]
 })
 export class PyramidListComponent implements OnInit {
   pyramids: Pyramid[];

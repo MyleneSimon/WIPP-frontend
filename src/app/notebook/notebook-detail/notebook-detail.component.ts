@@ -18,12 +18,18 @@ import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-bash';
 import { HttpClient } from '@angular/common/http';
 import {MessageService} from 'primeng/api';
+import { FieldsetModule } from 'primeng/fieldset';
+import { NgIf, DatePipe } from '@angular/common';
+import { SkeletonModule } from 'primeng/skeleton';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
-  selector: 'app-notebook-detail',
-  templateUrl: './notebook-detail.component.html',
-  styleUrls: ['./notebook-detail.component.css'],
-  providers: [MessageService]
+    selector: 'app-notebook-detail',
+    templateUrl: './notebook-detail.component.html',
+    styleUrls: ['./notebook-detail.component.css'],
+    providers: [MessageService],
+    standalone: true,
+    imports: [FieldsetModule, NgIf, SkeletonModule, ToastModule, DatePipe]
 })
 export class NotebookDetailComponent implements OnInit {
   notebook: Notebook = new Notebook();

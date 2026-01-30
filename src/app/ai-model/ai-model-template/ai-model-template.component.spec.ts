@@ -8,8 +8,8 @@ describe('AiModelTemplateComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ AiModelTemplateComponent ]
-    })
+    imports: [AiModelTemplateComponent]
+})
     .compileComponents();
   }));
 

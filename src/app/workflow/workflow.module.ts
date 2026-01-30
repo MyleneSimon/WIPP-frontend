@@ -10,7 +10,7 @@ import {WidgetsRegistry} from './widgets/widgets-registry';
 import {WorkflowNewComponent} from './workflow-new/workflow-new.component';
 import {JobDetailComponent} from '../job/job-detail/job-detail.component';
 import {NgxGraphModule} from '@swimlane/ngx-graph';
-import {DynamicContentModule} from '../dynamic-content/dynamic-content.module';
+
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {TableModule} from 'primeng/table';
 import {ToastModule} from 'primeng/toast';
@@ -29,39 +29,36 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
 
 @NgModule({
     imports: [
-      CommonModule,
-      WorkflowRoutingModule,
-      FormsModule,
-      ReactiveFormsModule,
-      DynamicContentModule,
-      SchemaFormModule.forRoot(),
-      NgxGraphModule,
-      NgxSpinnerModule,
-      TableModule,
-      ToastModule,
-      ButtonModule,
-      InputTextModule,
-      TagModule,
-      FieldsetModule,
-      TooltipModule,
-      MessagesModule,
-      DropdownModule,
-      DialogModule,
-      AutoCompleteModule,
-      ToolbarModule,
-      DividerModule,
-      InputTextareaModule
-    ],
-    declarations: [
-        WorkflowListComponent,
-        WorkflowDetailComponent,
-        SearchWidgetComponent,
-        JobDetailComponent,
-        WorkflowNewComponent
-    ],
+    CommonModule,
+    WorkflowRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SchemaFormModule.forRoot(),
+    NgxGraphModule,
+    NgxSpinnerModule,
+    TableModule,
+    ToastModule,
+    ButtonModule,
+    InputTextModule,
+    TagModule,
+    FieldsetModule,
+    TooltipModule,
+    MessagesModule,
+    DropdownModule,
+    DialogModule,
+    AutoCompleteModule,
+    ToolbarModule,
+    DividerModule,
+    InputTextareaModule,
+    WorkflowListComponent,
+    WorkflowDetailComponent,
+    SearchWidgetComponent,
+    JobDetailComponent,
+    WorkflowNewComponent
+],
     providers: [{
-        provide: WidgetRegistry,
-        useClass: WidgetsRegistry
-    }]
+            provide: WidgetRegistry,
+            useClass: WidgetsRegistry
+        }]
 })
 export class WorkflowModule { }

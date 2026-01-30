@@ -4,12 +4,18 @@ import {StitchingVectorService} from '../stitching-vector.service';
 import {Router} from '@angular/router';
 import {MessageService} from 'primeng/api';
 import {DynamicDialogRef} from 'primeng/dynamicdialog';
+import { FormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { Button } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
-  selector: 'app-stitching-vector-new',
-  templateUrl: './stitching-vector-new.component.html',
-  styleUrls: ['./stitching-vector-new.component.css'],
-  providers: [MessageService]
+    selector: 'app-stitching-vector-new',
+    templateUrl: './stitching-vector-new.component.html',
+    styleUrls: ['./stitching-vector-new.component.css'],
+    providers: [MessageService],
+    standalone: true,
+    imports: [FormsModule, InputTextModule, Button, ToastModule]
 })
 export class StitchingVectorNewComponent implements OnInit {
 

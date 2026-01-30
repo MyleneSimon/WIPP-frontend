@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {forkJoin, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Visualization} from '../visualization';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import {PyramidService} from '../../pyramid/pyramid.service';
 import {PyramidVisualizationService} from '../pyramid-visualization.service';
 import {PyramidVisualizationHelpComponent} from '../pyramid-visualization-help/pyramid-visualization-help.component';
@@ -10,14 +10,24 @@ import {KeycloakService} from '../../services/keycloak/keycloak.service'
 import {ImagesCollectionService} from '../../images-collection/images-collection.service';
 import {MessageService, SelectItem} from 'primeng/api';
 import {ImagesCollection} from '../../images-collection/images-collection';
-import {AutoCompleteCompleteEvent} from 'primeng/autocomplete';
+import { AutoCompleteCompleteEvent, AutoCompleteModule } from 'primeng/autocomplete';
 import {DialogService} from 'primeng/dynamicdialog';
+import { NgIf, NgFor, JsonPipe, DatePipe } from '@angular/common';
+import { Button, ButtonDirective } from 'primeng/button';
+import { TooltipModule } from 'primeng/tooltip';
+import { FieldsetModule } from 'primeng/fieldset';
+import { FormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { DropdownModule } from 'primeng/dropdown';
+import { WdztDirective } from '../../wdzt/wdzt.directive';
 
 @Component({
-  selector: 'app-pyramid-visualization-detail',
-  templateUrl: './pyramid-visualization-detail.component.html',
-  styleUrls: ['./pyramid-visualization-detail.component.css'],
-  providers: [DialogService, MessageService]
+    selector: 'app-pyramid-visualization-detail',
+    templateUrl: './pyramid-visualization-detail.component.html',
+    styleUrls: ['./pyramid-visualization-detail.component.css'],
+    providers: [DialogService, MessageService],
+    standalone: true,
+    imports: [NgIf, Button, TooltipModule, FieldsetModule, ButtonDirective, NgFor, RouterLink, FormsModule, InputTextModule, AutoCompleteModule, DropdownModule, WdztDirective, JsonPipe, DatePipe]
 })
 export class PyramidVisualizationDetailComponent implements OnInit, OnDestroy {
 

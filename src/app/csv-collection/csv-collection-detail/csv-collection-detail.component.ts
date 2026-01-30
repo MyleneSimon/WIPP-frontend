@@ -12,13 +12,22 @@ import * as Flow from '@flowjs/flow.js';
 import {auditTime, map, switchMap} from 'rxjs/operators';
 import {Csv} from '../csv';
 import {DialogService} from 'primeng/dynamicdialog';
-import {MessageService} from 'primeng/api';
+import { MessageService, PrimeTemplate } from 'primeng/api';
+import { Button, ButtonDirective } from 'primeng/button';
+import { TooltipModule } from 'primeng/tooltip';
+import { NgIf, NgFor, SlicePipe, DatePipe } from '@angular/common';
+import { FieldsetModule } from 'primeng/fieldset';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { TableModule } from 'primeng/table';
+import { BytesPipe } from '../../custom-pipes/bytes.pipe';
 
 @Component({
-  selector: 'app-csv-collection-detail',
-  templateUrl: './csv-collection-detail.component.html',
-  styleUrls: ['./csv-collection-detail.component.css'],
-  providers: [DialogService, MessageService]
+    selector: 'app-csv-collection-detail',
+    templateUrl: './csv-collection-detail.component.html',
+    styleUrls: ['./csv-collection-detail.component.css'],
+    providers: [DialogService, MessageService],
+    standalone: true,
+    imports: [Button, TooltipModule, NgIf, FieldsetModule, ButtonDirective, NgFor, ProgressBarModule, TableModule, PrimeTemplate, SlicePipe, DatePipe, BytesPipe]
 })
 export class CsvCollectionDetailComponent implements OnInit, AfterViewInit, OnDestroy {
 

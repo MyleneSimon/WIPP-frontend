@@ -5,9 +5,9 @@ import { AppConfigService } from '../../app-config.service';
 import urljoin from 'url-join';
 
 @Component({
-  selector: 'app-stitching-vector-template',
-  template:
-    '<a href="{{tensorboardLink}}" target="_blank"> {{text}} </a>'
+    selector: 'app-stitching-vector-template',
+    template: '<a href="{{tensorboardLink}}" target="_blank"> {{text}} </a>',
+    standalone: true
 })
 export class TensorboardLogsTemplateComponent extends DynamicComponent implements OnInit {
 

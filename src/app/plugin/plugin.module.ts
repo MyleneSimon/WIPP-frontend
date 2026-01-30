@@ -16,24 +16,22 @@ import {DialogModule} from 'primeng/dialog';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    PluginRoutingModule,
-    FormsModule,
-    NgxJsonViewerModule,
-    TableModule,
-    ToastModule,
-    ButtonModule,
-    InputTextModule,
-    TooltipModule,
-    FieldsetModule,
-    DialogModule,
-    ConfirmDialogModule
-  ],
-  declarations: [
-    PluginListComponent,
-    PluginDetailComponent,
-    PluginNewComponent
-  ]
+    imports: [
+        CommonModule,
+        PluginRoutingModule,
+        FormsModule,
+        NgxJsonViewerModule,
+        TableModule,
+        ToastModule,
+        ButtonModule,
+        InputTextModule,
+        TooltipModule,
+        FieldsetModule,
+        DialogModule,
+        ConfirmDialogModule,
+        PluginListComponent,
+        PluginDetailComponent,
+        PluginNewComponent
+    ]
 })
 export class PluginModule { }

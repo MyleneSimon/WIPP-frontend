@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {DynamicComponent} from '../../dynamic-content/dynamic.component';
 import {CsvCollectionService} from '../csv-collection.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-csv-collection-template',
-  template:
-    '<a routerLink="/csv-collections/{{idData}}">{{text}}</a>'
+    selector: 'app-csv-collection-template',
+    template: '<a routerLink="/csv-collections/{{idData}}">{{text}}</a>',
+    standalone: true,
+    imports: [RouterLink]
 })
 export class CsvCollectionTemplateComponent extends DynamicComponent implements OnInit {
 

@@ -26,33 +26,31 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputGroupModule } from 'primeng/inputgroup';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AiModelRoutingModule,
-    TableModule,
-    ToastModule,
-    ButtonModule,
-    InputTextModule,
-    FieldsetModule,
-    TooltipModule,
-    ChartModule,
-    DropdownModule,
-    CheckboxModule,
-    FileUploadModule,
-    DialogModule,
-    ConfirmDialogModule,
-    MultiSelectModule,
-    InputTextareaModule,
-    InputGroupModule,
-  ],
-  declarations: [
-    AiModelListComponent,
-    AiModelDetailComponent,
-    AiModelTemplateComponent,
-    AiModelNewComponent,
-    TensorboardLogsTemplateComponent
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AiModelRoutingModule,
+        TableModule,
+        ToastModule,
+        ButtonModule,
+        InputTextModule,
+        FieldsetModule,
+        TooltipModule,
+        ChartModule,
+        DropdownModule,
+        CheckboxModule,
+        FileUploadModule,
+        DialogModule,
+        ConfirmDialogModule,
+        MultiSelectModule,
+        InputTextareaModule,
+        InputGroupModule,
+        AiModelListComponent,
+        AiModelDetailComponent,
+        AiModelTemplateComponent,
+        AiModelNewComponent,
+        TensorboardLogsTemplateComponent,
+    ]
 })
 export class AiModelModule { }

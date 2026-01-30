@@ -16,14 +16,40 @@ import { AiModelCardNewComponent } from 'src/app/ai-model-card/ai-model-card-new
 import { AiModelCardService } from 'src/app/ai-model-card/ai-model-card.service';
 import { HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MessageService } from 'primeng/api';
+import { Button } from 'primeng/button';
+import { TooltipModule } from 'primeng/tooltip';
+import { NgIf, NgClass, JsonPipe, DatePipe } from '@angular/common';
+import { FieldsetModule } from 'primeng/fieldset';
+import { ChartModule } from 'primeng/chart';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
-  selector: 'app-ai-model-detail',
-  templateUrl: './ai-model-detail.component.html',
-  styleUrls: ['./ai-model-detail.component.css'],
-  providers: [DialogService, ConfirmationService, MessageService],
+    selector: 'app-ai-model-detail',
+    templateUrl: './ai-model-detail.component.html',
+    styleUrls: ['./ai-model-detail.component.css'],
+    providers: [DialogService, ConfirmationService, MessageService],
+    standalone: true,
+    imports: [
+        Button,
+        TooltipModule,
+        NgIf,
+        FieldsetModule,
+        ChartModule,
+        DropdownModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgClass,
+        InputTextModule,
+        ConfirmDialogModule,
+        ToastModule,
+        JsonPipe,
+        DatePipe,
+    ],
 })
 export class AiModelDetailComponent implements OnInit, OnDestroy {
   aiFramework: string[] = ["TensorFlow", "HuggingFace", "BioImageIO",

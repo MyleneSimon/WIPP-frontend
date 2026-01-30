@@ -4,12 +4,19 @@ import {ImagesCollectionService} from '../images-collection.service';
 import {Router} from '@angular/router';
 import {DynamicDialogRef} from 'primeng/dynamicdialog';
 import {MessageService} from 'primeng/api';
+import { FormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { Button } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
-  selector: 'app-images-collection-batch-import',
-  templateUrl: './images-collection-batch-import.component.html',
-  styleUrls: ['./images-collection-batch-import.component.css'],
-  providers: [MessageService]
+    selector: 'app-images-collection-batch-import',
+    templateUrl: './images-collection-batch-import.component.html',
+    styleUrls: ['./images-collection-batch-import.component.css'],
+    providers: [MessageService],
+    standalone: true,
+    imports: [FormsModule, InputTextModule, InputTextareaModule, Button, ToastModule]
 })
 export class ImagesCollectionBatchImportComponent {
 

@@ -8,8 +8,8 @@ describe('AiModelCardDetailComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [AiModelCardDetailComponent]
-    })
+    declarations: [AiModelCardDetailComponent]
+})
       .compileComponents();
   }));
 

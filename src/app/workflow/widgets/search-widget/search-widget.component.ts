@@ -4,12 +4,15 @@ import {WorkflowService} from '../../workflow.service';
 import {Observable} from 'rxjs';
 import {debounceTime, distinctUntilChanged, map, switchMap} from 'rxjs/operators';
 import {dataMap} from '../../../data-service';
-import {AutoCompleteCompleteEvent} from 'primeng/autocomplete';
+import { AutoCompleteCompleteEvent, AutoCompleteModule } from 'primeng/autocomplete';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-search-widget',
-  templateUrl: './search-widget.component.html',
-  styleUrls: ['./search-widget.component.css']
+    selector: 'app-search-widget',
+    templateUrl: './search-widget.component.html',
+    styleUrls: ['./search-widget.component.css'],
+    standalone: true,
+    imports: [AutoCompleteModule, FormsModule, ReactiveFormsModule]
 })
 export class SearchWidgetComponent extends StringWidget {
 

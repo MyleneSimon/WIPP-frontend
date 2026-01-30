@@ -14,23 +14,22 @@ import {InputTextModule} from 'primeng/inputtext';
 import {TooltipModule} from 'primeng/tooltip';
 import {FieldsetModule} from 'primeng/fieldset';
 import {ProgressBarModule} from 'primeng/progressbar';
-import {CustomPipesModule} from '../custom-pipes/custom-pipes.module';
 
-@NgModule({ declarations: [
-        GenericDataListComponent,
-        GenericDataDetailComponent,
-        GenericDataTemplateComponent,
-        GenericDataNewComponent
-    ], imports: [CommonModule,
-        GenericDataRoutingModule,
-        FormsModule,
-        TableModule,
-        ToastModule,
-        TooltipModule,
-        ButtonModule,
-        FieldsetModule,
-        InputTextModule,
-        ProgressBarModule,
-        InputTextModule,
-        CustomPipesModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+
+@NgModule({
+    imports: [CommonModule,
+    GenericDataRoutingModule,
+    FormsModule,
+    TableModule,
+    ToastModule,
+    TooltipModule,
+    ButtonModule,
+    FieldsetModule,
+    InputTextModule,
+    ProgressBarModule,
+    InputTextModule,
+    GenericDataListComponent,
+    GenericDataDetailComponent,
+    GenericDataTemplateComponent,
+    GenericDataNewComponent], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class GenericDataModule { }

@@ -5,15 +5,27 @@ import {Router} from '@angular/router';
 import {IterativeTrainingPipeline, TaskCategory} from '../iterative-training-pipeline';
 import {IterativeTrainingPipelineService} from '../iterative-training-pipeline.service';
 import {Label} from '../../image-annotations/image-annotation';
-import {AutoCompleteCompleteEvent} from 'primeng/autocomplete';
+import { AutoCompleteCompleteEvent, AutoCompleteModule } from 'primeng/autocomplete';
 import {ImagesCollection, ImagesCollectionImportMethod} from '../../images-collection/images-collection';
 import {ImagesCollectionService} from '../../images-collection/images-collection.service';
+import { FormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { TooltipModule } from 'primeng/tooltip';
+import { NgIf, NgFor } from '@angular/common';
+import { Button } from 'primeng/button';
+import { InputGroupModule } from 'primeng/inputgroup';
+import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+import { ColorPickerModule } from 'primeng/colorpicker';
+import { ChipModule } from 'primeng/chip';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
-  selector: 'app-iterative-training-pipeline-new',
-  templateUrl: './iterative-training-pipeline-new.component.html',
-  styleUrl: './iterative-training-pipeline-new.component.css',
-  providers: [MessageService]
+    selector: 'app-iterative-training-pipeline-new',
+    templateUrl: './iterative-training-pipeline-new.component.html',
+    styleUrl: './iterative-training-pipeline-new.component.css',
+    providers: [MessageService],
+    standalone: true,
+    imports: [FormsModule, InputTextModule, TooltipModule, AutoCompleteModule, NgIf, Button, InputGroupModule, InputGroupAddonModule, ColorPickerModule, NgFor, ChipModule, ToastModule]
 })
 export class IterativeTrainingPipelineNewComponent {
 

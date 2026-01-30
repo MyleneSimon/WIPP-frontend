@@ -8,8 +8,8 @@ describe('NotebookTemplateComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ NotebookTemplateComponent ]
-    })
+    imports: [NotebookTemplateComponent]
+})
     .compileComponents();
   }));
 

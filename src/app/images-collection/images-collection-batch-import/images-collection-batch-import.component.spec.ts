@@ -8,8 +8,8 @@ describe('ImagesCollectionBatchImportComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ImagesCollectionBatchImportComponent ]
-    })
+    imports: [ImagesCollectionBatchImportComponent]
+})
     .compileComponents();
   }));
 

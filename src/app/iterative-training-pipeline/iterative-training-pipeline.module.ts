@@ -26,32 +26,30 @@ import {DropdownModule} from 'primeng/dropdown';
 
 
 @NgModule({
-  declarations: [
-    IterativeTrainingPipelineListComponent,
-    IterativeTrainingPipelineDetailComponent,
-    IterativeTrainingPipelineNewComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    IterativeTrainingPipelineRoutingModule,
-    TableModule,
-    ToastModule,
-    ButtonModule,
-    InputTextModule,
-    FieldsetModule,
-    TooltipModule,
-    DialogModule,
-    MessageModule,
-    SkeletonModule,
-    ChipModule,
-    ChipsModule,
-    ColorPickerModule,
-    InputNumberModule,
-    InputGroupAddonModule,
-    InputGroupModule,
-    AutoCompleteModule,
-    DropdownModule
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        IterativeTrainingPipelineRoutingModule,
+        TableModule,
+        ToastModule,
+        ButtonModule,
+        InputTextModule,
+        FieldsetModule,
+        TooltipModule,
+        DialogModule,
+        MessageModule,
+        SkeletonModule,
+        ChipModule,
+        ChipsModule,
+        ColorPickerModule,
+        InputNumberModule,
+        InputGroupAddonModule,
+        InputGroupModule,
+        AutoCompleteModule,
+        DropdownModule,
+        IterativeTrainingPipelineListComponent,
+        IterativeTrainingPipelineDetailComponent,
+        IterativeTrainingPipelineNewComponent
+    ]
 })
 export class IterativeTrainingPipelineModule { }

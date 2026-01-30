@@ -8,8 +8,8 @@ describe('ModalErrorComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModalErrorComponent ]
-    })
+    imports: [ModalErrorComponent]
+})
     .compileComponents();
   }));
 

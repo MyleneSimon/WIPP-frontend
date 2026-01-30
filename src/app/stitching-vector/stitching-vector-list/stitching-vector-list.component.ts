@@ -4,13 +4,21 @@ import {StitchingVectorNewComponent} from '../stitching-vector-new/stitching-vec
 import {StitchingVectorService} from '../stitching-vector.service';
 import {KeycloakService} from '../../services/keycloak/keycloak.service'
 import {DialogService} from 'primeng/dynamicdialog';
-import {MessageService} from 'primeng/api';
+import { MessageService, PrimeTemplate } from 'primeng/api';
+import { TableModule } from 'primeng/table';
+import { NgIf, DatePipe } from '@angular/common';
+import { Button } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { RouterLink } from '@angular/router';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
-  selector: 'app-stitching-vector-list',
-  templateUrl: './stitching-vector-list.component.html',
-  styleUrls: ['./stitching-vector-list.component.css'],
-  providers: [DialogService, MessageService]
+    selector: 'app-stitching-vector-list',
+    templateUrl: './stitching-vector-list.component.html',
+    styleUrls: ['./stitching-vector-list.component.css'],
+    providers: [DialogService, MessageService],
+    standalone: true,
+    imports: [TableModule, PrimeTemplate, NgIf, Button, InputTextModule, RouterLink, ToastModule, DatePipe]
 })
 export class StitchingVectorListComponent implements OnInit, OnDestroy {
   stitchingVectors: StitchingVector[];

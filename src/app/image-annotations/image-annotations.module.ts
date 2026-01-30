@@ -18,24 +18,22 @@ import {ChipsModule} from 'primeng/chips';
 
 
 @NgModule({
-  declarations: [
-    ImageAnnotationsListComponent,
-    ImageAnnotationsDetailComponent
-  ],
-  imports: [
-    CommonModule,
-    ImageAnnotationsRoutingModule,
-    TableModule,
-    ToastModule,
-    ButtonModule,
-    InputTextModule,
-    FieldsetModule,
-    TooltipModule,
-    DialogModule,
-    MessageModule,
-    SkeletonModule,
-    ChipModule,
-    ChipsModule,
-  ]
+    imports: [
+        CommonModule,
+        ImageAnnotationsRoutingModule,
+        TableModule,
+        ToastModule,
+        ButtonModule,
+        InputTextModule,
+        FieldsetModule,
+        TooltipModule,
+        DialogModule,
+        MessageModule,
+        SkeletonModule,
+        ChipModule,
+        ChipsModule,
+        ImageAnnotationsListComponent,
+        ImageAnnotationsDetailComponent,
+    ]
 })
 export class ImageAnnotationsModule { }

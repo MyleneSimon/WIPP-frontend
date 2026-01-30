@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {DialogService} from 'primeng/dynamicdialog';
-import {MessageService} from 'primeng/api';
-import {ActivatedRoute, Router} from '@angular/router';
+import { MessageService, PrimeTemplate } from 'primeng/api';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import {KeycloakService} from '../../services/keycloak/keycloak.service';
 import {IterativeTrainingPipeline} from '../iterative-training-pipeline';
 import {IterativeTrainingPipelineService} from '../iterative-training-pipeline.service';
@@ -10,12 +10,21 @@ import {ImagesCollection} from '../../images-collection/images-collection';
 import {ImageAnnotationsService} from '../../image-annotations/image-annotations.service';
 import {environment} from '../../../environments/environment';
 import {MaskType} from '../../image-annotations/image-annotation';
+import { NgIf, NgFor, DatePipe } from '@angular/common';
+import { Button } from 'primeng/button';
+import { TooltipModule } from 'primeng/tooltip';
+import { FieldsetModule } from 'primeng/fieldset';
+import { ChipModule } from 'primeng/chip';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
-  selector: 'app-iterative-training-pipeline-detail',
-  templateUrl: './iterative-training-pipeline-detail.component.html',
-  styleUrl: './iterative-training-pipeline-detail.component.css',
-  providers: [DialogService, MessageService]
+    selector: 'app-iterative-training-pipeline-detail',
+    templateUrl: './iterative-training-pipeline-detail.component.html',
+    styleUrl: './iterative-training-pipeline-detail.component.css',
+    providers: [DialogService, MessageService],
+    standalone: true,
+    imports: [NgIf, Button, TooltipModule, FieldsetModule, RouterLink, NgFor, ChipModule, TableModule, PrimeTemplate, ToastModule, DatePipe]
 })
 export class IterativeTrainingPipelineDetailComponent {
   iterativeTrainingPipeline: IterativeTrainingPipeline = new IterativeTrainingPipeline();

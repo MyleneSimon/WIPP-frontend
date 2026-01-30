@@ -4,12 +4,18 @@ import {CsvCollectionService} from '../csv-collection.service';
 import {Router} from '@angular/router';
 import {DynamicDialogRef} from 'primeng/dynamicdialog';
 import {MessageService} from 'primeng/api';
+import { FormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { Button } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
-  selector: 'app-csv-collection-new',
-  templateUrl: './csv-collection-new.component.html',
-  styleUrls: ['./csv-collection-new.component.css'],
-  providers: [MessageService]
+    selector: 'app-csv-collection-new',
+    templateUrl: './csv-collection-new.component.html',
+    styleUrls: ['./csv-collection-new.component.css'],
+    providers: [MessageService],
+    standalone: true,
+    imports: [FormsModule, InputTextModule, Button, ToastModule]
 })
 
 export class CsvCollectionNewComponent {

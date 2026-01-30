@@ -3,12 +3,17 @@ import {PluginService} from '../plugin.service';
 import {Router} from '@angular/router';
 import {MessageService} from 'primeng/api';
 import {DynamicDialogRef} from 'primeng/dynamicdialog';
+import { FormsModule } from '@angular/forms';
+import { Button } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
-  selector: 'app-plugin-new',
-  templateUrl: './plugin-new.component.html',
-  styleUrls: ['./plugin-new.component.css'],
-  providers: [MessageService]
+    selector: 'app-plugin-new',
+    templateUrl: './plugin-new.component.html',
+    styleUrls: ['./plugin-new.component.css'],
+    providers: [MessageService],
+    standalone: true,
+    imports: [FormsModule, Button, ToastModule]
 })
 export class PluginNewComponent implements OnInit {
 

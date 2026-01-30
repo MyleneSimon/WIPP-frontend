@@ -6,19 +6,18 @@ import {MessagesModule} from 'primeng/messages';
 import {ButtonModule} from 'primeng/button';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DynamicDialogModule,
-    MessagesModule,
-    ButtonModule
-  ],
-  providers: [
-    DialogService
-  ],
-  declarations: [
-    ConfirmDialogComponent],
-  exports: [
-    ConfirmDialogComponent
-  ]
+    imports: [
+        CommonModule,
+        DynamicDialogModule,
+        MessagesModule,
+        ButtonModule,
+        ConfirmDialogComponent
+    ],
+    providers: [
+        DialogService
+    ],
+    exports: [
+        ConfirmDialogComponent
+    ]
 })
 export class ConfirmDialogModule { }

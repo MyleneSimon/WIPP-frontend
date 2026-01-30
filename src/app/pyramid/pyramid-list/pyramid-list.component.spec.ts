@@ -8,8 +8,8 @@ describe('PyramidListComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ PyramidListComponent ]
-    })
+    imports: [PyramidListComponent]
+})
     .compileComponents();
   }));
 

@@ -8,8 +8,8 @@ describe('StitchingVectorNewComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ StitchingVectorNewComponent ]
-    })
+    imports: [StitchingVectorNewComponent]
+})
     .compileComponents();
   }));
 

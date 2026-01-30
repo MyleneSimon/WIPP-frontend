@@ -11,12 +11,22 @@ import {Subject} from 'rxjs';
 import * as Flow from '@flowjs/flow.js';
 import {auditTime, map, switchMap} from 'rxjs/operators';
 import {DialogService} from 'primeng/dynamicdialog';
+import { Button, ButtonDirective } from 'primeng/button';
+import { TooltipModule } from 'primeng/tooltip';
+import { NgIf, NgFor, SlicePipe, DatePipe } from '@angular/common';
+import { FieldsetModule } from 'primeng/fieldset';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { TableModule } from 'primeng/table';
+import { PrimeTemplate } from 'primeng/api';
+import { BytesPipe } from '../../custom-pipes/bytes.pipe';
 
 @Component({
-  selector: 'app-generic-data-detail',
-  templateUrl: './generic-data-detail.component.html',
-  styleUrls: ['./generic-data-detail.component.css'],
-  providers: [DialogService]
+    selector: 'app-generic-data-detail',
+    templateUrl: './generic-data-detail.component.html',
+    styleUrls: ['./generic-data-detail.component.css'],
+    providers: [DialogService],
+    standalone: true,
+    imports: [Button, TooltipModule, NgIf, FieldsetModule, ButtonDirective, NgFor, ProgressBarModule, TableModule, PrimeTemplate, SlicePipe, DatePipe, BytesPipe]
 })
 export class GenericDataDetailComponent implements OnInit, AfterViewInit {
 

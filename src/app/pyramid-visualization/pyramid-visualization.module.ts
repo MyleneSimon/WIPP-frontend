@@ -5,7 +5,7 @@ import { PyramidVisualizationDetailComponent } from './pyramid-visualization-det
 import { PyramidVisualizationNewComponent } from './pyramid-visualization-new/pyramid-visualization-new.component';
 import { PyramidVisualizationHelpComponent } from './pyramid-visualization-help/pyramid-visualization-help.component';
 import {PyramidVisualizationRoutingModule} from './pyramid-visualization-routing.module';
-import {WdztModule} from '../wdzt/wdzt.module';
+
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DropdownModule} from 'primeng/dropdown';
 import {TableModule} from 'primeng/table';
@@ -17,12 +17,11 @@ import {TooltipModule} from 'primeng/tooltip';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 
 @NgModule({
-  imports: [
+    imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     PyramidVisualizationRoutingModule,
-    WdztModule,
     DropdownModule,
     TableModule,
     ToastModule,
@@ -30,13 +29,11 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
     InputTextModule,
     FieldsetModule,
     TooltipModule,
-    AutoCompleteModule
-  ],
-  declarations: [
+    AutoCompleteModule,
     PyramidVisualizationListComponent,
     PyramidVisualizationDetailComponent,
     PyramidVisualizationNewComponent,
-    PyramidVisualizationHelpComponent],
-
+    PyramidVisualizationHelpComponent
+],
 })
 export class PyramidVisualizationModule { }

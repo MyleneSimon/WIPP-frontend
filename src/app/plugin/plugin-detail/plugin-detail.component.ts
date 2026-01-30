@@ -4,13 +4,23 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Plugin} from '../plugin';
 import {KeycloakService} from '../../services/keycloak/keycloak.service';
 import {DialogService} from 'primeng/dynamicdialog';
-import {ConfirmationService} from 'primeng/api';
+import { ConfirmationService, PrimeTemplate } from 'primeng/api';
+import { Button } from 'primeng/button';
+import { TooltipModule } from 'primeng/tooltip';
+import { NgIf, JsonPipe, DatePipe } from '@angular/common';
+import { FieldsetModule } from 'primeng/fieldset';
+import { TableModule } from 'primeng/table';
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
+import { DialogModule } from 'primeng/dialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @Component({
-  selector: 'app-plugin-detail',
-  templateUrl: './plugin-detail.component.html',
-  styleUrls: ['./plugin-detail.component.css'],
-  providers: [DialogService, ConfirmationService]
+    selector: 'app-plugin-detail',
+    templateUrl: './plugin-detail.component.html',
+    styleUrls: ['./plugin-detail.component.css'],
+    providers: [DialogService, ConfirmationService],
+    standalone: true,
+    imports: [Button, TooltipModule, NgIf, FieldsetModule, TableModule, PrimeTemplate, NgxJsonViewerModule, DialogModule, ConfirmDialogModule, JsonPipe, DatePipe]
 })
 export class PluginDetailComponent implements OnInit, OnDestroy {
 

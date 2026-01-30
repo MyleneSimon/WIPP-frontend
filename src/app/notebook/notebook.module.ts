@@ -13,22 +13,20 @@ import {SkeletonModule} from 'primeng/skeleton';
 import {ToastModule} from 'primeng/toast';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    NotebookRoutingModule,
-    FieldsetModule,
-    TableModule,
-    InputTextModule,
-    IconFieldModule,
-    InputIconModule,
-    SkeletonModule,
-    ToastModule
-  ],
-  declarations: [
-    NotebookListComponent,
-    NotebookDetailComponent,
-    NotebookTemplateComponent
-  ]
+    imports: [
+        CommonModule,
+        NotebookRoutingModule,
+        FieldsetModule,
+        TableModule,
+        InputTextModule,
+        IconFieldModule,
+        InputIconModule,
+        SkeletonModule,
+        ToastModule,
+        NotebookListComponent,
+        NotebookDetailComponent,
+        NotebookTemplateComponent
+    ]
 })
 
 export class NotebookModule { }

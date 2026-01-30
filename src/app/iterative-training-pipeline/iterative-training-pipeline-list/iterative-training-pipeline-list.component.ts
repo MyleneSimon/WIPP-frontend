@@ -1,17 +1,24 @@
 import { Component } from '@angular/core';
 import {DialogService} from 'primeng/dynamicdialog';
-import {MessageService} from 'primeng/api';
-import {Router} from '@angular/router';
+import { MessageService, PrimeTemplate } from 'primeng/api';
+import { Router, RouterLink } from '@angular/router';
 import {KeycloakService} from '../../services/keycloak/keycloak.service';
 import {IterativeTrainingPipeline} from '../iterative-training-pipeline';
 import {IterativeTrainingPipelineService} from '../iterative-training-pipeline.service';
 import {IterativeTrainingPipelineNewComponent} from '../iterative-training-pipeline-new/iterative-training-pipeline-new.component';
+import { TableModule } from 'primeng/table';
+import { NgIf, DatePipe } from '@angular/common';
+import { Button } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
-  selector: 'app-iterative-training-pipeline-list',
-  templateUrl: './iterative-training-pipeline-list.component.html',
-  styleUrl: './iterative-training-pipeline-list.component.css',
-  providers: [DialogService, MessageService]
+    selector: 'app-iterative-training-pipeline-list',
+    templateUrl: './iterative-training-pipeline-list.component.html',
+    styleUrl: './iterative-training-pipeline-list.component.css',
+    providers: [DialogService, MessageService],
+    standalone: true,
+    imports: [TableModule, PrimeTemplate, NgIf, Button, InputTextModule, RouterLink, ToastModule, DatePipe]
 })
 export class IterativeTrainingPipelineListComponent {
 

@@ -4,12 +4,18 @@ import {GenericDataService} from '../generic-data.service'
 import {Router} from '@angular/router';
 import {DynamicDialogRef} from 'primeng/dynamicdialog';
 import {MessageService} from 'primeng/api';
+import { FormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { Button } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
-  selector: 'app-generic-data-new',
-  templateUrl: './generic-data-new.component.html',
-  styleUrls: ['./generic-data-new.component.css'],
-  providers: [MessageService]
+    selector: 'app-generic-data-new',
+    templateUrl: './generic-data-new.component.html',
+    styleUrls: ['./generic-data-new.component.css'],
+    providers: [MessageService],
+    standalone: true,
+    imports: [FormsModule, InputTextModule, Button, ToastModule]
 })
 export class GenericDataNewComponent {
 

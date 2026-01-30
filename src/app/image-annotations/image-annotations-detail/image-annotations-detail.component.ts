@@ -1,13 +1,13 @@
 import {Component, NgZone} from '@angular/core';
 import {Job} from '../../job/job';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import {DialogService} from 'primeng/dynamicdialog';
 import {KeycloakService} from '../../services/keycloak/keycloak.service';
 import {JobDetailComponent} from '../../job/job-detail/job-detail.component';
 import {ImageAnnotationsCollection} from '../image-annotations-collection';
 import {ImageAnnotation} from '../image-annotation';
 import {ImageAnnotationsService} from '../image-annotations.service';
-import {MessageService} from 'primeng/api';
+import { MessageService, PrimeTemplate } from 'primeng/api';
 import {AppConfigService} from '../../app-config.service';
 import OpenSeadragon from 'openseadragon';
 import {environment} from '../../../environments/environment';
@@ -15,12 +15,22 @@ import * as Annotorious from '@recogito/annotorious-openseadragon';
 import ShapeLabelsFormatter from '@recogito/annotorious-shape-labels'
 import {ConfirmDialogService} from '../../confirm-dialog/confirm-dialog.service';
 import {saveAs} from 'file-saver';
+import { Button } from 'primeng/button';
+import { TooltipModule } from 'primeng/tooltip';
+import { NgIf, NgFor, DatePipe } from '@angular/common';
+import { FieldsetModule } from 'primeng/fieldset';
+import { ChipModule } from 'primeng/chip';
+import { TableModule } from 'primeng/table';
+import { SkeletonModule } from 'primeng/skeleton';
+import { DialogModule } from 'primeng/dialog';
 
 @Component({
-  selector: 'app-image-annotations-detail',
-  templateUrl: './image-annotations-detail.component.html',
-  styleUrl: './image-annotations-detail.component.css',
-  providers: [DialogService, MessageService]
+    selector: 'app-image-annotations-detail',
+    templateUrl: './image-annotations-detail.component.html',
+    styleUrl: './image-annotations-detail.component.css',
+    providers: [DialogService, MessageService],
+    standalone: true,
+    imports: [Button, TooltipModule, NgIf, FieldsetModule, NgFor, ChipModule, TableModule, PrimeTemplate, SkeletonModule, RouterLink, DialogModule, DatePipe]
 })
 export class ImageAnnotationsDetailComponent {
 

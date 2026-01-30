@@ -8,8 +8,8 @@ describe('GenericDataTemplateComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GenericDataTemplateComponent ]
-    })
+    imports: [GenericDataTemplateComponent]
+})
     .compileComponents();
   }));
 

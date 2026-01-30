@@ -28,7 +28,7 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import {CheckboxModule} from 'primeng/checkbox';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
 import {InputTextareaModule} from 'primeng/inputtextarea';
-import {CustomPipesModule} from '../custom-pipes/custom-pipes.module';
+
 import {ImagesCollectionCreateAnnotTaskComponent} from './images-collection-create-annot-task/images-collection-create-annot-task.component';
 import {ColorPickerModule} from 'primeng/colorpicker';
 import {ChipModule} from 'primeng/chip';
@@ -39,7 +39,7 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 
 @NgModule({
-  imports: [
+    imports: [
     CommonModule,
     ImagesCollectionRoutingModule,
     FormsModule,
@@ -70,15 +70,12 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
     InputGroupAddonModule,
     InputGroupModule,
     AutoCompleteModule,
-    CustomPipesModule
-  ],
-  declarations: [
     ImagesCollectionDetailComponent,
     ImagesCollectionListComponent,
     ImagesCollectionNewComponent,
     ImagesCollectionTemplateComponent,
     ImagesCollectionBatchImportComponent,
     ImagesCollectionCreateAnnotTaskComponent
-  ]
+]
 })
 export class ImagesCollectionModule { }

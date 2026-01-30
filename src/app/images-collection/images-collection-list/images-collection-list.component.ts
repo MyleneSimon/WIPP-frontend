@@ -2,17 +2,25 @@ import { Component, NgModule, OnDestroy, OnInit } from '@angular/core';
 import {ImagesCollectionService} from '../images-collection.service';
 import {ImagesCollection} from '../images-collection';
 import {ImagesCollectionNewComponent} from '../images-collection-new/images-collection-new.component';
-import {Router} from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {KeycloakService} from '../../services/keycloak/keycloak.service'
 import {ImagesCollectionBatchImportComponent} from '../images-collection-batch-import/images-collection-batch-import.component';
-import {MenuItem, MessageService} from 'primeng/api';
+import { MenuItem, MessageService, PrimeTemplate } from 'primeng/api';
 import {DialogService} from 'primeng/dynamicdialog';
+import { TableModule } from 'primeng/table';
+import { NgIf, DatePipe } from '@angular/common';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { InputTextModule } from 'primeng/inputtext';
+import { ToastModule } from 'primeng/toast';
+import { BytesPipe } from '../../custom-pipes/bytes.pipe';
 
 @Component({
-  selector: 'app-images-collection-list',
-  templateUrl: './images-collection-list.component.html',
-  styleUrls: ['./images-collection-list.component.css'],
-  providers: [DialogService, MessageService]
+    selector: 'app-images-collection-list',
+    templateUrl: './images-collection-list.component.html',
+    styleUrls: ['./images-collection-list.component.css'],
+    providers: [DialogService, MessageService],
+    standalone: true,
+    imports: [TableModule, PrimeTemplate, NgIf, SplitButtonModule, InputTextModule, RouterLink, ToastModule, DatePipe, BytesPipe]
 })
 export class ImagesCollectionListComponent implements OnInit, OnDestroy {
   imagesCollections: ImagesCollection[];

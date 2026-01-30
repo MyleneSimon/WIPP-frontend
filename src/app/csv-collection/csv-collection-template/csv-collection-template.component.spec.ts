@@ -8,8 +8,8 @@ describe('CsvCollectionTemplateComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CsvCollectionTemplateComponent ]
-    })
+    imports: [CsvCollectionTemplateComponent]
+})
     .compileComponents();
   }));
 

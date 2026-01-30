@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 // primeng
 import { MessageService } from 'primeng/api';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
-import { FileUpload } from 'primeng/fileupload';
+import { FileUpload, FileUploadModule } from 'primeng/fileupload';
 // model
 import { AiModel } from '../ai-model';
 import { AiModelService } from '../ai-model.service';
@@ -11,12 +11,22 @@ import { FRAMEWORKS, OPERATION_TYPES, ARCHITECTURES } from 'src/app/ai-model-dat
 // card
 import { AiModelCard } from 'src/app/ai-model-card/ai-model-card';
 import { AiModelCardService } from 'src/app/ai-model-card/ai-model-card.service';
+import { FormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { DropdownModule } from 'primeng/dropdown';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { CheckboxModule } from 'primeng/checkbox';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { Button } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
-  selector: 'app-ai-model-new',
-  templateUrl: './ai-model-new.component.html',
-  styleUrls: ['./ai-model-new.component.css'],
-  providers: [MessageService]
+    selector: 'app-ai-model-new',
+    templateUrl: './ai-model-new.component.html',
+    styleUrls: ['./ai-model-new.component.css'],
+    providers: [MessageService],
+    standalone: true,
+    imports: [FormsModule, InputTextModule, DropdownModule, MultiSelectModule, FileUploadModule, CheckboxModule, InputTextareaModule, Button, ToastModule]
 })
 export class AiModelNewComponent implements OnInit {
 

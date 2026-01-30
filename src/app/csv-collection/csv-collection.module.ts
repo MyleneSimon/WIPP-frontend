@@ -13,10 +13,10 @@ import {InputTextModule} from 'primeng/inputtext';
 import {FieldsetModule} from 'primeng/fieldset';
 import {TooltipModule} from 'primeng/tooltip';
 import {ProgressBarModule} from 'primeng/progressbar';
-import {CustomPipesModule} from '../custom-pipes/custom-pipes.module';
+
 
 @NgModule({
-  imports: [
+    imports: [
     CommonModule,
     CsvCollectionRoutingModule,
     FormsModule,
@@ -27,13 +27,10 @@ import {CustomPipesModule} from '../custom-pipes/custom-pipes.module';
     FieldsetModule,
     TooltipModule,
     ProgressBarModule,
-    CustomPipesModule
-  ],
-  declarations: [
     CsvCollectionListComponent,
     CsvCollectionDetailComponent,
     CsvCollectionTemplateComponent,
     CsvCollectionNewComponent
-  ]
+]
 })
 export class CsvCollectionModule { }

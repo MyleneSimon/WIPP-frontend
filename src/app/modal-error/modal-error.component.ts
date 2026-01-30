@@ -1,10 +1,13 @@
 import {Component, Input} from '@angular/core';
 import {DialogService, DynamicDialogComponent, DynamicDialogRef} from 'primeng/dynamicdialog';
+import { Button } from 'primeng/button';
 
 @Component({
-  selector: 'app-modal-error',
-  templateUrl: './modal-error.component.html',
-  styleUrls: ['./modal-error.component.css']
+    selector: 'app-modal-error',
+    templateUrl: './modal-error.component.html',
+    styleUrls: ['./modal-error.component.css'],
+    standalone: true,
+    imports: [Button]
 })
 export class ModalErrorComponent {
   message: string = '';

@@ -8,8 +8,8 @@ describe('PyramidVisualizationHelpComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ PyramidVisualizationHelpComponent ]
-    })
+    imports: [PyramidVisualizationHelpComponent]
+})
     .compileComponents();
   }));
 

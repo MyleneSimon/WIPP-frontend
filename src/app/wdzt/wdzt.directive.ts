@@ -2,7 +2,8 @@ import {AfterContentChecked, AfterContentInit, AfterViewInit, Directive, Element
 import {KeycloakService} from '../services/keycloak/keycloak.service';
 
 @Directive({
-  selector: 'wippWdzt'
+    selector: 'wippWdzt',
+    standalone: true
 })
 export class WdztDirective implements AfterViewInit, OnChanges {
 

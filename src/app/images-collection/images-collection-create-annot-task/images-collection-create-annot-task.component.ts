@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {MessageService} from 'primeng/api';
+import { MessageService, PrimeTemplate } from 'primeng/api';
 import {DialogService, DynamicDialogComponent, DynamicDialogRef} from 'primeng/dynamicdialog';
 import {ImagesCollectionService} from '../images-collection.service';
 import {Router} from '@angular/router';
@@ -8,15 +8,32 @@ import {ImagesCollection} from '../images-collection';
 import {Label, MaskType} from '../../image-annotations/image-annotation';
 import {ImageAnnotationsService} from '../../image-annotations/image-annotations.service';
 import {ImageAnnotationsCollection} from '../../image-annotations/image-annotations-collection';
-import {AutoCompleteCompleteEvent} from 'primeng/autocomplete';
+import { AutoCompleteCompleteEvent, AutoCompleteModule } from 'primeng/autocomplete';
 import {environment} from '../../../environments/environment';
 import {KeycloakService} from '../../services/keycloak/keycloak.service';
+import { FormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { TooltipModule } from 'primeng/tooltip';
+import { NgIf, NgFor } from '@angular/common';
+import { Button } from 'primeng/button';
+import { InputGroupModule } from 'primeng/inputgroup';
+import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+import { ColorPickerModule } from 'primeng/colorpicker';
+import { ChipModule } from 'primeng/chip';
+import { TableModule } from 'primeng/table';
+import { FieldsetModule } from 'primeng/fieldset';
+import { CheckboxModule } from 'primeng/checkbox';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { ChipsModule } from 'primeng/chips';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
-  selector: 'app-images-collection-create-annot-task',
-  templateUrl: './images-collection-create-annot-task.component.html',
-  styleUrl: './images-collection-create-annot-task.component.css',
-  providers: [MessageService]
+    selector: 'app-images-collection-create-annot-task',
+    templateUrl: './images-collection-create-annot-task.component.html',
+    styleUrl: './images-collection-create-annot-task.component.css',
+    providers: [MessageService],
+    standalone: true,
+    imports: [FormsModule, InputTextModule, TooltipModule, NgIf, Button, InputGroupModule, InputGroupAddonModule, ColorPickerModule, NgFor, ChipModule, TableModule, PrimeTemplate, FieldsetModule, CheckboxModule, InputNumberModule, ChipsModule, AutoCompleteModule, ToastModule]
 })
 export class ImagesCollectionCreateAnnotTaskComponent {
 

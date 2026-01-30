@@ -1,17 +1,24 @@
 import {Component} from '@angular/core';
 import {Visualization} from '../visualization';
-import {Router} from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {PyramidVisualizationService} from '../pyramid-visualization.service';
 import {PyramidVisualizationNewComponent} from '../pyramid-visualization-new/pyramid-visualization-new.component';
 import {KeycloakService} from '../../services/keycloak/keycloak.service'
 import {DialogService} from 'primeng/dynamicdialog';
-import {MessageService} from 'primeng/api';
+import { MessageService, PrimeTemplate } from 'primeng/api';
+import { TableModule } from 'primeng/table';
+import { NgIf, DatePipe } from '@angular/common';
+import { Button } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
-  selector: 'app-pyramid-visualization-list',
-  templateUrl: './pyramid-visualization-list.component.html',
-  styleUrls: ['./pyramid-visualization-list.component.css'],
-  providers: [DialogService, MessageService]
+    selector: 'app-pyramid-visualization-list',
+    templateUrl: './pyramid-visualization-list.component.html',
+    styleUrls: ['./pyramid-visualization-list.component.css'],
+    providers: [DialogService, MessageService],
+    standalone: true,
+    imports: [TableModule, PrimeTemplate, NgIf, Button, InputTextModule, RouterLink, ToastModule, DatePipe]
 })
 export class PyramidVisualizationListComponent {
 

@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {PyramidRoutingModule} from './pyramid-routing.module';
 import {PyramidListComponent} from './pyramid-list/pyramid-list.component';
 import {PyramidDetailComponent} from './pyramid-detail/pyramid-detail.component';
-import {WdztModule} from '../wdzt/wdzt.module';
+
 import {PyramidTemplateComponent} from './pyramid-template/pyramid-template.component';
 import {TableModule} from 'primeng/table';
 import {ToastModule} from 'primeng/toast';
@@ -14,23 +14,20 @@ import {FieldsetModule} from 'primeng/fieldset';
 import {TooltipModule} from 'primeng/tooltip';
 
 @NgModule({
-  imports: [
+    imports: [
     CommonModule,
     PyramidRoutingModule,
     FormsModule,
-    WdztModule,
     TableModule,
     ToastModule,
     ButtonModule,
     InputTextModule,
     FieldsetModule,
-    TooltipModule
-  ],
-  declarations: [
+    TooltipModule,
     PyramidDetailComponent,
     PyramidListComponent,
     PyramidTemplateComponent
-  ]
+]
 })
 export class PyramidModule {
 }

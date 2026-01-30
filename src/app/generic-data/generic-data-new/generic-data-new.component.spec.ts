@@ -8,8 +8,8 @@ describe('GenericDataNewComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GenericDataNewComponent ]
-    })
+    imports: [GenericDataNewComponent]
+})
     .compileComponents();
   }));
 

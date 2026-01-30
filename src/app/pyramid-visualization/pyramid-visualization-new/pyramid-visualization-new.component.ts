@@ -4,12 +4,18 @@ import {MessageService} from 'primeng/api';
 import {DynamicDialogRef} from 'primeng/dynamicdialog';
 import {Router} from '@angular/router';
 import {PyramidVisualizationService} from '../pyramid-visualization.service';
+import { FormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { Button } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
-  selector: 'app-pyramid-visualization-new',
-  templateUrl: './pyramid-visualization-new.component.html',
-  styleUrls: ['./pyramid-visualization-new.component.css'],
-  providers: [MessageService]
+    selector: 'app-pyramid-visualization-new',
+    templateUrl: './pyramid-visualization-new.component.html',
+    styleUrls: ['./pyramid-visualization-new.component.css'],
+    providers: [MessageService],
+    standalone: true,
+    imports: [FormsModule, InputTextModule, Button, ToastModule]
 })
 export class PyramidVisualizationNewComponent {
 

@@ -19,11 +19,12 @@ import {NotebookTemplateComponent} from '../notebook/notebook-template/notebook-
 import {GenericDataTemplateComponent} from '../generic-data/generic-data-template/generic-data-template.component';
 
 @Component({
-  selector: 'app-dynamic-content',
-  template: '<div>\n' +
-    '  <div #container></div>\n' +
-    '</div>\n',
-  styleUrls: ['./dynamic-content.component.css']
+    selector: 'app-dynamic-content',
+    template: '<div>\n' +
+        '  <div #container></div>\n' +
+        '</div>\n',
+    styleUrls: ['./dynamic-content.component.css'],
+    standalone: true
 })
 export class DynamicContentComponent implements OnDestroy, AfterViewInit {
   @ViewChild('container', { read: ViewContainerRef }) container: ViewContainerRef;
