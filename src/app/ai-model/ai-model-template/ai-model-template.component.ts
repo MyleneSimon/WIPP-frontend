@@ -4,7 +4,7 @@ import { AiModelService } from '../ai-model.service';
 
 
 @Component({
-  selector: 'app-stitching-vector-template',
+  selector: 'app-ai-model-template',
   template:
     '<a routerLink="/ai-models/{{idData}}">{{text}}</a>'
 })
