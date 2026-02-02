@@ -166,13 +166,6 @@ export class ImagesCollectionDetailComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // fixme: temporary fix while waiting for 1.0.0 release of ngx-inline-editor
-    const faRemoveElt = this.elem.nativeElement.querySelector('.fa-remove');
-    if (faRemoveElt != null) { // this element can be null, if the user can not edit the collection
-      faRemoveElt.classList.remove('fa-remove');
-      faRemoveElt.classList.add('fa-times');
-    }
-
     this.refresh().subscribe(imagesCollection => {
       if (this.canEdit() && !imagesCollection.locked) {
         this.initFlow();

@@ -39,7 +39,7 @@
           <a *ngIf="job; else jobNonAvailable" (click)="displayJobModal(job.id)"
              class="wipp-link"
              pTooltip="Show Job"
-             placement="left">
+             tooltipPosition="left">
             {{job.name}}
           </a>
         </div>
@@ -58,7 +58,7 @@
              (click)="openDownload(stitchingVector._links.statistics.href)"
              class="wipp-link"
              pTooltip="Download statistics file"
-             placement="left">
+             tooltipPosition="left">
             Download
           </a>
         </div>

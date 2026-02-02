@@ -10,10 +10,10 @@
     <!--TODO: add download link (metadata not handled in pyramid building yet) -->
     <!--<a [href]="visualization?._links?.download?.href"-->
     <!--pTooltip="Download as zip"-->
-    <!--placement="left"-->
+    <!--tooltipPosition="left"-->
     <!--class="btn btn-light">-->
     <!--<span-->
-    <!--aria-hidden="true"><i class="fa fa-download"></i></span>-->
+    <!--aria-hidden="true"><i class="pi pi-download"></i></span>-->
     <!--</a>-->
   </div>
 </h1>
@@ -71,15 +71,15 @@
                     <span *ngIf="savedStatus === 'saved'"
                           aria-hidden="true"
                           pTooltip="Configuration saved on the server"
-                          placement="left"><i class="fa fa-check-circle"></i></span>
+                          tooltipPosition="left"><i class="pi pi-check-circle"></i></span>
           <span *ngIf="savedStatus === 'error'"
                 aria-hidden="true"
                 pTooltip="Error saving the configuration on the server"
-                placement="left"><i class="fa fa-exclamation-circle"></i></span>
+                tooltipPosition="left"><i class="pi pi-exclamation-circle"></i></span>
           <img *ngIf="savedStatus === 'saving'"
                src="assets/img/loading.svg" alt="Saving configuration"
                pTooltip="Saving configuration"
-               placement="left" class="wip-icon">
+               tooltipPosition="left" class="wip-icon">
         </th>
       </tr>
       </thead>

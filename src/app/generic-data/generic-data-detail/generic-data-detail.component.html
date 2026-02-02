@@ -63,7 +63,7 @@
           <a *ngIf="job; else not_applicable" (click)="displayJobModal(job.id)"
              class="wipp-link"
              pTooltip="Show Job"
-             placement="left">
+             tooltipPosition="left">
             {{job.name}}
           </a>
         </div>
@@ -147,7 +147,7 @@
                 size="small"
                 severity="danger"
                 pTooltip="Delete all files"
-                placement="left"
+                tooltipPosition="left"
                 (click)="deleteAllGenericFiles()">
       </p-button>
     </div>

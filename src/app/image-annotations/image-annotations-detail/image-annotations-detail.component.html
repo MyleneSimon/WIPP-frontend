@@ -52,13 +52,13 @@
           <a *ngIf="job" (click)="displayJobModal(job.id)"
              class="wipp-link"
              pTooltip="Show Job"
-             placement="left">
+             tooltipPosition="left">
             {{job.name}}
           </a>
           <a *ngIf="imageAnnotationsCollection.taskId; else jobNonAvailable"
              class="no-underline"
              pTooltip="See Annotation Task in CVAT"
-             placement="left"
+             tooltipPosition="left"
              href="{{cvatUrl}}/{{imageAnnotationsCollection.taskId}}">
             CVAT Task <i class="pi pi-external-link"></i>
           </a>
