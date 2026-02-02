@@ -95,7 +95,8 @@
         <label for="assignees" class="font-semibold">Assignees
           <span class="pi pi-question-circle" pTooltip="Assign a list of users to this annotation task (optional)"></span>
         </label>
-        <p-chips [(ngModel)]="userAssignees" id="assignees" name="assignees"/>
+        <p-autocomplete [(ngModel)]="userAssignees" inputId="assignees" multiple fluid [typeahead]="false" />
+
       </div>
     </div>
     <div class="flex flex-column gap-2">

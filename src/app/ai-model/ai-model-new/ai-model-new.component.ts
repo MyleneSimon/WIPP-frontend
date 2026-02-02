@@ -16,7 +16,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { CheckboxModule } from 'primeng/checkbox';
-import { InputTextareaModule } from 'primeng/inputtextarea';
+import { TextareaModule } from 'primeng/textarea';
 import { Button } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 
@@ -26,7 +26,7 @@ import { ToastModule } from 'primeng/toast';
     styleUrls: ['./ai-model-new.component.css'],
     providers: [MessageService],
     standalone: true,
-    imports: [FormsModule, InputTextModule, DropdownModule, MultiSelectModule, FileUploadModule, CheckboxModule, InputTextareaModule, Button, ToastModule]
+    imports: [FormsModule, InputTextModule, DropdownModule, MultiSelectModule, FileUploadModule, CheckboxModule, TextareaModule, Button, ToastModule]
 })
 export class AiModelNewComponent implements OnInit {
 

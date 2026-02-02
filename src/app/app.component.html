@@ -6,34 +6,34 @@
   <p-menubar [model]="items">
     <ng-template pTemplate="end">
       <div class="flex align-items-center gap-2 p-menuitem">
-        <div class="p-menuitem-content">
-          <a pRipple class="flex align-items-center p-menuitem-link" href="{{onlineHelpLink}}">
+        <div class="p-menubar-item-content">
+          <a pRipple class="flex align-items-center p-menubar-item-link" href="{{onlineHelpLink}}">
             <span class="pi pi-question"></span>
             <span class="ml-2">Help</span>
           </a>
         </div>
-        <div class="p-menuitem-content" *ngIf="displayApiDocsLink">
-          <a pRipple class="flex align-items-center p-menuitem-link" href="{{apiDocsLink}}">
+        <div class="p-menubar-item-content" *ngIf="displayApiDocsLink">
+          <a pRipple class="flex align-items-center p-menubar-item-link" href="{{apiDocsLink}}">
             <span class="pi pi-code"></span>
             <span class="ml-2">API docs</span>
           </a>
         </div>
-        <div class="p-menuitem-content" *ngIf="!isLoggedIn()">
-          <a pRipple class="flex align-items-center p-menuitem-link"
+        <div class="p-menubar-item-content" *ngIf="!isLoggedIn()">
+          <a pRipple class="flex align-items-center p-menubar-item-link"
              (click)="login()" style="cursor: pointer;" target="_blank">
             <span class="pi pi-sign-in"></span>
             <span class="ml-2">Login</span>
           </a>
         </div>
-        <div class="p-menuitem-content" *ngIf="isLoggedIn()">
-          <a pRipple class="flex align-items-center p-menuitem-link"
+        <div class="p-menubar-item-content" *ngIf="isLoggedIn()">
+          <a pRipple class="flex align-items-center p-menubar-item-link"
              (click)="profile()" style="cursor: pointer;" target="_blank">
             <span class="pi pi-user"></span>
             <span class="ml-2">{{displayUserInfo()}}</span>
           </a>
         </div>
-        <div class="p-menuitem-content" *ngIf="isLoggedIn()">
-          <a pRipple class="flex align-items-center p-menuitem-link"
+        <div class="p-menubar-item-content" *ngIf="isLoggedIn()">
+          <a pRipple class="flex align-items-center p-menubar-item-link"
              (click)="logout()" style="cursor: pointer;" target="_blank">
             <span class="pi pi-sign-out"></span>
             <span class="ml-2">Logout</span>

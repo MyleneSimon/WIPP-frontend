@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DialogService, DynamicDialogComponent, DynamicDialogRef} from 'primeng/dynamicdialog';
-import { Message, PrimeTemplate } from 'primeng/api';
+import { ToastMessageOptions, PrimeTemplate } from 'primeng/api';
 import { NgFor } from '@angular/common';
 import { MessagesModule } from 'primeng/messages';
 import { Button } from 'primeng/button';
@@ -17,7 +17,7 @@ export class ConfirmDialogComponent implements OnInit {
   title: string;
   message: string;
   warnings: string[]
-  messages: Message[] | undefined;
+  messages: ToastMessageOptions[] | undefined;
 
   instance: DynamicDialogComponent | undefined;
 

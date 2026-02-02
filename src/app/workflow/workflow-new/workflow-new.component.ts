@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { NgIf } from '@angular/common';
 import { MessagesModule } from 'primeng/messages';
-import { InputTextareaModule } from 'primeng/inputtextarea';
+import { TextareaModule } from 'primeng/textarea';
 import { Button } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 
@@ -18,7 +18,7 @@ import { ToastModule } from 'primeng/toast';
     styleUrls: ['./workflow-new.component.css'],
     providers: [MessageService],
     standalone: true,
-    imports: [FormsModule, InputTextModule, NgIf, MessagesModule, PrimeTemplate, InputTextareaModule, Button, ToastModule]
+    imports: [FormsModule, InputTextModule, NgIf, MessagesModule, PrimeTemplate, TextareaModule, Button, ToastModule]
 })
 export class WorkflowNewComponent implements OnInit {
 

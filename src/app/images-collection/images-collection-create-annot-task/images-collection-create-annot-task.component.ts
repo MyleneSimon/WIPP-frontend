@@ -24,7 +24,6 @@ import { TableModule } from 'primeng/table';
 import { FieldsetModule } from 'primeng/fieldset';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputNumberModule } from 'primeng/inputnumber';
-import { ChipsModule } from 'primeng/chips';
 import { ToastModule } from 'primeng/toast';
 
 @Component({
@@ -33,7 +32,7 @@ import { ToastModule } from 'primeng/toast';
     styleUrl: './images-collection-create-annot-task.component.css',
     providers: [MessageService],
     standalone: true,
-    imports: [FormsModule, InputTextModule, TooltipModule, NgIf, Button, InputGroupModule, InputGroupAddonModule, ColorPickerModule, NgFor, ChipModule, TableModule, PrimeTemplate, FieldsetModule, CheckboxModule, InputNumberModule, ChipsModule, AutoCompleteModule, ToastModule]
+    imports: [FormsModule, InputTextModule, TooltipModule, NgIf, Button, InputGroupModule, InputGroupAddonModule, ColorPickerModule, NgFor, ChipModule, TableModule, PrimeTemplate, FieldsetModule, CheckboxModule, InputNumberModule, AutoCompleteModule, ToastModule]
 })
 export class ImagesCollectionCreateAnnotTaskComponent {
 

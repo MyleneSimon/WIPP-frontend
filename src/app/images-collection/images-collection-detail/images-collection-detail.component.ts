@@ -27,7 +27,8 @@ import { FieldsetModule } from 'primeng/fieldset';
 import { FormsModule } from '@angular/forms';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { DataViewModule } from 'primeng/dataview';
-import { DropdownModule } from 'primeng/dropdown';
+import { SelectModule } from 'primeng/select';
+import { SelectButtonModule } from 'primeng/selectbutton';
 import { SkeletonModule } from 'primeng/skeleton';
 import { ButtonGroupModule } from 'primeng/buttongroup';
 import { TableModule } from 'primeng/table';
@@ -41,7 +42,7 @@ import { BytesPipe } from '../../custom-pipes/bytes.pipe';
     styleUrls: ['./images-collection-detail.component.css'],
     providers: [DialogService, MessageService],
     standalone: true,
-    imports: [NgIf, Button, TooltipModule, FieldsetModule, RouterLink, FormsModule, ButtonDirective, NgFor, ProgressBarModule, DataViewModule, PrimeTemplate, DropdownModule, NgClass, SkeletonModule, ButtonGroupModule, TableModule, DialogModule, ToastModule, SlicePipe, DatePipe, BytesPipe]
+    imports: [NgIf, Button, TooltipModule, FieldsetModule, RouterLink, FormsModule, ButtonDirective, NgFor, ProgressBarModule, DataViewModule, PrimeTemplate, SelectModule, NgClass, SkeletonModule, ButtonGroupModule, TableModule, DialogModule, ToastModule, SlicePipe, DatePipe, BytesPipe, SelectButtonModule]
 })
 export class ImagesCollectionDetailComponent implements OnInit, AfterViewInit {
 
@@ -58,6 +59,7 @@ export class ImagesCollectionDetailComponent implements OnInit, AfterViewInit {
   displayedColumnsMetadata: string[] = ['index', 'fileName', 'fileSize', 'actions'];
 
   layout: string = 'grid';
+  layoutOptions = ['list', 'grid'];
 
   sortOptions: SelectItem[];
   sortField: string;

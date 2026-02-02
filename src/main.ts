@@ -1,5 +1,10 @@
 import { enableProdMode, APP_INITIALIZER, importProvidersFrom } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { providePrimeNG } from 'primeng/config';
+import { definePreset, palette } from '@primeng/themes';
+import Aura from '@primeng/themes/aura';
+import Material from '@primeng/themes/material';
 
 
 import { environment } from './environments/environment';
@@ -27,22 +32,27 @@ import { ConfirmDialogModule } from './app/confirm-dialog/confirm-dialog.module'
 import { ImageAnnotationsModule } from './app/image-annotations/image-annotations.module';
 import { IterativeTrainingPipelineModule } from './app/iterative-training-pipeline/iterative-training-pipeline.module';
 import { AppRoutingModule } from './app/app-routing.module';
-import { provideAnimations } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { MenuModule } from 'primeng/menu';
 import { MenubarModule } from 'primeng/menubar';
-import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { AutoFocusModule } from 'primeng/autofocus';
 import { AppComponent } from './app/app.component';
 
 if (environment.production) {
   enableProdMode();
 }
+
+const MyPreset = definePreset(Aura, {
+    semantic: {
+        primary: palette('{blue}')
+    }
+});
+
 // We bootstrap the App with KeycloakService, to make sure KeycloakService is initialized
 KeycloakService.init()
 .then(() => bootstrapApplication(AppComponent, {
     providers: [
-        importProvidersFrom(RouterModule, BrowserModule, HomeModule, ImagesCollectionModule, StitchingVectorModule, PyramidModule, PyramidVisualizationModule, AiModelModule, CsvCollectionModule, NotebookModule, GenericDataModule, PluginModule, WorkflowModule, ConfirmDialogModule, ImageAnnotationsModule, IterativeTrainingPipelineModule, AppRoutingModule, FormsModule, MenuModule, MenubarModule, DynamicDialogModule, AutoFocusModule),
+        importProvidersFrom(RouterModule, HomeModule, ImagesCollectionModule, StitchingVectorModule, PyramidModule, PyramidVisualizationModule, AiModelModule, CsvCollectionModule, NotebookModule, GenericDataModule, PluginModule, WorkflowModule, ConfirmDialogModule, ImageAnnotationsModule, IterativeTrainingPipelineModule, AppRoutingModule, FormsModule, MenuModule, MenubarModule, AutoFocusModule),
         AppConfigService,
         {
             provide: APP_INITIALIZER,
@@ -59,7 +69,12 @@ KeycloakService.init()
         ConfirmDialogService,
         { provide: RouteReuseStrategy, useClass: AppRouteReuseStrategy },
         provideHttpClient(withInterceptorsFromDi()),
-        provideAnimations()
+        provideAnimationsAsync(),
+        providePrimeNG({ 
+            theme: {
+                preset: MyPreset
+            }
+        })
     ]
 }))
 .catch(err => console.log(err));

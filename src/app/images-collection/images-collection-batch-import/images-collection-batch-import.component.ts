@@ -6,7 +6,7 @@ import {DynamicDialogRef} from 'primeng/dynamicdialog';
 import {MessageService} from 'primeng/api';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
-import { InputTextareaModule } from 'primeng/inputtextarea';
+import { TextareaModule } from 'primeng/textarea';
 import { Button } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 
@@ -16,7 +16,7 @@ import { ToastModule } from 'primeng/toast';
     styleUrls: ['./images-collection-batch-import.component.css'],
     providers: [MessageService],
     standalone: true,
-    imports: [FormsModule, InputTextModule, InputTextareaModule, Button, ToastModule]
+    imports: [FormsModule, InputTextModule, TextareaModule, Button, ToastModule]
 })
 export class ImagesCollectionBatchImportComponent {
 

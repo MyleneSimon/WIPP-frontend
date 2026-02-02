@@ -25,7 +25,7 @@ import {DialogModule} from 'primeng/dialog';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import {ToolbarModule} from 'primeng/toolbar';
 import {DividerModule} from 'primeng/divider';
-import {InputTextareaModule} from 'primeng/inputtextarea';
+import {TextareaModule} from 'primeng/textarea';
 
 @NgModule({
     imports: [
@@ -49,7 +49,7 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     AutoCompleteModule,
     ToolbarModule,
     DividerModule,
-    InputTextareaModule,
+    TextareaModule,
     WorkflowListComponent,
     WorkflowDetailComponent,
     SearchWidgetComponent,

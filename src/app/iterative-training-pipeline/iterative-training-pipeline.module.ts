@@ -15,7 +15,6 @@ import {SkeletonModule} from 'primeng/skeleton';
 import {IterativeTrainingPipelineNewComponent} from './iterative-training-pipeline-new/iterative-training-pipeline-new.component';
 import {FormsModule} from '@angular/forms';
 import {ChipModule} from 'primeng/chip';
-import {ChipsModule} from 'primeng/chips';
 import {ColorPickerModule} from 'primeng/colorpicker';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {InputGroupAddonModule} from 'primeng/inputgroupaddon';
@@ -40,7 +39,6 @@ import {DropdownModule} from 'primeng/dropdown';
         MessageModule,
         SkeletonModule,
         ChipModule,
-        ChipsModule,
         ColorPickerModule,
         InputNumberModule,
         InputGroupAddonModule,

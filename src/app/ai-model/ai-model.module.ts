@@ -22,7 +22,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { DialogModule } from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MultiSelectModule } from 'primeng/multiselect';
-import { InputTextareaModule } from 'primeng/inputtextarea';
+import { TextareaModule } from 'primeng/textarea';
 import { InputGroupModule } from 'primeng/inputgroup';
 
 @NgModule({
@@ -44,7 +44,7 @@ import { InputGroupModule } from 'primeng/inputgroup';
         DialogModule,
         ConfirmDialogModule,
         MultiSelectModule,
-        InputTextareaModule,
+        TextareaModule,
         InputGroupModule,
         AiModelListComponent,
         AiModelDetailComponent,

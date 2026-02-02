@@ -27,14 +27,13 @@ import {ButtonGroupModule} from 'primeng/buttongroup';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {CheckboxModule} from 'primeng/checkbox';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
-import {InputTextareaModule} from 'primeng/inputtextarea';
+import {TextareaModule} from 'primeng/textarea';
 
 import {ImagesCollectionCreateAnnotTaskComponent} from './images-collection-create-annot-task/images-collection-create-annot-task.component';
 import {ColorPickerModule} from 'primeng/colorpicker';
 import {ChipModule} from 'primeng/chip';
 import {InputGroupModule} from 'primeng/inputgroup';
 import {InputGroupAddonModule} from 'primeng/inputgroupaddon';
-import {ChipsModule} from 'primeng/chips';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 
@@ -52,7 +51,7 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
     SplitButtonModule,
     ButtonGroupModule,
     InputTextModule,
-    InputTextareaModule,
+    TextareaModule,
     CardModule,
     TooltipModule,
     FieldsetModule,
@@ -64,7 +63,6 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
     CheckboxModule,
     OverlayPanelModule,
     ChipModule,
-    ChipsModule,
     ColorPickerModule,
     InputNumberModule,
     InputGroupAddonModule,

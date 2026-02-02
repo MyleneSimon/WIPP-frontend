@@ -13,7 +13,6 @@ import {DialogModule} from 'primeng/dialog';
 import {SkeletonModule} from 'primeng/skeleton';
 import {MessageModule} from 'primeng/message';
 import {ChipModule} from 'primeng/chip';
-import {ChipsModule} from 'primeng/chips';
 
 
 
@@ -31,7 +30,6 @@ import {ChipsModule} from 'primeng/chips';
         MessageModule,
         SkeletonModule,
         ChipModule,
-        ChipsModule,
         ImageAnnotationsListComponent,
         ImageAnnotationsDetailComponent,
     ]
