@@ -19,7 +19,6 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     templateUrl: './plugin-detail.component.html',
     styleUrls: ['./plugin-detail.component.css'],
     providers: [DialogService, ConfirmationService],
-    standalone: true,
     imports: [Button, TooltipModule, NgIf, FieldsetModule, TableModule, PrimeTemplate, NgxJsonViewerModule, DialogModule, ConfirmDialogModule, JsonPipe, DatePipe]
 })
 export class PluginDetailComponent implements OnInit, OnDestroy {

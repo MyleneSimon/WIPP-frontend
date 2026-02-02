@@ -17,7 +17,6 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './pyramid-visualization-list.component.html',
     styleUrls: ['./pyramid-visualization-list.component.css'],
     providers: [DialogService, MessageService],
-    standalone: true,
     imports: [TableModule, PrimeTemplate, NgIf, Button, InputTextModule, RouterLink, ToastModule, DatePipe]
 })
 export class PyramidVisualizationListComponent {
@@ -63,6 +62,7 @@ export class PyramidVisualizationListComponent {
       header: 'New visualization',
       position: 'top',
       width: '50vw',
+      closable: true,
       breakpoints: {
         '960px': '75vw',
         '640px': '90vw'

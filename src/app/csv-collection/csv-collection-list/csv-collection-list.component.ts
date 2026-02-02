@@ -17,7 +17,6 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './csv-collection-list.component.html',
     styleUrls: ['./csv-collection-list.component.css'],
     providers: [DialogService, MessageService],
-    standalone: true,
     imports: [TableModule, PrimeTemplate, NgIf, Button, InputTextModule, RouterLink, ToastModule, DatePipe]
 })
 export class CsvCollectionListComponent implements OnDestroy {
@@ -61,6 +60,7 @@ export class CsvCollectionListComponent implements OnDestroy {
       header: 'New CSV collection',
       position: 'top',
       width: '50vw',
+      closable: true,
       breakpoints: {
         '960px': '75vw',
         '640px': '90vw'

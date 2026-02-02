@@ -11,7 +11,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     selector: 'app-search-widget',
     templateUrl: './search-widget.component.html',
     styleUrls: ['./search-widget.component.css'],
-    standalone: true,
     imports: [AutoCompleteModule, FormsModule, ReactiveFormsModule]
 })
 export class SearchWidgetComponent extends StringWidget {

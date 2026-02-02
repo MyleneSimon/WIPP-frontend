@@ -14,7 +14,6 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './stitching-vector-new.component.html',
     styleUrls: ['./stitching-vector-new.component.css'],
     providers: [MessageService],
-    standalone: true,
     imports: [FormsModule, InputTextModule, Button, ToastModule]
 })
 export class StitchingVectorNewComponent implements OnInit {

@@ -17,7 +17,6 @@ import { WdztDirective } from '../../wdzt/wdzt.directive';
     templateUrl: './pyramid-detail.component.html',
     styleUrls: ['./pyramid-detail.component.css'],
     providers: [DialogService],
-    standalone: true,
     imports: [NgIf, Button, TooltipModule, FieldsetModule, WdztDirective, DatePipe]
 })
 export class PyramidDetailComponent implements OnInit {
@@ -60,6 +59,7 @@ export class PyramidDetailComponent implements OnInit {
       header: 'Job detail',
       position: 'top',
       width: '50vw',
+      closable: true,
       data: {
         jobId: jobId
       },

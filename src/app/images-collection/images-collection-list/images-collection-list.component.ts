@@ -19,7 +19,6 @@ import { BytesPipe } from '../../custom-pipes/bytes.pipe';
     templateUrl: './images-collection-list.component.html',
     styleUrls: ['./images-collection-list.component.css'],
     providers: [DialogService, MessageService],
-    standalone: true,
     imports: [TableModule, PrimeTemplate, NgIf, SplitButtonModule, InputTextModule, RouterLink, ToastModule, DatePipe, BytesPipe]
 })
 export class ImagesCollectionListComponent implements OnInit, OnDestroy {
@@ -109,6 +108,7 @@ export class ImagesCollectionListComponent implements OnInit, OnDestroy {
       header: 'Batch import images collections',
       position: 'top',
       width: '50vw',
+      closable: true,
       breakpoints: {
         '960px': '75vw',
         '640px': '90vw'

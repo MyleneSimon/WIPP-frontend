@@ -6,7 +6,6 @@ import { RouterLink } from '@angular/router';
 @Component({
     selector: 'app-notebook-template',
     template: ' <a routerLink="/notebooks/{{idData}}">{{text}}</a>',
-    standalone: true,
     imports: [RouterLink]
 })
 export class NotebookTemplateComponent extends DynamicComponent implements OnInit {

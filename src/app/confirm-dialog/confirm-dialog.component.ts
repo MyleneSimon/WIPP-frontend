@@ -9,7 +9,6 @@ import { Button } from 'primeng/button';
     selector: 'app-confirm-dialog',
     templateUrl: './confirm-dialog.component.html',
     styleUrls: ['./confirm-dialog.component.css'],
-    standalone: true,
     imports: [NgFor, MessagesModule, PrimeTemplate, Button]
 })
 export class ConfirmDialogComponent implements OnInit {

@@ -15,7 +15,6 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './images-collection-batch-import.component.html',
     styleUrls: ['./images-collection-batch-import.component.css'],
     providers: [MessageService],
-    standalone: true,
     imports: [FormsModule, InputTextModule, TextareaModule, Button, ToastModule]
 })
 export class ImagesCollectionBatchImportComponent {

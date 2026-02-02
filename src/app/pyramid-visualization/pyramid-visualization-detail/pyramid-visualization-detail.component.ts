@@ -26,7 +26,6 @@ import { WdztDirective } from '../../wdzt/wdzt.directive';
     templateUrl: './pyramid-visualization-detail.component.html',
     styleUrls: ['./pyramid-visualization-detail.component.css'],
     providers: [DialogService, MessageService],
-    standalone: true,
     imports: [NgIf, Button, TooltipModule, FieldsetModule, ButtonDirective, NgFor, RouterLink, FormsModule, InputTextModule, AutoCompleteModule, DropdownModule, WdztDirective, JsonPipe, DatePipe]
 })
 export class PyramidVisualizationDetailComponent implements OnInit, OnDestroy {
@@ -312,6 +311,7 @@ export class PyramidVisualizationDetailComponent implements OnInit, OnDestroy {
       header: 'Visualization configuration help',
       position: 'top',
       width: '50vw',
+      closable: true,
       breakpoints: {
         '960px': '75vw',
         '640px': '90vw'

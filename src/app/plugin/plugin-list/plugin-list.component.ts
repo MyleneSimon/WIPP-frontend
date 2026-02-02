@@ -18,7 +18,6 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './plugin-list.component.html',
     styleUrls: ['./plugin-list.component.css'],
     providers: [DialogService, MessageService],
-    standalone: true,
     imports: [TableModule, PrimeTemplate, NgIf, Button, InputTextModule, RouterLink, ToastModule, DatePipe]
 })
 export class PluginListComponent implements OnInit, OnDestroy {
@@ -68,6 +67,7 @@ export class PluginListComponent implements OnInit, OnDestroy {
       header: 'New plugin',
       position: 'top',
       width: '50vw',
+      closable: true,
       breakpoints: {
         '960px': '75vw',
         '640px': '90vw'

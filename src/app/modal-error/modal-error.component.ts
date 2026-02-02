@@ -6,7 +6,6 @@ import { Button } from 'primeng/button';
     selector: 'app-modal-error',
     templateUrl: './modal-error.component.html',
     styleUrls: ['./modal-error.component.css'],
-    standalone: true,
     imports: [Button]
 })
 export class ModalErrorComponent {

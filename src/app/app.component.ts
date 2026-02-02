@@ -12,7 +12,6 @@ import { TooltipModule } from 'primeng/tooltip';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
-    standalone: true,
     imports: [NgIf, MenubarModule, PrimeTemplate, RouterOutlet, TooltipModule]
 })
 export class AppComponent implements OnInit {

@@ -8,7 +8,7 @@ import {GenericFile} from '../generic-file';
 import {GenericDataService} from '../generic-data.service';
 import {KeycloakService} from '../../services/keycloak/keycloak.service';
 import {Subject} from 'rxjs';
-import * as Flow from '@flowjs/flow.js';
+import Flow from '@flowjs/flow.js';
 import {auditTime, map, switchMap} from 'rxjs/operators';
 import {DialogService} from 'primeng/dynamicdialog';
 import { Button, ButtonDirective } from 'primeng/button';
@@ -25,7 +25,6 @@ import { BytesPipe } from '../../custom-pipes/bytes.pipe';
     templateUrl: './generic-data-detail.component.html',
     styleUrls: ['./generic-data-detail.component.css'],
     providers: [DialogService],
-    standalone: true,
     imports: [Button, TooltipModule, NgIf, FieldsetModule, ButtonDirective, NgFor, ProgressBarModule, TableModule, PrimeTemplate, SlicePipe, DatePipe, BytesPipe]
 })
 export class GenericDataDetailComponent implements OnInit, AfterViewInit {
@@ -108,6 +107,7 @@ export class GenericDataDetailComponent implements OnInit, AfterViewInit {
       header: 'Job detail',
       position: 'top',
       width: '50vw',
+      closable: true,
       data: {
         jobId: jobId
       },

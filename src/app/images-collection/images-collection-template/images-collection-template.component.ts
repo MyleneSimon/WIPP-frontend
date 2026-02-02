@@ -6,7 +6,6 @@ import { RouterLink } from '@angular/router';
 @Component({
     selector: 'app-images-collection-template',
     template: '<a routerLink="/images-collection/{{idData}}">{{text}}</a>',
-    standalone: true,
     imports: [RouterLink]
 })
 

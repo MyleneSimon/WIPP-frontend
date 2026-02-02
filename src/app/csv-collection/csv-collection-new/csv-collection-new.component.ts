@@ -14,7 +14,6 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './csv-collection-new.component.html',
     styleUrls: ['./csv-collection-new.component.css'],
     providers: [MessageService],
-    standalone: true,
     imports: [FormsModule, InputTextModule, Button, ToastModule]
 })
 

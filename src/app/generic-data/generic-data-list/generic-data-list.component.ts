@@ -17,7 +17,6 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './generic-data-list.component.html',
     styleUrls: ['./generic-data-list.component.css'],
     providers: [DialogService, MessageService],
-    standalone: true,
     imports: [TableModule, PrimeTemplate, NgIf, Button, InputTextModule, RouterLink, ToastModule, DatePipe]
 })
 export class GenericDataListComponent implements OnDestroy{
@@ -59,6 +58,7 @@ export class GenericDataListComponent implements OnDestroy{
       header: 'New Generic data collection',
       position: 'top',
       width: '50vw',
+      closable: true,
       breakpoints: {
         '960px': '75vw',
         '640px': '90vw'

@@ -15,7 +15,6 @@ import { DatePipe } from '@angular/common';
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css'],
-    standalone: true,
     imports: [CardModule, TableModule, PrimeTemplate, RouterLink, DatePipe]
 })
 

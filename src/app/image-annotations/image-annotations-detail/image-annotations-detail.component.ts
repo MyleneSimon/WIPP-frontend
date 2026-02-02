@@ -11,7 +11,7 @@ import { MessageService, PrimeTemplate } from 'primeng/api';
 import {AppConfigService} from '../../app-config.service';
 import OpenSeadragon from 'openseadragon';
 import {environment} from '../../../environments/environment';
-import * as Annotorious from '@recogito/annotorious-openseadragon';
+import Annotorious from '@recogito/annotorious-openseadragon';
 import ShapeLabelsFormatter from '@recogito/annotorious-shape-labels'
 import {ConfirmDialogService} from '../../confirm-dialog/confirm-dialog.service';
 import {saveAs} from 'file-saver';
@@ -29,7 +29,6 @@ import { DialogModule } from 'primeng/dialog';
     templateUrl: './image-annotations-detail.component.html',
     styleUrl: './image-annotations-detail.component.css',
     providers: [DialogService, MessageService],
-    standalone: true,
     imports: [Button, TooltipModule, NgIf, FieldsetModule, NgFor, ChipModule, TableModule, PrimeTemplate, SkeletonModule, RouterLink, DialogModule, DatePipe]
 })
 export class ImageAnnotationsDetailComponent {
@@ -98,6 +97,7 @@ export class ImageAnnotationsDetailComponent {
       header: 'Job detail',
       position: 'top',
       width: '50vw',
+      closable: true,
       data: {
         jobId: jobId
       },

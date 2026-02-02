@@ -13,7 +13,6 @@ import { DatePipe } from '@angular/common';
     selector: 'app-notebook-list',
     templateUrl: './notebook-list.component.html',
     styleUrls: ['./notebook-list.component.css'],
-    standalone: true,
     imports: [TableModule, PrimeTemplate, IconFieldModule, InputIconModule, InputTextModule, RouterLink, DatePipe]
 })
 export class NotebookListComponent {

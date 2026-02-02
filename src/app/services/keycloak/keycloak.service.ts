@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import * as Keycloak from 'keycloak-js';
+import Keycloak from 'keycloak-js';
 
 //This class is responsible for the interactions between keycloak-js and the Keycloak instance
 @Injectable()

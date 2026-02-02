@@ -6,9 +6,10 @@ export interface IdHash {
 }
 
 @Component({
-  selector: 'app-ai-model-card-detail',
-  templateUrl: './ai-model-card-detail.component.html',
-  styleUrls: ['./ai-model-card-detail.component.css']
+    selector: 'app-ai-model-card-detail',
+    templateUrl: './ai-model-card-detail.component.html',
+    styleUrls: ['./ai-model-card-detail.component.css'],
+    standalone: false
 })
 
 export class AiModelCardDetailComponent implements OnInit {

@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import {auditTime, catchError, map, switchMap} from 'rxjs/operators';
-import * as Flow from '@flowjs/flow.js';
+import Flow from '@flowjs/flow.js';
 import {ImagesCollectionService} from '../images-collection.service';
 import {ImagesCollection} from '../images-collection';
 import {Image} from '../image';
@@ -41,7 +41,6 @@ import { BytesPipe } from '../../custom-pipes/bytes.pipe';
     templateUrl: './images-collection-detail.component.html',
     styleUrls: ['./images-collection-detail.component.css'],
     providers: [DialogService, MessageService],
-    standalone: true,
     imports: [NgIf, Button, TooltipModule, FieldsetModule, RouterLink, FormsModule, ButtonDirective, NgFor, ProgressBarModule, DataViewModule, PrimeTemplate, SelectModule, NgClass, SkeletonModule, ButtonGroupModule, TableModule, DialogModule, ToastModule, SlicePipe, DatePipe, BytesPipe, SelectButtonModule]
 })
 export class ImagesCollectionDetailComponent implements OnInit, AfterViewInit {
@@ -413,6 +412,7 @@ export class ImagesCollectionDetailComponent implements OnInit, AfterViewInit {
       header: 'Job detail',
       position: 'top',
       width: '50vw',
+      closable: true,
       data: {
         jobId: jobId
       },
@@ -490,6 +490,7 @@ export class ImagesCollectionDetailComponent implements OnInit, AfterViewInit {
       header: 'Create annotation task',
       position: 'top',
       width: '50vw',
+      closable: true,
       data: {
         imagesCollectionId: this.imageCollectionId
       },

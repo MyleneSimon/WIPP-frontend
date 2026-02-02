@@ -8,7 +8,7 @@ import {AppConfigService} from '../../app-config.service';
 import urljoin from 'url-join';
 import {KeycloakService} from '../../services/keycloak/keycloak.service';
 import {Subject} from 'rxjs';
-import * as Flow from '@flowjs/flow.js';
+import Flow from '@flowjs/flow.js';
 import {auditTime, map, switchMap} from 'rxjs/operators';
 import {Csv} from '../csv';
 import {DialogService} from 'primeng/dynamicdialog';
@@ -26,7 +26,6 @@ import { BytesPipe } from '../../custom-pipes/bytes.pipe';
     templateUrl: './csv-collection-detail.component.html',
     styleUrls: ['./csv-collection-detail.component.css'],
     providers: [DialogService, MessageService],
-    standalone: true,
     imports: [Button, TooltipModule, NgIf, FieldsetModule, ButtonDirective, NgFor, ProgressBarModule, TableModule, PrimeTemplate, SlicePipe, DatePipe, BytesPipe]
 })
 export class CsvCollectionDetailComponent implements OnInit, AfterViewInit, OnDestroy {
@@ -121,6 +120,7 @@ export class CsvCollectionDetailComponent implements OnInit, AfterViewInit, OnDe
       header: 'Job detail',
       position: 'top',
       width: '50vw',
+      closable: true,
       data: {
         jobId: jobId
       },

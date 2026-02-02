@@ -11,7 +11,6 @@ import { DatePipe } from '@angular/common';
     selector: 'app-pyramid-list',
     templateUrl: './pyramid-list.component.html',
     styleUrls: ['./pyramid-list.component.css'],
-    standalone: true,
     imports: [TableModule, PrimeTemplate, InputTextModule, RouterLink, DatePipe]
 })
 export class PyramidListComponent implements OnInit {

@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {NotebookService} from '../notebook.service';
 import 'prismjs';
 import * as Prism from 'prismjs';
-import * as Marked from 'marked';
+import marked from 'marked';
 import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-julia';
 import 'prismjs/components/prism-matlab';
@@ -28,7 +28,6 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './notebook-detail.component.html',
     styleUrls: ['./notebook-detail.component.css'],
     providers: [MessageService],
-    standalone: true,
     imports: [FieldsetModule, NgIf, SkeletonModule, ToastModule, DatePipe]
 })
 export class NotebookDetailComponent implements OnInit {
@@ -70,7 +69,7 @@ export class NotebookDetailComponent implements OnInit {
   displayNotebook() {
     const notebook = nb.parse(this.notebookJson);
     nb.markdown = function (text) {
-      return Marked(text);
+      return marked(text);
     };
     this.renderer.appendChild(this.notebookDisplay.nativeElement, notebook.render());
     Prism.highlightAll();

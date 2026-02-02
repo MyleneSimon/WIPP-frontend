@@ -16,7 +16,6 @@ export interface IdHash {
     selector: 'app-job-detail',
     templateUrl: './job-detail.component.html',
     styleUrls: ['./job-detail.component.css'],
-    standalone: true,
     imports: [NgIf, RouterLink, NgFor, DynamicContentComponent, DatePipe]
 })
 

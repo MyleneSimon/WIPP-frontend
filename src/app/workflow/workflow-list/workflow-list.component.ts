@@ -18,7 +18,6 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './workflow-list.component.html',
     styleUrls: ['./workflow-list.component.css'],
     providers: [DialogService, MessageService],
-    standalone: true,
     imports: [TableModule, PrimeTemplate, NgIf, Button, InputTextModule, RouterLink, TagModule, ToastModule, DatePipe]
 })
 export class WorkflowListComponent {
@@ -61,6 +60,7 @@ export class WorkflowListComponent {
       header: 'New workflow',
       position: 'top',
       width: '50vw',
+      closable: true,
       breakpoints: {
         '960px': '75vw',
         '640px': '90vw'

@@ -16,7 +16,6 @@ import { ToastModule } from 'primeng/toast';
     selector: 'app-images-collection-new',
     templateUrl: './images-collection-new.component.html',
     styleUrls: ['./images-collection-new.component.css'],
-    standalone: true,
     imports: [FormsModule, InputTextModule, RadioButtonModule, TooltipModule, NgIf, CheckboxModule, Button, OverlayPanelModule, NgTemplateOutlet, ToastModule]
 })
 export class ImagesCollectionNewComponent implements OnInit {

@@ -24,7 +24,6 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './iterative-training-pipeline-new.component.html',
     styleUrl: './iterative-training-pipeline-new.component.css',
     providers: [MessageService],
-    standalone: true,
     imports: [FormsModule, InputTextModule, TooltipModule, AutoCompleteModule, NgIf, Button, InputGroupModule, InputGroupAddonModule, ColorPickerModule, NgFor, ChipModule, ToastModule]
 })
 export class IterativeTrainingPipelineNewComponent {

@@ -33,7 +33,6 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './ai-model-detail.component.html',
     styleUrls: ['./ai-model-detail.component.css'],
     providers: [DialogService, ConfirmationService, MessageService],
-    standalone: true,
     imports: [
         Button,
         TooltipModule,
@@ -49,7 +48,7 @@ import { ToastModule } from 'primeng/toast';
         ToastModule,
         JsonPipe,
         DatePipe,
-    ],
+    ]
 })
 export class AiModelDetailComponent implements OnInit, OnDestroy {
   aiFramework: string[] = ["TensorFlow", "HuggingFace", "BioImageIO",
@@ -163,6 +162,7 @@ export class AiModelDetailComponent implements OnInit, OnDestroy {
       header: 'Job detail',
       position: 'top',
       width: '50vw',
+      closable: true,
       data: { jobId: jobId },
       breakpoints: {
         '960px': '75vw',
@@ -256,6 +256,7 @@ export class AiModelDetailComponent implements OnInit, OnDestroy {
           header: 'Preview for ' + this.selectedFramework,
           position: 'top',
           width: '50vw',
+          closable: true,
           data: {
             aiModelId: aiModelId,
             content: content
@@ -273,6 +274,7 @@ export class AiModelDetailComponent implements OnInit, OnDestroy {
       header: 'Fill-in AI model card',
       position: 'top',
       width: '50vw',
+      closable: true,
       breakpoints: {
         '960px': '75vw',
         '640px': '90vw'

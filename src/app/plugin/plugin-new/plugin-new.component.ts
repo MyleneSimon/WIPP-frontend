@@ -12,7 +12,6 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './plugin-new.component.html',
     styleUrls: ['./plugin-new.component.css'],
     providers: [MessageService],
-    standalone: true,
     imports: [FormsModule, Button, ToastModule]
 })
 export class PluginNewComponent implements OnInit {

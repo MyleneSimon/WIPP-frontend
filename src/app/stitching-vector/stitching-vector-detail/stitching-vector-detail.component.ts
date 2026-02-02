@@ -19,7 +19,6 @@ import { TableModule } from 'primeng/table';
     templateUrl: './stitching-vector-detail.component.html',
     styleUrls: ['./stitching-vector-detail.component.css'],
     providers: [DialogService, MessageService],
-    standalone: true,
     imports: [NgIf, Button, TooltipModule, FieldsetModule, TableModule, PrimeTemplate, DatePipe]
 })
 export class StitchingVectorDetailComponent implements OnInit {
@@ -77,6 +76,7 @@ export class StitchingVectorDetailComponent implements OnInit {
       header: 'Job detail',
       position: 'top',
       width: '50vw',
+      closable: true,
       data: {
         jobId: jobId
       },

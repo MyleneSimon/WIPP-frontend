@@ -19,7 +19,6 @@ import { CheckboxModule } from 'primeng/checkbox';
     selector: 'app-ai-model-card-new',
     templateUrl: './ai-model-card-new.component.html',
     styleUrls: ['./ai-model-card-new.component.css'],
-    standalone: true,
     imports: [FormsModule, InputTextModule, DropdownModule, InputGroupModule, Button, NgFor, MultiSelectModule, CheckboxModule, KeyValuePipe]
 })
 export class AiModelCardNewComponent implements OnInit {

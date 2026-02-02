@@ -7,7 +7,6 @@ import { RouterLink } from '@angular/router';
 @Component({
     selector: 'app-ai-model-template',
     template: '<a routerLink="/ai-models/{{idData}}">{{text}}</a>',
-    standalone: true,
     imports: [RouterLink]
 })
 export class AiModelTemplateComponent extends DynamicComponent implements OnInit {

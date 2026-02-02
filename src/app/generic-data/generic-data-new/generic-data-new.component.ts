@@ -14,7 +14,6 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './generic-data-new.component.html',
     styleUrls: ['./generic-data-new.component.css'],
     providers: [MessageService],
-    standalone: true,
     imports: [FormsModule, InputTextModule, Button, ToastModule]
 })
 export class GenericDataNewComponent {

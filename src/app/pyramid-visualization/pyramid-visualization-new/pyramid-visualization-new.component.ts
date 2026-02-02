@@ -14,7 +14,6 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './pyramid-visualization-new.component.html',
     styleUrls: ['./pyramid-visualization-new.component.css'],
     providers: [MessageService],
-    standalone: true,
     imports: [FormsModule, InputTextModule, Button, ToastModule]
 })
 export class PyramidVisualizationNewComponent {

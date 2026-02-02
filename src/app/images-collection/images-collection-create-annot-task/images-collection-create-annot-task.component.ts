@@ -31,7 +31,6 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './images-collection-create-annot-task.component.html',
     styleUrl: './images-collection-create-annot-task.component.css',
     providers: [MessageService],
-    standalone: true,
     imports: [FormsModule, InputTextModule, TooltipModule, NgIf, Button, InputGroupModule, InputGroupAddonModule, ColorPickerModule, NgFor, ChipModule, TableModule, PrimeTemplate, FieldsetModule, CheckboxModule, InputNumberModule, AutoCompleteModule, ToastModule]
 })
 export class ImagesCollectionCreateAnnotTaskComponent {

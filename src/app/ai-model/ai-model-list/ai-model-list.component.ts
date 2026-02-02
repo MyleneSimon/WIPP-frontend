@@ -15,7 +15,6 @@ import { DatePipe } from '@angular/common';
     templateUrl: './ai-model-list.component.html',
     styleUrls: ['./ai-model-list.component.css'],
     providers: [DialogService],
-    standalone: true,
     imports: [TableModule, PrimeTemplate, Button, InputTextModule, RouterLink, DatePipe]
 })
 export class AiModelListComponent implements OnInit {
@@ -57,6 +56,7 @@ export class AiModelListComponent implements OnInit {
       header: 'New AI model',
       position: 'top',
       width: '50vw',
+      closable: true,
       breakpoints: {
         '960px': '75vw',
         '640px': '90vw'

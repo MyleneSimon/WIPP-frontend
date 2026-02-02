@@ -17,7 +17,6 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './stitching-vector-list.component.html',
     styleUrls: ['./stitching-vector-list.component.css'],
     providers: [DialogService, MessageService],
-    standalone: true,
     imports: [TableModule, PrimeTemplate, NgIf, Button, InputTextModule, RouterLink, ToastModule, DatePipe]
 })
 export class StitchingVectorListComponent implements OnInit, OnDestroy {
@@ -65,6 +64,7 @@ export class StitchingVectorListComponent implements OnInit, OnDestroy {
       header: 'New stitching vector',
       position: 'top',
       width: '50vw',
+      closable: true,
       breakpoints: {
         '960px': '75vw',
         '640px': '90vw'

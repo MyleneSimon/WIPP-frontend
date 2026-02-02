@@ -23,7 +23,6 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './iterative-training-pipeline-detail.component.html',
     styleUrl: './iterative-training-pipeline-detail.component.css',
     providers: [DialogService, MessageService],
-    standalone: true,
     imports: [NgIf, Button, TooltipModule, FieldsetModule, RouterLink, NgFor, ChipModule, TableModule, PrimeTemplate, ToastModule, DatePipe]
 })
 export class IterativeTrainingPipelineDetailComponent {

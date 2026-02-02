@@ -6,7 +6,6 @@ import { RouterLink } from '@angular/router';
 @Component({
     selector: 'app-stitching-vector-template',
     template: '<a routerLink="/stitching-vectors/{{idData}}">{{text}}</a>',
-    standalone: true,
     imports: [RouterLink]
 })
 export class StitchingVectorTemplateComponent extends DynamicComponent implements OnInit {

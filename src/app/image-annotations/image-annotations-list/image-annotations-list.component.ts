@@ -17,7 +17,6 @@ import { DatePipe } from '@angular/common';
     templateUrl: './image-annotations-list.component.html',
     styleUrl: './image-annotations-list.component.css',
     providers: [DialogService, MessageService],
-    standalone: true,
     imports: [TableModule, PrimeTemplate, Button, TooltipModule, InputTextModule, RouterLink, ToastModule, DatePipe]
 })
 export class ImageAnnotationsListComponent {

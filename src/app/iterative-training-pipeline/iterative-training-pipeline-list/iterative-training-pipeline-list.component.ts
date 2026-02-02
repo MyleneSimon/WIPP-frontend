@@ -17,7 +17,6 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './iterative-training-pipeline-list.component.html',
     styleUrl: './iterative-training-pipeline-list.component.css',
     providers: [DialogService, MessageService],
-    standalone: true,
     imports: [TableModule, PrimeTemplate, NgIf, Button, InputTextModule, RouterLink, ToastModule, DatePipe]
 })
 export class IterativeTrainingPipelineListComponent {
@@ -62,6 +61,7 @@ export class IterativeTrainingPipelineListComponent {
       header: 'New iterative training pipeline',
       position: 'top',
       width: '50vw',
+      closable: true,
       breakpoints: {
         '960px': '75vw',
         '640px': '90vw'

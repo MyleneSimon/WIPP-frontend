@@ -7,7 +7,7 @@ import {forkJoin, of as observableOf, Subject} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {JobDetailComponent} from '../../job/job-detail/job-detail.component';
 import {Job} from '../../job/job';
-import {FormProperty, PropertyGroup} from 'ngx-schema-form/lib/model/formproperty';
+import {FormProperty, PropertyGroup} from 'ngx-schema-form';
 import { NgxSpinnerService, NgxSpinnerComponent } from 'ngx-spinner';
 import {AppConfigService} from '../../app-config.service';
 import urlJoin from 'url-join';
@@ -36,7 +36,6 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './workflow-detail.component.html',
     styleUrls: ['./workflow-detail.component.css'],
     providers: [DialogService, MessageService],
-    standalone: true,
     imports: [Button, TooltipModule, NgIf, FieldsetModule, ButtonDirective, NgxSpinnerComponent, ToolbarModule, DropdownModule, FormsModule, GraphModule, NgStyle, DialogModule, PrimeTemplate, DividerModule, SchemaFormModule, MessagesModule, ToastModule, DatePipe]
 })
 
@@ -236,6 +235,7 @@ export class WorkflowDetailComponent implements OnInit, OnDestroy {
       header: 'New workflow',
       position: 'top',
       width: '50vw',
+      closable: true,
       data: {
         isCopy: true,
         sourceWorkflow: this.workflow
@@ -417,6 +417,7 @@ export class WorkflowDetailComponent implements OnInit, OnDestroy {
       position: 'top',
       modal: false,
       draggable: true,
+      closable: true,
       style: {
         borderStyle: 'solid',
         borderWidth: 'medium',

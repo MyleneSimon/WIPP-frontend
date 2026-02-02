@@ -17,7 +17,6 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './workflow-new.component.html',
     styleUrls: ['./workflow-new.component.css'],
     providers: [MessageService],
-    standalone: true,
     imports: [FormsModule, InputTextModule, NgIf, MessagesModule, PrimeTemplate, TextareaModule, Button, ToastModule]
 })
 export class WorkflowNewComponent implements OnInit {
