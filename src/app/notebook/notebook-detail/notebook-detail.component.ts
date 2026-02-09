@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {NotebookService} from '../notebook.service';
 import 'prismjs';
 import * as Prism from 'prismjs';
-import marked from 'marked';
+import { marked } from 'marked';
 import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-julia';
 import 'prismjs/components/prism-matlab';

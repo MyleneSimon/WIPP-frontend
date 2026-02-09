@@ -15,24 +15,24 @@
            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
            [globalFilterFields]="['name']"
   >
-    <ng-template pTemplate="caption">
+    <ng-template #caption>
       <div class="flex align-items-center justify-content-between">
         <p-button
           *ngIf="canCreate()"
           label="New"
           icon="pi pi-plus"
           (click)="createNew()" />
-        <span class="p-input-icon-left">
+        <p-iconfield iconPosition="left" class="ml-auto">
                 <i class="pi pi-search"></i>
                 <input
                   pInputText
                   type="text"
                   (input)="dt.filterGlobal($event.target.value, 'contains')"
                   placeholder="Search..." />
-            </span>
+        </p-iconfield>
       </div>
     </ng-template>
-    <ng-template pTemplate="header">
+    <ng-template #header>
       <tr>
         <th pSortableColumn="name">
           Name <p-sortIcon field="name" />
@@ -48,7 +48,7 @@
         </th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-csvColl>
+    <ng-template #body let-csvColl>
       <tr routerLink="/csv-collections/{{csvColl.id}}" class="p-selectable-row">
         <td>{{ csvColl.name }}</td>
         <td>{{ csvColl.creationDate | date }}</td>

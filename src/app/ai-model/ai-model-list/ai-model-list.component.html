@@ -15,7 +15,7 @@
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [globalFilterFields]="['name']"
   >
-    <ng-template pTemplate="caption">
+    <ng-template #caption>
       <div class="flex align-items-center justify-content-between">
         <p-button
           label="Upload AI model"
@@ -31,7 +31,7 @@
         </span>
       </div>
     </ng-template>
-    <ng-template pTemplate="header">
+    <ng-template #header>
       <tr>
         <th pSortableColumn="name">
           Name <p-sortIcon field="name" />
@@ -50,7 +50,7 @@
         </th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-aiModel>
+    <ng-template #body let-aiModel>
       <tr routerLink="/ai-models/{{aiModel.id}}" class="p-selectable-row">
         <td>{{ aiModel.name }}</td>
         <td>{{ aiModel.creationDate | date }}</td>

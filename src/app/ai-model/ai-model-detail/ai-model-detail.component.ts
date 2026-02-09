@@ -27,6 +27,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
+import { saveAs } from 'file-saver';
 
 @Component({
     selector: 'app-ai-model-detail',

@@ -155,7 +155,7 @@
            [rows]="10"
            [rowsPerPageOptions]="[10, 25, 50]"
            [totalRecords]="resultsLengthCsv">
-    <ng-template pTemplate="header">
+    <ng-template #header>
       <tr>
         <th pSortableColumn="fileName">
           Name <p-sortIcon field="name" />
@@ -166,7 +166,7 @@
         <th>Actions</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-csvFile>
+    <ng-template #body let-csvFile>
       <tr>
         <td>
           {{ csvFile.fileName }}
