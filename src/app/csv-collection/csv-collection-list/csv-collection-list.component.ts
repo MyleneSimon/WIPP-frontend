@@ -5,6 +5,8 @@ import {CsvCollectionNewComponent} from '../csv-collection-new/csv-collection-ne
 import { Router, RouterLink } from '@angular/router';
 import {KeycloakService} from '../../services/keycloak/keycloak.service';
 import {DialogService} from 'primeng/dynamicdialog';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
 import { MessageService, PrimeTemplate } from 'primeng/api';
 import { TableModule } from 'primeng/table';
 import { NgIf, DatePipe } from '@angular/common';
@@ -17,7 +19,8 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './csv-collection-list.component.html',
     styleUrls: ['./csv-collection-list.component.css'],
     providers: [DialogService, MessageService],
-    imports: [TableModule, PrimeTemplate, NgIf, Button, InputTextModule, RouterLink, ToastModule, DatePipe]
+    imports: [TableModule, PrimeTemplate, NgIf, Button, InputTextModule, RouterLink, ToastModule, 
+      IconFieldModule, InputIconModule, DatePipe]
 })
 export class CsvCollectionListComponent implements OnDestroy {
   csvCollections: CsvCollection[];

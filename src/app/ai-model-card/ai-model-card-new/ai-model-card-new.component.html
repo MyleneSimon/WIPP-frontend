@@ -7,7 +7,7 @@
     </div>
     <div class="flex flex-column w-6">
       <label for="framework" class="font-semibold">Framework *</label>
-      <p-dropdown required [options]="listFramework" [(ngModel)]="form.framework"
+      <p-select required [options]="listFramework" [(ngModel)]="form.framework"
         name="model-card-framework" placeholder="Model card framework" />
     </div>
   </div>
@@ -72,12 +72,12 @@
   <div class="flex flex-row gap-3">
     <div class="flex flex-column w-6">
       <label for="architecture" class="font-semibold">Architecture *</label>
-      <p-dropdown required [options]="listArchitecture" [(ngModel)]="form.architecture"
+      <p-select required [options]="listArchitecture" [(ngModel)]="form.architecture"
         name="model-card-architecture" placeholder="Model card architecture" />
     </div>
     <div class="flex flex-column w-6">
       <label for="license" class="font-semibold">License *</label>
-      <p-dropdown required [options]="listLicense" [(ngModel)]="form.license"
+      <p-select required [options]="listLicense" [(ngModel)]="form.license"
         name="model-card-license" placeholder="Model card license" />
     </div>
   </div>

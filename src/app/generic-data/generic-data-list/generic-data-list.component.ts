@@ -5,6 +5,8 @@ import {KeycloakService} from '../../services/keycloak/keycloak.service';
 import {DialogService} from 'primeng/dynamicdialog';
 import { MessageService, PrimeTemplate } from 'primeng/api';
 import {GenericDataNewComponent} from '../generic-data-new/generic-data-new.component';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
 import { TableModule } from 'primeng/table';
 import { NgIf, DatePipe } from '@angular/common';
 import { Button } from 'primeng/button';
@@ -17,7 +19,8 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './generic-data-list.component.html',
     styleUrls: ['./generic-data-list.component.css'],
     providers: [DialogService, MessageService],
-    imports: [TableModule, PrimeTemplate, NgIf, Button, InputTextModule, RouterLink, ToastModule, DatePipe]
+    imports: [TableModule, PrimeTemplate, NgIf, Button, InputTextModule, RouterLink, ToastModule, 
+      IconFieldModule, InputIconModule, DatePipe]
 })
 export class GenericDataListComponent implements OnDestroy{
   genericDatas: GenericData[];

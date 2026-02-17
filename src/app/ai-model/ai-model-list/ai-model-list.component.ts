@@ -6,6 +6,8 @@ import { AiModelNewComponent } from '../ai-model-new/ai-model-new.component';
 import { TableModule } from 'primeng/table';
 import { PrimeTemplate } from 'primeng/api';
 import { Button } from 'primeng/button';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
 import { RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
@@ -15,7 +17,8 @@ import { DatePipe } from '@angular/common';
     templateUrl: './ai-model-list.component.html',
     styleUrls: ['./ai-model-list.component.css'],
     providers: [DialogService],
-    imports: [TableModule, PrimeTemplate, Button, InputTextModule, RouterLink, DatePipe]
+    imports: [TableModule, PrimeTemplate, Button, IconFieldModule, InputIconModule, InputTextModule, 
+      RouterLink, DatePipe]
 })
 export class AiModelListComponent implements OnInit {
   aiModels: AiModel[];

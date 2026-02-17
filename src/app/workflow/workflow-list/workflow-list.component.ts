@@ -3,6 +3,8 @@ import {WorkflowService} from '../workflow.service';
 import {Workflow} from '../workflow';
 import {WorkflowNewComponent} from '../workflow-new/workflow-new.component';
 import {KeycloakService} from '../../services/keycloak/keycloak.service';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
 import {DialogService} from 'primeng/dynamicdialog';
 import { MessageService, PrimeTemplate } from 'primeng/api';
 import { TableModule } from 'primeng/table';
@@ -18,7 +20,8 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './workflow-list.component.html',
     styleUrls: ['./workflow-list.component.css'],
     providers: [DialogService, MessageService],
-    imports: [TableModule, PrimeTemplate, NgIf, Button, InputTextModule, RouterLink, TagModule, ToastModule, DatePipe]
+    imports: [TableModule, PrimeTemplate, NgIf, Button, InputTextModule, RouterLink, TagModule, ToastModule, 
+      IconFieldModule, InputIconModule, DatePipe]
 })
 export class WorkflowListComponent {
   workflows: Workflow[];

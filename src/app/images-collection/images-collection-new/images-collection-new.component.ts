@@ -9,14 +9,14 @@ import { TooltipModule } from 'primeng/tooltip';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
 import { CheckboxModule } from 'primeng/checkbox';
 import { Button } from 'primeng/button';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { PopoverModule } from 'primeng/popover';
 import { ToastModule } from 'primeng/toast';
 
 @Component({
     selector: 'app-images-collection-new',
     templateUrl: './images-collection-new.component.html',
     styleUrls: ['./images-collection-new.component.css'],
-    imports: [FormsModule, InputTextModule, RadioButtonModule, TooltipModule, NgIf, CheckboxModule, Button, OverlayPanelModule, NgTemplateOutlet, ToastModule]
+    imports: [FormsModule, InputTextModule, RadioButtonModule, TooltipModule, NgIf, CheckboxModule, Button, PopoverModule, NgTemplateOutlet, ToastModule]
 })
 export class ImagesCollectionNewComponent implements OnInit {
 

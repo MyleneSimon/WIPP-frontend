@@ -3,6 +3,8 @@ import {StitchingVector} from '../stitching-vector';
 import {StitchingVectorNewComponent} from '../stitching-vector-new/stitching-vector-new.component';
 import {StitchingVectorService} from '../stitching-vector.service';
 import {KeycloakService} from '../../services/keycloak/keycloak.service'
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
 import {DialogService} from 'primeng/dynamicdialog';
 import { MessageService, PrimeTemplate } from 'primeng/api';
 import { TableModule } from 'primeng/table';
@@ -17,7 +19,8 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './stitching-vector-list.component.html',
     styleUrls: ['./stitching-vector-list.component.css'],
     providers: [DialogService, MessageService],
-    imports: [TableModule, PrimeTemplate, NgIf, Button, InputTextModule, RouterLink, ToastModule, DatePipe]
+    imports: [TableModule, PrimeTemplate, NgIf, Button, InputTextModule, RouterLink, ToastModule, IconFieldModule, 
+      InputIconModule, DatePipe]
 })
 export class StitchingVectorListComponent implements OnInit, OnDestroy {
   stitchingVectors: StitchingVector[];

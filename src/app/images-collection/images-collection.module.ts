@@ -9,7 +9,7 @@ import {
   ImagesCollectionTemplateComponent
 } from './images-collection-template/images-collection-template.component';
 import {DataViewModule} from 'primeng/dataview';
-import {DropdownModule} from 'primeng/dropdown';
+import {SelectModule} from 'primeng/select';
 import { ImagesCollectionBatchImportComponent } from './images-collection-batch-import/images-collection-batch-import.component';
 import {TableModule} from 'primeng/table';
 import {ToolbarModule} from 'primeng/toolbar';
@@ -26,7 +26,7 @@ import {DialogModule} from 'primeng/dialog';
 import {ButtonGroupModule} from 'primeng/buttongroup';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {CheckboxModule} from 'primeng/checkbox';
-import {OverlayPanelModule} from 'primeng/overlaypanel';
+import {PopoverModule} from 'primeng/popover';
 import {TextareaModule} from 'primeng/textarea';
 
 import {ImagesCollectionCreateAnnotTaskComponent} from './images-collection-create-annot-task/images-collection-create-annot-task.component';
@@ -44,7 +44,7 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
     FormsModule,
     ReactiveFormsModule,
     DataViewModule,
-    DropdownModule,
+    SelectModule,
     TableModule,
     ToolbarModule,
     ButtonModule,
@@ -61,7 +61,7 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
     DialogModule,
     RadioButtonModule,
     CheckboxModule,
-    OverlayPanelModule,
+    PopoverModule,
     ChipModule,
     ColorPickerModule,
     InputNumberModule,

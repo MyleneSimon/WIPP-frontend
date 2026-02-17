@@ -6,6 +6,8 @@ import {KeycloakService} from '../../services/keycloak/keycloak.service';
 import {IterativeTrainingPipeline} from '../iterative-training-pipeline';
 import {IterativeTrainingPipelineService} from '../iterative-training-pipeline.service';
 import {IterativeTrainingPipelineNewComponent} from '../iterative-training-pipeline-new/iterative-training-pipeline-new.component';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
 import { TableModule } from 'primeng/table';
 import { NgIf, DatePipe } from '@angular/common';
 import { Button } from 'primeng/button';
@@ -17,7 +19,8 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './iterative-training-pipeline-list.component.html',
     styleUrl: './iterative-training-pipeline-list.component.css',
     providers: [DialogService, MessageService],
-    imports: [TableModule, PrimeTemplate, NgIf, Button, InputTextModule, RouterLink, ToastModule, DatePipe]
+    imports: [TableModule, PrimeTemplate, NgIf, Button, InputTextModule, RouterLink, ToastModule, InputIconModule, 
+      IconFieldModule, DatePipe]
 })
 export class IterativeTrainingPipelineListComponent {
 

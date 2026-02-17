@@ -16,7 +16,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FieldsetModule } from 'primeng/fieldset';
 import { TooltipModule } from 'primeng/tooltip';
 import { ChartModule } from 'primeng/chart';
-import { DropdownModule } from 'primeng/dropdown';
+import { SelectModule } from 'primeng/select';
 import { CheckboxModule } from 'primeng/checkbox';
 import { FileUploadModule } from 'primeng/fileupload';
 import { DialogModule } from 'primeng/dialog';
@@ -38,7 +38,7 @@ import { InputGroupModule } from 'primeng/inputgroup';
         FieldsetModule,
         TooltipModule,
         ChartModule,
-        DropdownModule,
+        SelectModule,
         CheckboxModule,
         FileUploadModule,
         DialogModule,

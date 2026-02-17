@@ -131,7 +131,7 @@
       <p-button icon="pi pi-save" [outlined]="true" *ngIf="this.save" (click)="toggleSave()"></p-button>
 
       <p class="font-semibold">Export card:</p>
-      <p-dropdown [options]="aiFramework" [(ngModel)]="selectedFramework" placeholder="Select a framework" />
+      <p-select [options]="aiFramework" [(ngModel)]="selectedFramework" placeholder="Select a framework" />
       <p-button icon="pi pi-eye" (click)="displayAiModelCardModal(aiModelCard.id);"
         pTooltip="Display AI model card for selected framework" [outlined]="true" [disabled]="!selectedFramework">
       </p-button>

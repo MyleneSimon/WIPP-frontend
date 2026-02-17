@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {DialogService, DynamicDialogComponent, DynamicDialogRef} from 'primeng/dynamicdialog';
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { ToastMessageOptions, PrimeTemplate } from 'primeng/api';
 import { NgFor } from '@angular/common';
-import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
 import { Button } from 'primeng/button';
 
 @Component({
     selector: 'app-confirm-dialog',
     templateUrl: './confirm-dialog.component.html',
     styleUrls: ['./confirm-dialog.component.css'],
-    imports: [NgFor, MessagesModule, PrimeTemplate, Button]
+    imports: [NgFor, MessageModule, PrimeTemplate, Button]
 })
 export class ConfirmDialogComponent implements OnInit {
 
@@ -18,20 +18,16 @@ export class ConfirmDialogComponent implements OnInit {
   warnings: string[]
   messages: ToastMessageOptions[] | undefined;
 
-  instance: DynamicDialogComponent | undefined;
-
   constructor(
     public modalReference: DynamicDialogRef,
-    private dialogService: DialogService,
+    private config: DynamicDialogConfig,
   ) {
-    this.instance = this.dialogService.getInstance(this.modalReference);
   }
 
   ngOnInit() {
-    if (this.instance && this.instance.data) {
-      this.message = this.instance.data['message'];
-      this.warnings = this.instance.data['warnings'];
-    }
+    const data = this.config.data as { message?: string, warnings?: string[] };
+    this.message = data?.message;
+    this.warnings = data?.warnings;
   }
 
   onConfirm(): void {

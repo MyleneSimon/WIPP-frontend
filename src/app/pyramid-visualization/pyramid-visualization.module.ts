@@ -7,7 +7,7 @@ import { PyramidVisualizationHelpComponent } from './pyramid-visualization-help/
 import {PyramidVisualizationRoutingModule} from './pyramid-visualization-routing.module';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {DropdownModule} from 'primeng/dropdown';
+import {SelectModule} from 'primeng/select';
 import {TableModule} from 'primeng/table';
 import {ToastModule} from 'primeng/toast';
 import {ButtonModule} from 'primeng/button';
@@ -22,7 +22,7 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
     FormsModule,
     ReactiveFormsModule,
     PyramidVisualizationRoutingModule,
-    DropdownModule,
+    SelectModule,
     TableModule,
     ToastModule,
     ButtonModule,

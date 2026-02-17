@@ -13,7 +13,7 @@ import { AiModelCard } from 'src/app/ai-model-card/ai-model-card';
 import { AiModelCardService } from 'src/app/ai-model-card/ai-model-card.service';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
-import { DropdownModule } from 'primeng/dropdown';
+import { SelectModule } from 'primeng/select';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { CheckboxModule } from 'primeng/checkbox';
 import { TextareaModule } from 'primeng/textarea';
@@ -25,7 +25,7 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './ai-model-new.component.html',
     styleUrls: ['./ai-model-new.component.css'],
     providers: [MessageService],
-    imports: [FormsModule, InputTextModule, DropdownModule, MultiSelectModule, FileUploadModule, CheckboxModule, TextareaModule, Button, ToastModule]
+    imports: [FormsModule, InputTextModule, SelectModule, MultiSelectModule, FileUploadModule, CheckboxModule, TextareaModule, Button, ToastModule]
 })
 export class AiModelNewComponent implements OnInit {
 

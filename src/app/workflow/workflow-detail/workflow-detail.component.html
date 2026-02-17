@@ -95,7 +95,7 @@
   </div>
   <div class="p-toolbar-group-center">
     <label class="mb-0">Graph Orientation</label>
-    <p-dropdown class="pl-2"
+    <p-select class="pl-2"
       [options]="orientationOptions"
       [(ngModel)]="layoutSettings.orientation"
       (onChange)="updateGraph();"
@@ -189,7 +189,7 @@
 <p-dialog header="New Task" [modal]="true" [(visible)]="newTaskDialogVisible" *ngIf="newTaskDialogVisible" [style]="{ width: '50rem' }">
   <div class="field">
     <label for="pluginName" class="font-semibold">Select Computational Plugin</label>
-    <p-dropdown class="p-2"
+    <p-select class="p-2"
       id="pluginName"
       [disabled]="editMode"
       [options]="pluginList"
@@ -209,20 +209,19 @@
           <div>{{ plugin.name }} {{ plugin.version }}</div>
         </div>
       </ng-template>
-    </p-dropdown>
+    </p-select>
   </div>
   <p-divider />
   <div class="form pt-2">
     <sf-form [hidden]="!selectedSchema?.isSchemaValid"
              [schema]="selectedSchema" [bindings]="selectedSchema.fieldBindings" [model]="jobModel" #jsonForm>
     </sf-form>
-    <p-messages severity="error" [hidden]="selectedSchema.isSchemaValid">
-      <ng-template pTemplate>
-        <div>
-          Unable to generate form for {{ selectedSchema.name }} {{ selectedSchema.version }}, plugin manifest is invalid.
-        </div>
-      </ng-template>
-    </p-messages>
+    <p-message
+      severity="error"
+      *ngIf="!selectedSchema.isSchemaValid"
+      [text]="'Unable to generate form for ' + selectedSchema.name + ' ' +
+            selectedSchema.version + ', plugin manifest is invalid.'">
+  </p-message>
   </div>
   <div class="flex justify-content-end gap-2 pt-2">
     <p-button label="Cancel" severity="secondary" (onClick)="newTaskDialogVisible = false; resetForm();" />

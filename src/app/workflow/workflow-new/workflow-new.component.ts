@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {Workflow} from '../workflow';
-import {DialogService, DynamicDialogComponent, DynamicDialogRef} from 'primeng/dynamicdialog';
+import {DialogService, DynamicDialogConfig, DynamicDialogRef} from 'primeng/dynamicdialog';
 import { MessageService, PrimeTemplate } from 'primeng/api';
 import {WorkflowService} from '../workflow.service';
 import {Router} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { NgIf } from '@angular/common';
-import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
 import { TextareaModule } from 'primeng/textarea';
 import { Button } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
@@ -17,28 +17,27 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './workflow-new.component.html',
     styleUrls: ['./workflow-new.component.css'],
     providers: [MessageService],
-    imports: [FormsModule, InputTextModule, NgIf, MessagesModule, PrimeTemplate, TextareaModule, Button, ToastModule]
+    imports: [FormsModule, InputTextModule, NgIf, MessageModule, PrimeTemplate, TextareaModule, Button, ToastModule]
 })
 export class WorkflowNewComponent implements OnInit {
-
-  instance: DynamicDialogComponent | undefined;
 
   workflow: Workflow = new Workflow();
   isCopy = false;
   sourceWorkflow: Workflow = undefined;
 
   constructor(public modalReference: DynamicDialogRef,
+              private config: DynamicDialogConfig,
               private dialogService: DialogService,
               private messageService: MessageService,
               private workflowService: WorkflowService,
               private router: Router) {
-    this.instance = this.dialogService.getInstance(this.modalReference);
   }
 
   ngOnInit() {
-    if (this.instance?.data && this.instance?.data['isCopy']) {
-      this.isCopy = this.instance.data['isCopy'];
-      this.sourceWorkflow = this.instance.data['sourceWorkflow'];
+    const data = this.config.data as { isCopy?: boolean; sourceWorkflow?: Workflow };
+    if (data?.isCopy) {
+      this.isCopy = true;
+      this.sourceWorkflow = data.sourceWorkflow!;
       this.workflow.name = this.sourceWorkflow.name + "-copy";
       this.workflow.description = this.sourceWorkflow.description;
     }

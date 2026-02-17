@@ -46,7 +46,7 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-nb>
-      <tr routerLink="/notebooks/{{nb.id}}" class="p-selectable-row">
+      <tr routerLink="/notebooks/{{nb.id}}" class="p-selectable-row" [pSelectableRow]="nb">
         <td>{{ nb.name }}</td>
         <td>{{ nb.creationDate | date }}</td>
         <td><i [class]="nb.publiclyShared ? 'pi pi-globe' : 'pi pi-user'"></i></td>

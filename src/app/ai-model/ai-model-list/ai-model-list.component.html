@@ -21,14 +21,16 @@
           label="Upload AI model"
           icon="pi pi-plus"
           (click)="displayNewAimodelModal()" />
-        <span class="p-input-icon-left">
-          <i class="pi pi-search"></i>
+        <p-iconfield iconPosition="left" class="ml-auto">
+          <p-inputicon>
+              <i class="pi pi-search"></i>
+          </p-inputicon>
           <input
             pInputText
             type="text"
             (input)="dt.filterGlobal($event.target.value, 'contains')"
             placeholder="Search..." />
-        </span>
+        </p-iconfield>
       </div>
     </ng-template>
     <ng-template #header>
@@ -51,7 +53,7 @@
       </tr>
     </ng-template>
     <ng-template #body let-aiModel>
-      <tr routerLink="/ai-models/{{aiModel.id}}" class="p-selectable-row">
+      <tr routerLink="/ai-models/{{aiModel.id}}" class="p-selectable-row" [pSelectableRow]="aiModel">
         <td>{{ aiModel.name }}</td>
         <td>{{ aiModel.creationDate | date }}</td>
         <td><i [class]="aiModel.publiclyShared ? 'pi pi-globe' : 'pi pi-user'"></i></td>

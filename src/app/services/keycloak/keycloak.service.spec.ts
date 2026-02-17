@@ -6,7 +6,7 @@ describe('KeycloakService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: KeycloakService = TestBed.get(KeycloakService);
+    const service: KeycloakService = TestBed.inject(KeycloakService);
     expect(service).toBeTruthy();
   });
 });

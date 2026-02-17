@@ -20,7 +20,7 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import {InputGroupAddonModule} from 'primeng/inputgroupaddon';
 import {InputGroupModule} from 'primeng/inputgroup';
 import {AutoCompleteModule} from 'primeng/autocomplete';
-import {DropdownModule} from 'primeng/dropdown';
+import {SelectModule} from 'primeng/select';
 
 
 
@@ -44,7 +44,7 @@ import {DropdownModule} from 'primeng/dropdown';
         InputGroupAddonModule,
         InputGroupModule,
         AutoCompleteModule,
-        DropdownModule,
+        SelectModule,
         IterativeTrainingPipelineListComponent,
         IterativeTrainingPipelineDetailComponent,
         IterativeTrainingPipelineNewComponent

@@ -2,10 +2,8 @@ import { enableProdMode, APP_INITIALIZER, importProvidersFrom } from '@angular/c
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
-import { definePreset, palette } from '@primeng/themes';
-import Aura from '@primeng/themes/aura';
-import Material from '@primeng/themes/material';
-
+import { definePreset, palette } from '@primeuix/themes';
+import Aura from '@primeuix/themes/aura';
 
 import { environment } from './environments/environment';
 import { KeycloakService } from './app/services/keycloak/keycloak.service';

@@ -8,7 +8,7 @@
       </div>
       <div class="flex flex-column w-6">
         <label for="framework" class="font-semibold">Framework<span style="color: #e32"> * </span></label>
-        <p-dropdown required [options]="model_framework" [(ngModel)]="newModel.framework" name="model-framework"
+        <p-select required [options]="model_framework" [(ngModel)]="newModel.framework" name="model-framework"
           placeholder="Select a framework" />
       </div>
     </div>
@@ -16,7 +16,7 @@
     <div class="flex flex-row gap-3">
       <div class="flex flex-column w-6">
         <label for="architecture" class="font-semibold">Architecture<span style="color: #e32"> * </span></label>
-        <p-dropdown required [options]="list_architecture" [(ngModel)]="newCard.architecture" name="card-architecture"
+        <p-select required [options]="list_architecture" [(ngModel)]="newCard.architecture" name="card-architecture"
           placeholder="Select an architecture" />
       </div>
       <div class="flex flex-column w-6">

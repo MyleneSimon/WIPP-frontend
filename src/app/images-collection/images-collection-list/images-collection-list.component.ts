@@ -5,6 +5,8 @@ import {ImagesCollectionNewComponent} from '../images-collection-new/images-coll
 import { Router, RouterLink } from '@angular/router';
 import {KeycloakService} from '../../services/keycloak/keycloak.service'
 import {ImagesCollectionBatchImportComponent} from '../images-collection-batch-import/images-collection-batch-import.component';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
 import { MenuItem, MessageService, PrimeTemplate } from 'primeng/api';
 import {DialogService} from 'primeng/dynamicdialog';
 import { TableModule } from 'primeng/table';
@@ -19,7 +21,8 @@ import { BytesPipe } from '../../custom-pipes/bytes.pipe';
     templateUrl: './images-collection-list.component.html',
     styleUrls: ['./images-collection-list.component.css'],
     providers: [DialogService, MessageService],
-    imports: [TableModule, PrimeTemplate, NgIf, SplitButtonModule, InputTextModule, RouterLink, ToastModule, DatePipe, BytesPipe]
+    imports: [TableModule, PrimeTemplate, NgIf, SplitButtonModule, InputTextModule, RouterLink, ToastModule, IconFieldModule, 
+      InputIconModule, DatePipe, BytesPipe]
 })
 export class ImagesCollectionListComponent implements OnInit, OnDestroy {
   imagesCollections: ImagesCollection[];

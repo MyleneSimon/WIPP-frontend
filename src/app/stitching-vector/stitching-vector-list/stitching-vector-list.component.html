@@ -22,14 +22,16 @@
           label="New"
           icon="pi pi-plus"
           (click)="createNew()" />
-        <span class="p-input-icon-left">
-                <i class="pi pi-search"></i>
-                <input
-                  pInputText
-                  type="text"
-                  (input)="dt.filterGlobal($event.target.value, 'contains')"
-                  placeholder="Search..." />
-            </span>
+        <p-iconfield iconPosition="left" class="ml-auto">
+          <p-inputicon>
+              <i class="pi pi-search"></i>
+          </p-inputicon>
+          <input
+            pInputText
+            type="text"
+            (input)="dt.filterGlobal($event.target.value, 'contains')"
+            placeholder="Search..." />
+        </p-iconfield>
       </div>
     </ng-template>
     <ng-template pTemplate="header">
@@ -52,7 +54,7 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-sv>
-      <tr routerLink="/stitching-vectors/{{sv.id}}" class="p-selectable-row">
+      <tr routerLink="/stitching-vectors/{{sv.id}}" class="p-selectable-row" [pSelectableRow]="sv">
         <td>{{ sv.name }}</td>
         <td>{{ sv.creationDate | date }}</td>
         <td><i [class]="sv.publiclyShared ? 'pi pi-globe' : 'pi pi-user'"></i></td>

@@ -23,7 +23,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { NgIf, NgClass, JsonPipe, DatePipe } from '@angular/common';
 import { FieldsetModule } from 'primeng/fieldset';
 import { ChartModule } from 'primeng/chart';
-import { DropdownModule } from 'primeng/dropdown';
+import { SelectModule } from 'primeng/select';
 import { InputTextModule } from 'primeng/inputtext';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
@@ -40,7 +40,7 @@ import { saveAs } from 'file-saver';
         NgIf,
         FieldsetModule,
         ChartModule,
-        DropdownModule,
+        SelectModule,
         FormsModule,
         ReactiveFormsModule,
         NgClass,

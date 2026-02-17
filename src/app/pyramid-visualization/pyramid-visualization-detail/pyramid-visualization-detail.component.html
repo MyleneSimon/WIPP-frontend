@@ -168,9 +168,9 @@
                 <td class="vert-align" *ngIf="canEdit()">
                   <div class="filter-container">
                     <div style="position:relative">
-                      <p-dropdown [options]="contrastOptions"  placeholder="Adjust Contrast" [(ngModel)]="layersGroup.newLayer.contrastField" ></p-dropdown>
-                      <p-dropdown [options]="colorMapOptions"  placeholder="Colormap" [(ngModel)]="layersGroup.newLayer.colorMapField"></p-dropdown>
-                      <p-dropdown [options]="invertOptions"  placeholder="Invert" [(ngModel)]="layersGroup.newLayer.invertField"></p-dropdown>
+                      <p-select [options]="contrastOptions"  placeholder="Adjust Contrast" [(ngModel)]="layersGroup.newLayer.contrastField" ></p-select>
+                      <p-select [options]="colorMapOptions"  placeholder="Colormap" [(ngModel)]="layersGroup.newLayer.colorMapField"></p-select>
+                      <p-select [options]="invertOptions"  placeholder="Invert" [(ngModel)]="layersGroup.newLayer.invertField"></p-select>
                     </div>
                   </div>
                 </td>

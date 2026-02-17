@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import { MessageService, PrimeTemplate } from 'primeng/api';
-import {DialogService, DynamicDialogComponent, DynamicDialogRef} from 'primeng/dynamicdialog';
+import {DynamicDialogConfig, DynamicDialogRef} from 'primeng/dynamicdialog';
 import {ImagesCollectionService} from '../images-collection.service';
 import {Router} from '@angular/router';
 import {Image} from '../image';
@@ -35,8 +35,6 @@ import { ToastModule } from 'primeng/toast';
 })
 export class ImagesCollectionCreateAnnotTaskComponent {
 
-  instance: DynamicDialogComponent | undefined;
-
   imageAnnotationsCollection: ImageAnnotationsCollection = new ImageAnnotationsCollection();
 
   imagesCollectionId: string;
@@ -70,18 +68,18 @@ export class ImagesCollectionCreateAnnotTaskComponent {
 
   constructor(public modalReference: DynamicDialogRef,
               private messageService: MessageService,
-              private dialogService: DialogService,
+              private config: DynamicDialogConfig,
               private imageAnnotationsService: ImageAnnotationsService,
               private imagesCollectionService: ImagesCollectionService,
               private router: Router,
               private keycloakService: KeycloakService) {
-    this.instance = this.dialogService.getInstance(this.modalReference);
     this.userAssignees = [ this.keycloakService.getUsername() ];
   }
 
   ngOnInit() {
-    if (this.instance && this.instance.data) {
-      this.imagesCollectionId = this.instance.data['imagesCollectionId'];
+    const data = this.config.data as { imagesCollectionId?: string };
+    if (data) {
+      this.imagesCollectionId = data.imagesCollectionId;
       this.imagesCollectionService.getById(this.imagesCollectionId).subscribe(result => {
         this.imagesCollection = result;
         this.imageAnnotationsCollection.name = this.imagesCollection.name + "-annot";

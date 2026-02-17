@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Pyramid} from '../pyramid';
 import {PyramidService} from '../pyramid.service';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
 import { TableModule } from 'primeng/table';
 import { PrimeTemplate } from 'primeng/api';
 import { InputTextModule } from 'primeng/inputtext';
@@ -11,7 +13,7 @@ import { DatePipe } from '@angular/common';
     selector: 'app-pyramid-list',
     templateUrl: './pyramid-list.component.html',
     styleUrls: ['./pyramid-list.component.css'],
-    imports: [TableModule, PrimeTemplate, InputTextModule, RouterLink, DatePipe]
+    imports: [TableModule, PrimeTemplate, InputTextModule, RouterLink, IconFieldModule, InputIconModule, DatePipe]
 })
 export class PyramidListComponent implements OnInit {
   pyramids: Pyramid[];

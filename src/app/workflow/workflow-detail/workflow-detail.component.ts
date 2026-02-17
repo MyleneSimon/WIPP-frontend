@@ -22,13 +22,13 @@ import { TooltipModule } from 'primeng/tooltip';
 import { NgIf, NgStyle, DatePipe } from '@angular/common';
 import { FieldsetModule } from 'primeng/fieldset';
 import { ToolbarModule } from 'primeng/toolbar';
-import { DropdownModule } from 'primeng/dropdown';
+import { SelectModule } from 'primeng/select';
 import { FormsModule } from '@angular/forms';
 import { GraphModule } from '@swimlane/ngx-graph';
 import { DialogModule } from 'primeng/dialog';
 import { DividerModule } from 'primeng/divider';
 import { SchemaFormModule } from 'ngx-schema-form';
-import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
 
 @Component({
@@ -36,7 +36,7 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './workflow-detail.component.html',
     styleUrls: ['./workflow-detail.component.css'],
     providers: [DialogService, MessageService],
-    imports: [Button, TooltipModule, NgIf, FieldsetModule, ButtonDirective, NgxSpinnerComponent, ToolbarModule, DropdownModule, FormsModule, GraphModule, NgStyle, DialogModule, PrimeTemplate, DividerModule, SchemaFormModule, MessagesModule, ToastModule, DatePipe]
+    imports: [Button, TooltipModule, NgIf, FieldsetModule, ButtonDirective, NgxSpinnerComponent, ToolbarModule, SelectModule, FormsModule, GraphModule, NgStyle, DialogModule, PrimeTemplate, DividerModule, SchemaFormModule, MessageModule, ToastModule, DatePipe]
 })
 
 export class WorkflowDetailComponent implements OnInit, OnDestroy {

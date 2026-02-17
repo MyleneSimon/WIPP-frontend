@@ -58,12 +58,12 @@
           <p-button (onClick)="op.toggle($event)" label="Regex cheatsheet" severity="secondary" />
         </div>
 
-        <p-overlayPanel [showCloseIcon]="true" aria-label="Regex cheatsheet panel" #op>
+        <p-popover [showCloseIcon]="true" ariaLabel="Regex cheatsheet panel" #op>
           <div class="card">
             <ng-container *ngTemplateOutlet="popContent">
             </ng-container>
           </div>
-        </p-overlayPanel>
+        </p-popover>
       </div>
 
     </div>

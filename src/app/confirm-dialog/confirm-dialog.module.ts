@@ -2,13 +2,13 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ConfirmDialogComponent} from './confirm-dialog.component';
 import {DialogService} from 'primeng/dynamicdialog';
-import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 import {ButtonModule} from 'primeng/button';
 
 @NgModule({
     imports: [
         CommonModule,
-        MessagesModule,
+        MessageModule,
         ButtonModule,
         ConfirmDialogComponent
     ],

@@ -18,7 +18,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { FieldsetModule } from 'primeng/fieldset';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
-import { DropdownModule } from 'primeng/dropdown';
+import { SelectModule } from 'primeng/select';
 import { WdztDirective } from '../../wdzt/wdzt.directive';
 
 @Component({
@@ -26,7 +26,7 @@ import { WdztDirective } from '../../wdzt/wdzt.directive';
     templateUrl: './pyramid-visualization-detail.component.html',
     styleUrls: ['./pyramid-visualization-detail.component.css'],
     providers: [DialogService, MessageService],
-    imports: [NgIf, Button, TooltipModule, FieldsetModule, ButtonDirective, NgFor, RouterLink, FormsModule, InputTextModule, AutoCompleteModule, DropdownModule, WdztDirective, JsonPipe, DatePipe]
+    imports: [NgIf, Button, TooltipModule, FieldsetModule, ButtonDirective, NgFor, RouterLink, FormsModule, InputTextModule, AutoCompleteModule, SelectModule, WdztDirective, JsonPipe, DatePipe]
 })
 export class PyramidVisualizationDetailComponent implements OnInit, OnDestroy {
 

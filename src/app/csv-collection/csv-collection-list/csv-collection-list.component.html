@@ -23,12 +23,14 @@
           icon="pi pi-plus"
           (click)="createNew()" />
         <p-iconfield iconPosition="left" class="ml-auto">
-                <i class="pi pi-search"></i>
-                <input
-                  pInputText
-                  type="text"
-                  (input)="dt.filterGlobal($event.target.value, 'contains')"
-                  placeholder="Search..." />
+          <p-inputicon>
+              <i class="pi pi-search"></i>
+          </p-inputicon>
+          <input
+            pInputText
+            type="text"
+            (input)="dt.filterGlobal($event.target.value, 'contains')"
+            placeholder="Search..." />
         </p-iconfield>
       </div>
     </ng-template>
@@ -49,7 +51,7 @@
       </tr>
     </ng-template>
     <ng-template #body let-csvColl>
-      <tr routerLink="/csv-collections/{{csvColl.id}}" class="p-selectable-row">
+      <tr routerLink="/csv-collections/{{csvColl.id}}" class="p-selectable-row" [pSelectableRow]="csvColl">
         <td>{{ csvColl.name }}</td>
         <td>{{ csvColl.creationDate | date }}</td>
         <td><i [class]="csvColl.publiclyShared ? 'pi pi-globe' : 'pi pi-user'"></i></td>

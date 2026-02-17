@@ -5,6 +5,8 @@ import {SelectionModel} from '@angular/cdk/collections';
 import {PluginNewComponent} from '../plugin-new/plugin-new.component';
 import {KeycloakService} from '../../services/keycloak/keycloak.service';
 import {DialogService} from 'primeng/dynamicdialog';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
 import { MessageService, PrimeTemplate } from 'primeng/api';
 import { TableModule } from 'primeng/table';
 import { NgIf, DatePipe } from '@angular/common';
@@ -18,7 +20,8 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './plugin-list.component.html',
     styleUrls: ['./plugin-list.component.css'],
     providers: [DialogService, MessageService],
-    imports: [TableModule, PrimeTemplate, NgIf, Button, InputTextModule, RouterLink, ToastModule, DatePipe]
+    imports: [TableModule, PrimeTemplate, NgIf, Button, InputTextModule, RouterLink, ToastModule, IconFieldModule, 
+      InputIconModule, DatePipe]
 })
 export class PluginListComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = [ 'name', 'version', 'description'];

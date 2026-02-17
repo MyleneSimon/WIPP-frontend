@@ -3,27 +3,36 @@
     <label for="name" class="font-semibold w-6rem">Name</label>
     <input pInputText [(ngModel)]="workflow.name" id="name" name="name" #name="ngModel" class="flex-auto" autocomplete="off"
            required
-           pattern = [a-zA-Z0-9][-a-zA-Z0-9]*
+           pattern="[a-zA-Z0-9][-a-zA-Z0-9]*"
            minlength="1"
            maxlength="70"/>
-    <span class="p-text-secondary block mb-5">Enter the workflow name.</span>
-    <p-messages severity="error" *ngIf="name.errors && (name.dirty || name.touched)">
-      <ng-template pTemplate>
-        <div [hidden]="!name.errors.required">
-          Name is required
-        </div>
-        <div [hidden]="!name.errors.minlength">
-          Name must be at least 1 characters long
-        </div>
-        <div [hidden]="!name.errors.maxlength">
-          Name cannot be more than 70 characters long
-        </div>
-        <div [hidden]="!name.errors.pattern">
-          Name must consist of alpha-numeric characters or '-', and must start with an alpha-numeric character
-        </div>
-      </ng-template>
-    </p-messages>
-    <label for="name" class="font-semibold w-6rem">Description</label>
+    <span class="p-text-secondary block">Enter the workflow name.</span>
+    <ng-container *ngIf="name.errors && (name.dirty || name.touched)">
+      <p-message
+        *ngIf="name.errors?.required"
+        severity="error"
+        [text]="'Name is required'">
+      </p-message>
+
+      <p-message
+        *ngIf="name.errors?.minlength"
+        severity="error"
+        [text]="'Name must be at least ' + name.errors.minlength.requiredLength + ' characters long'">
+      </p-message>
+
+      <p-message
+        *ngIf="name.errors?.maxlength"
+        severity="error"
+        [text]="'Name cannot be more than ' + name.errors.maxlength.requiredLength + ' characters long'">
+      </p-message>
+
+      <p-message
+        *ngIf="name.errors?.pattern"
+        severity="error"
+        [text]="'Name must consist of alpha‑numeric characters or \'-\', and must start with an alpha‑numeric character'">
+      </p-message>
+    </ng-container>
+    <label for="name" class="font-semibold w-6rem mt-5">Description</label>
     <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="workflow.description" id="description" name="description">
     </textarea>
     <span class="p-text-secondary block mb-5">Enter a short description of the workflow.</span>

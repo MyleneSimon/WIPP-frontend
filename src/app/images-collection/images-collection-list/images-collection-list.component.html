@@ -25,14 +25,16 @@
           icon="pi pi-plus"
           (onClick)="createNew()"
           [model]="newCollOptions" />
-        <span class="p-input-icon-left">
-                <i class="pi pi-search"></i>
-                <input
-                  pInputText
-                  type="text"
-                  (input)="dt.filterGlobal($event.target.value, 'contains')"
-                  placeholder="Search..." />
-            </span>
+        <p-iconfield iconPosition="left" class="ml-auto">
+          <p-inputicon>
+              <i class="pi pi-search"></i>
+          </p-inputicon>
+          <input
+            pInputText
+            type="text"
+            (input)="dt.filterGlobal($event.target.value, 'contains')"
+            placeholder="Search..." />
+        </p-iconfield>
       </div>
     </ng-template>
     <ng-template pTemplate="header">
@@ -64,7 +66,7 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-coll>
-      <tr routerLink="/images-collection/{{coll.id}}" class="p-selectable-row">
+      <tr routerLink="/images-collection/{{coll.id}}" class="p-selectable-row" [pSelectableRow]="coll">
         <td>{{ coll.name }}</td>
         <td>{{ coll.creationDate | date }}</td>
         <td><i [class]="coll.locked ? 'pi pi-lock' : 'pi pi-lock-open'"></i></td>

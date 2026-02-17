@@ -19,8 +19,8 @@ import {InputTextModule} from 'primeng/inputtext';
 import {TagModule} from 'primeng/tag';
 import {FieldsetModule} from 'primeng/fieldset';
 import {TooltipModule} from 'primeng/tooltip';
-import {MessagesModule} from 'primeng/messages';
-import {DropdownModule} from 'primeng/dropdown';
+import {MessageModule} from 'primeng/message';
+import {SelectModule} from 'primeng/select';
 import {DialogModule} from 'primeng/dialog';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import {ToolbarModule} from 'primeng/toolbar';
@@ -43,8 +43,8 @@ import {TextareaModule} from 'primeng/textarea';
     TagModule,
     FieldsetModule,
     TooltipModule,
-    MessagesModule,
-    DropdownModule,
+    MessageModule,
+    SelectModule,
     DialogModule,
     AutoCompleteModule,
     ToolbarModule,

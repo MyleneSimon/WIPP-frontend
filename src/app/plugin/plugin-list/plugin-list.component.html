@@ -22,14 +22,16 @@
           label="Register new plugin"
           icon="pi pi-plus"
           (click)="displayNewPluginModal()" />
-        <span class="p-input-icon-left">
-                <i class="pi pi-search"></i>
-                <input
-                  pInputText
-                  type="text"
-                  (input)="dt.filterGlobal($event.target.value, 'contains')"
-                  placeholder="Search..." />
-            </span>
+        <p-iconfield iconPosition="left" class="ml-auto">
+          <p-inputicon>
+              <i class="pi pi-search"></i>
+          </p-inputicon>
+          <input
+            pInputText
+            type="text"
+            (input)="dt.filterGlobal($event.target.value, 'contains')"
+            placeholder="Search..." />
+        </p-iconfield>
       </div>
     </ng-template>
     <ng-template pTemplate="header">
@@ -46,7 +48,7 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-plugin>
-      <tr routerLink="/plugins/{{plugin.id}}" class="p-selectable-row">
+      <tr routerLink="/plugins/{{plugin.id}}" class="p-selectable-row" [pSelectableRow]="plugin">
         <td>{{ plugin.name }}</td>
         <td>{{ plugin.creationDate | date }}</td>
         <td>{{ plugin.description }}</td>

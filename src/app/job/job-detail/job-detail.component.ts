@@ -3,7 +3,7 @@ import {Job} from '../job';
 import {JobService} from '../job.service';
 import {Plugin} from '../../plugin/plugin';
 import {Workflow} from '../../workflow/workflow';
-import {DialogService, DynamicDialogComponent, DynamicDialogRef} from 'primeng/dynamicdialog';
+import {DynamicDialogConfig, DynamicDialogRef} from 'primeng/dynamicdialog';
 import { NgIf, NgFor, DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { DynamicContentComponent } from '../../dynamic-content/dynamic-content.component';
@@ -21,8 +21,6 @@ export interface IdHash {
 
 export class JobDetailComponent implements OnInit {
 
-  instance: DynamicDialogComponent | undefined;
-
   jobId: string;
   job: Job;
   showInputs = true;
@@ -33,14 +31,14 @@ export class JobDetailComponent implements OnInit {
   outputHash: IdHash = {};
 
   constructor(public modalReference: DynamicDialogRef,
-              private dialogService: DialogService,
+              private config: DynamicDialogConfig,
               private jobService: JobService) {
-    this.instance = this.dialogService.getInstance(this.modalReference);
   }
 
   ngOnInit() {
-    if (this.instance && this.instance.data) {
-      this.jobId = this.instance.data['jobId'];
+    const data = this.config.data as { jobId?: string };
+    this.jobId = data?.jobId;
+    if (this.jobId) {
       this.getJob();
     }
   }

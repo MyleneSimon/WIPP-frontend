@@ -5,6 +5,8 @@ import {DialogService} from 'primeng/dynamicdialog';
 import { MessageService, PrimeTemplate } from 'primeng/api';
 import {ImageAnnotationsCollection} from '../image-annotations-collection';
 import {ImageAnnotationsService} from '../image-annotations.service';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
 import { TableModule } from 'primeng/table';
 import { Button } from 'primeng/button';
 import { TooltipModule } from 'primeng/tooltip';
@@ -17,7 +19,8 @@ import { DatePipe } from '@angular/common';
     templateUrl: './image-annotations-list.component.html',
     styleUrl: './image-annotations-list.component.css',
     providers: [DialogService, MessageService],
-    imports: [TableModule, PrimeTemplate, Button, TooltipModule, InputTextModule, RouterLink, ToastModule, DatePipe]
+    imports: [TableModule, PrimeTemplate, Button, TooltipModule, InputTextModule, RouterLink, ToastModule, 
+      IconFieldModule, InputIconModule, DatePipe]
 })
 export class ImageAnnotationsListComponent {
 
