@@ -15,7 +15,7 @@
            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
            [globalFilterFields]="['name']"
   >
-    <ng-template pTemplate="caption">
+    <ng-template #caption>
       <div class="flex align-items-center justify-content-between">
         <p-button
           *ngIf="canCreate()"
@@ -34,7 +34,7 @@
         </p-iconfield>
       </div>
     </ng-template>
-    <ng-template pTemplate="header">
+    <ng-template #header>
       <tr>
         <th pSortableColumn="name">
           Name <p-sortIcon field="name" />
@@ -56,7 +56,7 @@
         </th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-wf>
+    <ng-template #body let-wf>
       <tr routerLink="/workflows/detail/{{wf.id}}" class="p-selectable-row" [pSelectableRow]="wf">
         <td>{{ wf.name }}</td>
         <td>{{ wf.creationDate | date }}</td>

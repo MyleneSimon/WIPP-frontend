@@ -17,7 +17,7 @@
     stateStorage="session"
     stateKey="wipp-img-coll-list"
   >
-    <ng-template pTemplate="caption">
+    <ng-template #caption>
       <div class="flex align-items-center justify-content-between">
         <p-splitButton
           *ngIf="canCreate()"
@@ -37,7 +37,7 @@
         </p-iconfield>
       </div>
     </ng-template>
-    <ng-template pTemplate="header">
+    <ng-template #header>
       <tr>
         <th pSortableColumn="name">
           Name <p-sortIcon field="name" />
@@ -65,7 +65,7 @@
         </th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-coll>
+    <ng-template #body let-coll>
       <tr routerLink="/images-collection/{{coll.id}}" class="p-selectable-row" [pSelectableRow]="coll">
         <td>{{ coll.name }}</td>
         <td>{{ coll.creationDate | date }}</td>

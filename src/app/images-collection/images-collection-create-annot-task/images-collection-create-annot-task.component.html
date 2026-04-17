@@ -38,7 +38,7 @@
              [rows]="5"
              sortField="fileName" [sortOrder]="1"
              [totalRecords]="availableImages.length">>
-      <ng-template pTemplate="header">
+      <ng-template #header>
         <tr>
           <th style="width: 4rem"><p-tableHeaderCheckbox /></th>
           <th>
@@ -46,7 +46,7 @@
           </th>
         </tr>
       </ng-template>
-      <ng-template pTemplate="body" let-image>
+      <ng-template #body let-image>
         <tr class="p-selectable-row">
           <td>
             <p-tableCheckbox [value]="image" [disabled]="allImagesSelected"/>

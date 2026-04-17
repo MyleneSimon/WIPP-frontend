@@ -93,9 +93,9 @@
             [disabled]="! workflow.name || workflow.status!='CREATED' || ! selectedSchema">
     </button>
   </div>
-  <div class="p-toolbar-group-center">
+  <div class="p-toolbar-group-center flex align-items-center gap-2">
     <label class="mb-0">Graph Orientation</label>
-    <p-select class="pl-2"
+    <p-select
       [options]="orientationOptions"
       [(ngModel)]="layoutSettings.orientation"
       (onChange)="updateGraph();"
@@ -110,21 +110,23 @@
 </p-toolbar>
 <div class="card pt-2">
   <div class="flex wf-dag" >
-    <ngx-graph
+    <ngx-graph #graph
       *ngIf="jobs.length > 0"
       class="chart-container"
       [ngStyle]="{'pointer-events':enableZoom === true ? 'all' : 'none' }"
       [links]=links
       [nodes]=nodes
       [update$]="update$"
-
+      
       [layoutSettings]="layoutSettings"
-      [enableZoom]="enableZoom"
-      [draggingEnabled]="false"
-      [panningEnabled]="enableZoom"
-      [autoCenter]="!enableZoom"
-      [autoZoom]="!enableZoom"
-      [panOnZoom]="true"
+      [zoomLevel]="0.8"
+      [panOffsetX]="0"
+      [panOffsetY]="0"
+      [autoZoom]="true"
+      [autoCenter]="true"
+      [curve]="curve"
+      [draggingEnabled]="true"
+      [enableZoom]="true"
       [animate]="true"
     >
       <ng-template #nodeTemplate let-node>
@@ -199,12 +201,12 @@
       filterBy="name"
       [showClear]="true"
       placeholder="Select a plugin">
-      <ng-template pTemplate="selectedItem" let-selectedOption>
+      <ng-template #selectedItem let-selectedOption>
         <div class="flex align-items-center gap-2">
           <div>{{ selectedOption.name }} {{ selectedOption.version }}</div>
         </div>
       </ng-template>
-      <ng-template let-plugin pTemplate="item">
+      <ng-template let-plugin #item>
         <div class="flex align-items-center gap-2">
           <div>{{ plugin.name }} {{ plugin.version }}</div>
         </div>

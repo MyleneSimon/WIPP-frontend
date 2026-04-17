@@ -15,7 +15,7 @@
            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
            [globalFilterFields]="['name']"
   >
-    <ng-template pTemplate="caption">
+    <ng-template #caption>
       <div class="flex align-items-center justify-content-between">
         <p-iconfield iconPosition="left" class="ml-auto">
           <p-inputicon>
@@ -29,7 +29,7 @@
         </p-iconfield>
       </div>
     </ng-template>
-    <ng-template pTemplate="header">
+    <ng-template #header>
       <tr>
         <th pSortableColumn="name">
           Name <p-sortIcon field="name" />
@@ -45,7 +45,7 @@
         </th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-pyramid>
+    <ng-template #body let-pyramid>
       <tr routerLink="/pyramids/{{pyramid.id}}" class="p-selectable-row" [pSelectableRow]="pyramid">
         <td>{{ pyramid.name }}</td>
         <td>{{ pyramid.creationDate | date }}</td>

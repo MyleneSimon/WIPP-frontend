@@ -40,9 +40,10 @@ if (environment.production) {
   enableProdMode();
 }
 
-const MyPreset = definePreset(Aura, {
+const WippPreset = definePreset(Aura, {
     semantic: {
-        primary: palette('{blue}')
+        primary: palette('{blue}'),
+        //surface: palette('{slate}')
     }
 });
 
@@ -70,7 +71,7 @@ KeycloakService.init()
         provideAnimationsAsync(),
         providePrimeNG({ 
             theme: {
-                preset: MyPreset
+                preset: WippPreset
             }
         })
     ]

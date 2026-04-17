@@ -1,5 +1,5 @@
 <div class="widget form-group">
-  <label [attr.for]="id" class="horizontal control-label">
+  <label [for]="id" class="horizontal control-label">
     {{ schema.title }}
   </label>
   <p-autoComplete
@@ -7,6 +7,6 @@
     (completeMethod)="filter($event)"
     [placeholder]="schema.placeholder"
     [name]="name" [formControl]="control"
-    [attr.type]="'text'" [attr.id]="id"
-    field="name" />
+    [inputId]="id"
+    optionLabel="name" />
 </div>

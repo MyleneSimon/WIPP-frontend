@@ -160,7 +160,7 @@
            [rows]="10"
            [rowsPerPageOptions]="[10, 25, 50]"
            [totalRecords]="resultsLengthGenericFiles">
-    <ng-template pTemplate="header">
+    <ng-template #header>
       <tr>
         <th pSortableColumn="fileName">
           Name <p-sortIcon field="name" />
@@ -171,7 +171,7 @@
         <th>Actions</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-genFile>
+    <ng-template #body let-genFile>
       <tr>
         <td>
           {{ genFile.fileName }}

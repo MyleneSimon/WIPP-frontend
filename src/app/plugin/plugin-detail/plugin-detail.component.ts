@@ -5,7 +5,7 @@ import {Plugin} from '../plugin';
 import {KeycloakService} from '../../services/keycloak/keycloak.service';
 import {DialogService} from 'primeng/dynamicdialog';
 import { ConfirmationService, PrimeTemplate } from 'primeng/api';
-import { Button } from 'primeng/button';
+import { ButtonModule } from 'primeng/button';
 import { TooltipModule } from 'primeng/tooltip';
 import { NgIf, JsonPipe, DatePipe } from '@angular/common';
 import { FieldsetModule } from 'primeng/fieldset';
@@ -19,7 +19,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     templateUrl: './plugin-detail.component.html',
     styleUrls: ['./plugin-detail.component.css'],
     providers: [DialogService, ConfirmationService],
-    imports: [Button, TooltipModule, NgIf, FieldsetModule, TableModule, PrimeTemplate, NgxJsonViewerModule, DialogModule, ConfirmDialogModule, JsonPipe, DatePipe]
+    imports: [ButtonModule, TooltipModule, NgIf, FieldsetModule, TableModule, PrimeTemplate, NgxJsonViewerModule, DialogModule, ConfirmDialogModule, JsonPipe, DatePipe]
 })
 export class PluginDetailComponent implements OnInit, OnDestroy {
 

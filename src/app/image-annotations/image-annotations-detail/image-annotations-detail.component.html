@@ -95,7 +95,7 @@
            [rows]="10"
            [rowsPerPageOptions]="[10, 25, 50]"
            [totalRecords]="resultsLength">
-    <ng-template pTemplate="header">
+    <ng-template #header>
       <tr>
         <th>Image</th>
         <th>Mask</th>
@@ -108,7 +108,7 @@
         <th>Actions</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-annot>
+    <ng-template #body let-annot>
       <tr>
         <td>
           <a (click)="openDeepZoomImage(annot, false)" *ngIf="imageAnnotationsCollection.imagesCollectionId">

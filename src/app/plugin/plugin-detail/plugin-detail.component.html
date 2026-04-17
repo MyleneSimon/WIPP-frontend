@@ -77,8 +77,8 @@
 
 <h2>Inputs</h2>
 
-<p-table [value]="plugin.inputs" dataKey="name">
-  <ng-template pTemplate="header">
+<p-table [value]="plugin.inputs" dataKey="name" expandableRows>
+  <ng-template #header>
     <tr>
       <th style="width: 5rem"></th>
       <th>Name</th>
@@ -87,7 +87,7 @@
       <th>Required</th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-input let-expanded="expanded">
+  <ng-template #body let-input let-expanded="expanded">
     <tr>
       <td>
         <p-button type="button" pRipple [pRowToggler]="input" [text]="true" [rounded]="true" [plain]="true"
@@ -99,7 +99,7 @@
       <td>{{ input.required }}</td>
     </tr>
   </ng-template>
-  <ng-template #rowexpansion let-input>
+  <ng-template #expandedrow let-input>
     <tr>
       <td colspan="5">
         <div class="p-3 grid">
@@ -124,14 +124,14 @@
 
 <h2>Outputs</h2>
 <p-table [value]="plugin.outputs">
-  <ng-template pTemplate="header">
+  <ng-template #header>
     <tr>
       <th>Name</th>
       <th>Description</th>
       <th>Type</th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-output>
+  <ng-template #body let-output>
     <tr>
       <td>{{ output.name }}</td>
       <td>{{ output.description }}</td>
@@ -142,14 +142,14 @@
 
 <h2>Hardware Requirements</h2>
 <p-table [value]="resourceRequirements">
-  <ng-template pTemplate="header">
+  <ng-template #header>
     <tr>
       <th>Name</th>
       <th>Description</th>
       <th>Value</th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-req>
+  <ng-template #body let-req>
     <tr>
       <td>{{ req.name }}</td>
       <td>{{ req.description }}</td>

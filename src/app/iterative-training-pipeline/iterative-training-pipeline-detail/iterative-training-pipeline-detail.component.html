@@ -108,12 +108,12 @@
            [rowsPerPageOptions]="[10, 25, 50]"
            sortField="iterationNumber" [sortOrder]="-1"
            [totalRecords]="iterativeTrainingPipeline.iterations?.length">
-    <ng-template pTemplate="caption">
+    <ng-template #caption>
       <div class="flex justify-content-between">
         <p-button icon="pi pi-plus" label="New iteration" (onClick)="newIteration()" />
       </div>
     </ng-template>
-    <ng-template pTemplate="header">
+    <ng-template #header>
       <tr>
         <th>Iteration Number</th>
         <th>Status</th>
@@ -121,7 +121,7 @@
         <th>Workflow</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-it>
+    <ng-template #body let-it>
       <tr>
         <td>{{ it.iterationNumber }}</td>
         <td>{{ it.status }}</td>

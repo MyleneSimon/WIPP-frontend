@@ -23,7 +23,7 @@
     "@primeuix/themes": "^2.0.3",
     "@recogito/annotorious-openseadragon": "^2.7.17",
     "@recogito/annotorious-shape-labels": "^0.2.3",
-    "@swimlane/ngx-graph": "^10.0.0",
+    "@swimlane/ngx-graph": "^11.0.0",
     "@types/flowjs": "0.0.31",
     "@types/prismjs": "^1.16.0",
     "@types/url-join": "^4.0.0",

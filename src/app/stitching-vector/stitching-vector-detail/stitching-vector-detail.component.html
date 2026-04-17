@@ -78,7 +78,7 @@
            [rows]="10"
            [rowsPerPageOptions]="[10, 25, 50]"
            [totalRecords]="resultsLength">
-    <ng-template pTemplate="header">
+    <ng-template #header>
       <tr>
         <th pSortableColumn="sliceNumber">
           Slice Number <p-sortIcon field="sliceNumber" />
@@ -89,7 +89,7 @@
         <th>Actions</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-sv>
+    <ng-template #body let-sv>
       <tr>
         <td>{{ sv.sliceNumber }}</td>
         <td>{{ sv.errorMessage }}</td>

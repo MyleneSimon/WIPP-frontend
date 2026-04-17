@@ -1,4 +1,4 @@
-import { Component, Injector, OnDestroy, OnInit } from '@angular/core';
+import { Component, Injector, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import {PluginService} from '../../plugin/plugin.service';
 import {WorkflowService} from '../workflow.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -24,7 +24,7 @@ import { FieldsetModule } from 'primeng/fieldset';
 import { ToolbarModule } from 'primeng/toolbar';
 import { SelectModule } from 'primeng/select';
 import { FormsModule } from '@angular/forms';
-import { GraphModule } from '@swimlane/ngx-graph';
+import { NgxGraphModule, GraphComponent } from '@swimlane/ngx-graph';
 import { DialogModule } from 'primeng/dialog';
 import { DividerModule } from 'primeng/divider';
 import { SchemaFormModule } from 'ngx-schema-form';
@@ -36,7 +36,7 @@ import { ToastModule } from 'primeng/toast';
     templateUrl: './workflow-detail.component.html',
     styleUrls: ['./workflow-detail.component.css'],
     providers: [DialogService, MessageService],
-    imports: [Button, TooltipModule, NgIf, FieldsetModule, ButtonDirective, NgxSpinnerComponent, ToolbarModule, SelectModule, FormsModule, GraphModule, NgStyle, DialogModule, PrimeTemplate, DividerModule, SchemaFormModule, MessageModule, ToastModule, DatePipe]
+    imports: [Button, TooltipModule, NgIf, FieldsetModule, ButtonDirective, NgxSpinnerComponent, ToolbarModule, SelectModule, FormsModule, NgxGraphModule, NgStyle, DialogModule, PrimeTemplate, DividerModule, SchemaFormModule, MessageModule, ToastModule, DatePipe]
 })
 
 export class WorkflowDetailComponent implements OnInit, OnDestroy {
@@ -63,7 +63,8 @@ export class WorkflowDetailComponent implements OnInit, OnDestroy {
   editMode = false;
 
   // ngx-graph settings and properties
-  update$: Subject<any> = new Subject();
+  @ViewChild('graph') graph: GraphComponent;
+  update$ = new Subject<void>();
   nodes = [];
   links = [];
   enableZoom = false;
@@ -403,7 +404,7 @@ export class WorkflowDetailComponent implements OnInit, OnDestroy {
     ).subscribe(data => {
       this.jobs = data;
       this.populateGraph(data);
-      this.updateGraph();
+      //this.updateGraph();
       this.resetJobOutputs();
       for (const job of data) {
         this.populateJobOutputs(job);
@@ -554,11 +555,14 @@ export class WorkflowDetailComponent implements OnInit, OnDestroy {
         }
       }
     }
+    // this.nodes = [...this.nodes];
+    // this.update$.next();
+    this.updateGraph();
   }
 
   // Update workflow DAG
   updateGraph() {
-    this.update$.next(true);
+    this.update$.next();
   }
 
   resetJobOutputs() {

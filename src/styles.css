@@ -5,11 +5,26 @@
 
 
 html, body { height: 100%; }
-body { margin: 0; font-family: "Inter var", sans-serif; background-color: var(--p-surface-50); }
+
+body { 
+  margin: 0; 
+  font-family: "Inter var", sans-serif; 
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  font-variation-settings: normal;
+  background-color: var(--p-surface-50); 
+}
 
 table {
   width: 100%;
 }
+
+button {
+    font-family: inherit;
+    font-feature-settings: inherit;
+    font-size: 1rem;
+    color: var(--color)
+}
+
 .btn-default {
   color: #333;
   background-color: #fff;
@@ -33,23 +48,6 @@ wippwdzt {
 .wipp-title {
   margin-top: 2%;
   margin-bottom: 2%;
-}
-
-.wipp-btn-new {
-  background-color: #f8f9fa;
-  border-color: #bfbfbf;
-  color: black
-}
-
-.wipp-btn > i {
-  margin-right: 10px;
-}
-
-.wipp-btn > i > p {
-  margin-left: 10px;
-  display: inline;
-  font-family: 'Roboto', sans-serif ;
-  font-weight: normal;
 }
 
 a.wipp-link:not([href]):not([tabindex]) {
